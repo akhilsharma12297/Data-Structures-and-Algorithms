@@ -1,30 +1,53 @@
+import java.util.ArrayList;
 
 public class Rippling_ubber {
-	
-	
-	public static void main(String[] args)
-	{
-		int traveltime = 0;
-		int 
+
+	static int max = Integer.MIN_VALUE;
+	static ArrayList<Integer> result = new ArrayList<Integer>();
+
+	public static void main(String[] args) {
+		int time = 10;
+
+		int[] arr = { 1, 1, 1, 1, 1, 1, 1, 1, 2, 5, 3, 6, 8, 1, 2, 3, 6, 4, 1, 3 };
+
+		func(arr, 0, time, 0, new ArrayList<Integer>());
+
+		System.out.println(result + " + " + max);
 	}
-	
-	
-	public static int knapsack(int[] wts, int[] cost, int cap) {
-		int[][] dp = new int[wts.length + 1][cap + 1];
 
-		for (int wtgItr = 1; wtgItr < dp.length; wtgItr++) {
-			for (int capItr = 1; capItr < dp[0].length; capItr++) {
+	public static void func(int[] arr, int idx, int time, int sumSF, ArrayList<Integer> list) {
 
-				int NotComingCost = dp[wtgItr - 1][capItr];
-				int comingCost = 0;
-				
-				if (capItr - wts[wtgItr - 1] >= 0) {
-					comingCost = cost[wtgItr - 1] + dp[wtgItr - 1][capItr - wts[wtgItr - 1]];
+		if (idx == arr.length) {
+
+			if (sumSF == time) {
+
+				if (list.size() > max) {
+
+					max = list.size();
+					result = list;
+
+					System.out.println(max);
+
+					System.out.println(result);
+
 				}
-				dp[wtgItr][capItr] = Math.max(comingCost, NotComingCost);
+
 			}
+			return;
+
 		}
-		return dp[dp.length - 1][dp[0].length - 1];
+
+		func(arr, idx + 1, time, sumSF, list);
+
+		sumSF += arr[idx];
+
+		list.add(arr[idx]);
+
+		func(arr, idx + 1, time, sumSF, list);
+
+		sumSF -= arr[idx];
+
+		list.remove(list.size() - 1);
+
 	}
-	
 }
