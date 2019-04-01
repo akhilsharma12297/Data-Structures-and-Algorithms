@@ -1,4 +1,4 @@
-package recursion;
+package Recursion;
 
 public class Queens_Combination {
 

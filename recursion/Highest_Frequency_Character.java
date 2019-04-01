@@ -1,4 +1,4 @@
-package recursion;
+package Recursion;
 
 public class Highest_Frequency_Character {
 

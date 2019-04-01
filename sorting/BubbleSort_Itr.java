@@ -1,4 +1,4 @@
-package sorting;
+package Sorting;
 
 public class BubbleSort_Itr {
 

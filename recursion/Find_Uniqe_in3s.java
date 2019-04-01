@@ -1,4 +1,4 @@
-package recursion;
+package Recursion;
 
 public class Find_Uniqe_in3s {
 
