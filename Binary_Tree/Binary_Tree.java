@@ -3,6 +3,8 @@ package Binary_Tree;
 import java.util.ArrayList;
 import java.util.Stack;
 
+import BT.BT.Node;
+
 public class Binary_Tree {
 
 	private class Node {
@@ -412,4 +414,105 @@ public class Binary_Tree {
 
 	}
 
+	static Node prev = null;
+
+	public void BTtoDLL() {
+		Node head;
+
+		BTtoDLL(root, head);
+
+		printDLL(head);
+	}
+
+	private void BTtoDLL(Node node, Node head) {
+		if (node == null) {
+			return;
+		}
+
+		BTtoDLL(node.left, node);
+
+		if (prev == null) {
+
+			head = node;
+
+		} else {
+
+			node.left = prev;
+			prev.right = node;
+
+		}
+
+		prev = node;
+
+		BTtoDLL(node.right, head);
+
+	}
+
+	private void printDLL(Node node) {
+
+		while (node != null) {
+			System.out.print(node.data + " ");
+			node = node.right;
+		}
+	}
+
+	public Node removeLeaves(Node node) {
+
+		if (node == null) {
+			return null;
+		}
+
+		if (node.right == null && node.left == null) {
+			return null;
+		}
+
+		node.left = removeLeaves(node.left);
+		node.right = removeLeaves(node.right);
+
+		return node;
+
+	}
+
+	public void printSinglechild(Node node) {
+
+		if (node == null) {
+			return;
+		}
+
+		if (node.left != null && node.right != null) {
+			printSinglechild(node.left);
+			printSinglechild(node.right);
+		}
+
+		if (node.right == null && node.left == null) {
+			return;
+		}
+
+		if (node.right == null || node.left == null) {
+
+			if (node.left != null) {
+				System.out.println(node.left.data);
+			}
+
+			if (node.right != null) {
+				System.out.println(node.right.data);
+			}
+		}
+
+	}
+
+	public void PathinRange(Node node, int low, int high, int str, int sum) {
+
+		if (node == null) {
+
+			if (sum > low && sum < high) {
+				System.out.println(str + " ->  " + sum);
+			}
+			return;
+		}
+
+		PathinRange(node.left, low, high, str + node.data, sum + node.data);
+
+		PathinRange(node.right, low, high, str + node.data, sum + node.data);
+	}
 }
