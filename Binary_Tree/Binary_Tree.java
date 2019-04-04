@@ -3,8 +3,6 @@ package Binary_Tree;
 import java.util.ArrayList;
 import java.util.Stack;
 
-import BT.BT.Node;
-
 public class Binary_Tree {
 
 	private class Node {
@@ -417,7 +415,7 @@ public class Binary_Tree {
 	static Node prev = null;
 
 	public void BTtoDLL() {
-		Node head;
+		Node head = new Node();
 
 		BTtoDLL(root, head);
 
@@ -456,7 +454,11 @@ public class Binary_Tree {
 		}
 	}
 
-	public Node removeLeaves(Node node) {
+	public void removeLeaves() {
+		root = removeLeaves(root);
+	}
+
+	private Node removeLeaves(Node node) {
 
 		if (node == null) {
 			return null;
@@ -473,30 +475,14 @@ public class Binary_Tree {
 
 	}
 
-	public void printSinglechild(Node node) {
+	public void printSinglechild() {
+		printSinglechild(root);
+	}
+
+	private void printSinglechild(Node node) {
 
 		if (node == null) {
 			return;
-		}
-
-		if (node.left != null && node.right != null) {
-			printSinglechild(node.left);
-			printSinglechild(node.right);
-		}
-
-		if (node.right == null && node.left == null) {
-			return;
-		}
-
-		if (node.right == null || node.left == null) {
-
-			if (node.left != null) {
-				System.out.println(node.left.data);
-			}
-
-			if (node.right != null) {
-				System.out.println(node.right.data);
-			}
 		}
 
 	}
