@@ -8,7 +8,6 @@ public class MazePath_QA {
 
 		if (sc == dc && sr == dr) {
 			System.out.println(ans);
-
 			return;
 		}
 

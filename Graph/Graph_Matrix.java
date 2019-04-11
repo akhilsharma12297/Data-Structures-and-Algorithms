@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 
-public class Graph {
+public class Graph_Matrix {
 	static Integer[][] graph = new Integer[7][7];
 
 	public static void main(String[] args) {
@@ -260,26 +260,6 @@ public class Graph {
 
 			}
 		}
-
-	}
-
-	public static void KnightTour(int n, int c, int r) {
-
-		Integer[][] chess = new Integer[n][n];
-
-		Integer[][] visited = new Integer[n][n];
-
-		KnightTour(chess, c, r, visited);
-
-	}
-
-	private static void KnightTour(Integer[][] chess, int c, int r, Integer[][] visited) {
-
-		if (r < 0 || r > chess.length && c < 0 || c > chess[0].length && visited[c][r] != null) {
-			return;
-		}
-
-		KnightTour(chess, c, r, visited);
 
 	}
 

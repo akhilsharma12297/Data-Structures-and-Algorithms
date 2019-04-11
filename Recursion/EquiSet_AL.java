@@ -33,7 +33,6 @@ public class EquiSet_AL {
 		EquiSet_AL(arr, idx + 1, l1, l2, s1 + arr[idx], s2);
 
 		l1.remove(l1.size() - 1);
-		
 
 		l2.add(arr[idx]);
 

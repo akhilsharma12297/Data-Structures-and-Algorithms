@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Sieves_of_eratoshenes {
 
 	public static void main(String[] args) {
-		soe(99999999);
+		soe(100);
 	}
 
 	public static void soe(int num) {
@@ -29,7 +29,7 @@ public class Sieves_of_eratoshenes {
 			}
 		}
 
-		for (int k = 0; k <= num; k++) {
+		for (int k = 0; k <= num; k++) {	
 
 			if (arr[k]) {
 

@@ -2,73 +2,330 @@ package Graph;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.PriorityQueue;
+
+import Graphs.Graph.Edge;
 
 public class Graph_AdjacencyLIst {
 
-	private static void addEdge(ArrayList<Edge>[] graph, int u, int v, int wt) {
+	public static class Edge {
 
-		graph[u].add(new Edge(v, wt));
+		int v1;
+		int v2;
+		int weight;
 
-		graph[v].add(new Edge(u, wt));
+		Edge(int v1, int v2, int weight) {
+
+			this.v1 = v1;
+			this.v2 = v2;
+			this.weight = weight;
+		}
+	}
+
+	public static boolean hasEdge(ArrayList<ArrayList<Edge>> Graph, int s, int d) {
+
+		for (int i = 0; i < Graph.get(s).size(); i++) {
+			Edge edge = Graph.get(s).get(i);
+
+			if (d == edge.v2) {
+				return true;
+			}
+			if (d == edge.v1) {
+				return true;
+			}
+		}
+		return false;
 
 	}
 
-	static class Edge {
+	public static void AddEdge(ArrayList<ArrayList<Edge>> Graph, int v1, int v2, int weight) {
 
-		int n;
-		int wt;
+		Graph.get(v1).add(new Edge(v1, v2, weight));
 
-		Edge(int n, int wt) {
-			this.n = n;
-			this.wt = wt;
+		Graph.get(v2).add(new Edge(v2, v1, weight));
+
+	}
+
+	public static void Display(ArrayList<ArrayList<Edge>> Graph) {
+
+		for (int i = 0; i < Graph.size(); i++) {
 
 		}
 
 	}
 
-	public static void printpath(ArrayList<Edge>[] graph, int s, int d, String psf, int dsf, boolean[] visited) {
+	public static boolean HasPath(ArrayList<ArrayList<Edge>> Graph, int s, int d) {
+
+		HashSet<Integer> visited = new HashSet<Integer>();
+		visited.add(s);
+
+		return HasPath(Graph, s, d, visited);
+
+	}
+
+	private static boolean HasPath(ArrayList<ArrayList<Edge>> Graph, int s, int d, HashSet<Integer> visited) {
 
 		if (s == d) {
-			System.out.println((psf + d) + "@" + dsf);
+			return true;
+		}
+
+		for (int i = 0; i < Graph.get(s).size(); i++) {
+
+			int nbr = Graph.get(s).get(i).v2;
+
+			if (!visited.contains(nbr)) {
+
+				visited.add(nbr);
+
+				if (HasPath(Graph, nbr, d, visited)) {
+					return true;
+				}
+
+			}
+		}
+		return false;
+	}
+
+	public static void PrintAllPath(ArrayList<ArrayList<Edge>> Graph, int s, int d) {
+
+		HashSet<Integer> visited = new HashSet<Integer>();
+
+		visited.add(s);
+
+		PrintAllPath(Graph, s, d, visited, "" + s);
+
+	}
+
+	private static void PrintAllPath(ArrayList<ArrayList<Edge>> Graph, int s, int d, HashSet<Integer> visited,
+			String path) {
+
+		if (s == d) {
+			System.out.println(path);
 			return;
 		}
 
-		visited[s] = true;
+		for (int i = 0; i < Graph.get(s).size(); i++) {
 
-		for (Edge ne : graph[s]) {
+			int nbr = Graph.get(s).get(i).v2;
 
-			if (visited[ne.n] == false) {
+			if (!visited.contains(nbr)) {
 
-				printpath(graph, ne.n, d, psf + ne.n, dsf + ne.wt, visited);
+				visited.add(nbr);
+
+				PrintAllPath(Graph, nbr, d, visited, path + nbr);
+
+				visited.remove(nbr);
+			}
+
+		}
+
+	}
+
+	static int min = Integer.MAX_VALUE;
+	static String minStr = new String();
+
+	static int max = Integer.MIN_VALUE;
+	static String maxStr = new String();
+
+	static PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+	static int kTh = 0;
+
+	public static void MultiSolver(ArrayList<ArrayList<Edge>> Graph, int s, int d, int k) {
+
+		HashSet<Integer> visited = new HashSet<Integer>();
+
+		visited.add(s);
+
+		MultiSolver(Graph, s, d, visited, "" + s, 0, k);
+
+	}
+
+	private static void MultiSolver(ArrayList<ArrayList<Edge>> Graph, int s, int d, HashSet<Integer> visited,
+			String path, int w, int k) {
+
+		if (s == d) {
+
+			if (w > max) {
+				max = w;
+				maxStr = path;
+			}
+
+			if (w < min) {
+				min = w;
+				minStr = path;
+			}
+
+			if (pq.size() < k) {
+				pq.add(w);
+			} else {
+				int ctr = 0;
+				while ((k - 1) > ctr) {
+					pq.remove();
+					ctr++;
+				}
+				kTh = pq.peek();
+			}
+
+			return;
+		}
+
+		for (int i = 0; i < Graph.get(s).size(); i++) {
+
+			int nbr = Graph.get(s).get(i).v2;
+
+			if (!visited.contains(nbr)) {
+
+				visited.add(nbr);
+
+				MultiSolver(Graph, nbr, d, visited, path + nbr, w + Graph.get(s).get(i).weight, k);
+
+				visited.remove(nbr);
 
 			}
 
 		}
 
-		visited[s] = false;
+	}
+
+	static int cjs = Integer.MIN_VALUE;
+	static String jlStr = new String();
+
+	static int cjl = Integer.MAX_VALUE;
+	static String jsStr = new String();
+
+	public static void CeilFloor(ArrayList<ArrayList<Edge>> Graph, int s, int d, int w, int jl, int js, String path) {
+
+		HashSet<Integer> visited = new HashSet<Integer>();
+
+		visited.add(s);
+
+		CeilFloor(Graph, s, d, visited, 0, jl, js, "" + s);
+
+	}
+
+	private static void CeilFloor(ArrayList<ArrayList<Edge>> Graph, int s, int d, HashSet<Integer> visited, int w,
+			int jl, int js, String path) {
+		if (s == d) {
+
+			if (w > jl && w < cjl) {
+				cjl = w;
+				jlStr = path;
+
+			}
+
+			if (w < js && w > cjs) {
+				cjs = w;
+				jsStr = path;
+			}
+
+			return;
+		}
+
+		for (int i = 0; i < Graph.get(s).size(); i++) {
+
+			int nbr = Graph.get(s).get(i).v2;
+
+			if (!visited.contains(nbr)) {
+
+				visited.add(nbr);
+
+				CeilFloor(Graph, nbr, d, visited, w + Graph.get(s).get(i).weight, jl, js, path + nbr);
+
+				visited.remove(nbr);
+			}
+
+		}
+
+	}
+
+	public static void HamitlonaianCycle(ArrayList<ArrayList<Edge>> Graph, int s) {
+
+		HashSet<Integer> visited = new HashSet<Integer>();
+
+		visited.add(s);
+
+		HamitlonaianCycle(Graph, s, visited, s, "" + s);
+
+	}
+
+	private static void HamitlonaianCycle(ArrayList<ArrayList<Edge>> Graph, int s, HashSet<Integer> visited, int os,
+			String path) {
+
+		if (visited.size() == Graph.size()) {
+
+			System.out.print("Hamitlonaian Cycle :- " + path);
+
+			if (hasEdge(Graph, s, os)) {
+				System.out.println("*");
+			} else {
+				System.out.println();
+			}
+
+		}
+
+		for (int i = 0; i < Graph.get(s).size(); i++) {
+
+			int nbr = Graph.get(s).get(i).v2;
+
+			if (!visited.contains(nbr)) {
+
+				visited.add(nbr);
+
+				HamitlonaianCycle(Graph, nbr, visited, os, path + nbr);
+
+				visited.remove(nbr);
+
+			}
+
+		}
+
+	}
+
+	private static void HouseFire(ArrayList<ArrayList<Edge>> Graph) {
 
 	}
 
 	public static void main(String[] args) {
 
-		ArrayList<Edge>[] graph = new ArrayList[7];
+		ArrayList<ArrayList<Edge>> Graph = new ArrayList<ArrayList<Edge>>();
 
-		for (int i = 0; i < graph.length; i++) {
-
-			graph[i] = new ArrayList<>();
-
+		for (int v = 0; v < 7; v++) {
+			Graph.add(new ArrayList<Edge>());
 		}
 
-		addEdge(graph, 0, 1, 10);
-		addEdge(graph, 1, 2, 10);
-		addEdge(graph, 2, 3, 10);
-		addEdge(graph, 0, 3, 40);
-		addEdge(graph, 3, 4, 2);
-		addEdge(graph, 4, 5, 3);
-		addEdge(graph, 4, 6, 8);
-		addEdge(graph, 5, 6, 3);
+		AddEdge(Graph, 0, 1, 10);
+		AddEdge(Graph, 1, 2, 10);
+		AddEdge(Graph, 2, 3, 10);
+		AddEdge(Graph, 0, 3, 40);
+		AddEdge(Graph, 3, 4, 2);
+		AddEdge(Graph, 4, 5, 3);
+		AddEdge(Graph, 4, 6, 8);
+		AddEdge(Graph, 5, 6, 3);
 
-		printpath(graph, 0, 6, "", 0, new boolean[graph.length]);
+		AddEdge(Graph, 2, 5, 10);
+
+		Display(Graph);
+		System.out.println();
+
+		System.out.println(HasPath(Graph, 0, 6));
+		System.out.println();
+
+		PrintAllPath(Graph, 0, 6);
+		System.out.println();
+
+		MultiSolver(Graph, 0, 6, 3);
+		System.out.println("Min " + minStr + " @ " + min);
+		System.out.println("Max " + maxStr + " @ " + max);
+		System.out.println("Kth " + kTh);
+		System.out.println();
+
+		CeilFloor(Graph, 0, 6, 0, 52, 52, "");
+		System.out.println("Ceil " + jlStr + " @ " + cjl);
+		System.out.println("Floor " + jsStr + " @ " + cjs);
+		System.out.println();
+
+		HamitlonaianCycle(Graph, 1);
 
 	}
+
 }

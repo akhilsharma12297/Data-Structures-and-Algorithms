@@ -9,7 +9,7 @@ public class FindTheElement {
 		}
 
 		if (arr[idx] == n) {
-			System.out.println("Found at " + (idx + 1) + " " + arr[idx]);
+			System.out.println("Found at index " + (idx + 1) + " Number " + arr[idx]);
 		}
 
 		FTH(arr, n, idx + 1);
