@@ -106,7 +106,6 @@ public class HamitlonaianCycle {
 		AddEdge(Graph, 5, 6, 3);
 
 		AddEdge(Graph, 2, 5, 10);
-		
 
 		HamitlonaianCycle(Graph, 1);
 

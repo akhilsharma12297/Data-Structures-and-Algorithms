@@ -163,14 +163,13 @@ public class Binary_Tree {
 
 	private ArrayList<Integer> nodeToRootPath(Node node, int data) {
 
-		ArrayList<Integer> list = new ArrayList<>();
-
 		if (node == null) {
 			ArrayList<Integer> bres = new ArrayList<>();
 			return bres;
 		}
 
 		if (node.data == data) {
+			ArrayList<Integer> list = new ArrayList<>();
 			list.add(node.data);
 			return list;
 		}

@@ -2,7 +2,9 @@ package Graph;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 import Graphs.Graph.Edge;
 
@@ -281,7 +283,70 @@ public class Graph_AdjacencyLIst {
 
 	}
 
-	private static void HouseFire(ArrayList<ArrayList<Edge>> Graph) {
+	public static void KnightsTour(int[][] graph, int r, int c, int move) {
+
+		if (r < 0 || r > graph.length || c < 0 || c > graph.length || graph[r][c] == 0) {
+			return;
+		}
+
+		if (move == graph.length) {
+			for (int i = 0; i < graph.length; i++) {
+				for (int j = 0; j < graph.length; j++) {
+					System.out.print(graph[i][j]);
+				}
+				System.out.println();
+			}
+		}
+
+		graph[r][c] = move;
+
+		KnightsTour(graph, r + 2, c + 1, move + 1);
+		KnightsTour(graph, r + 2, c + 1, move + 1);
+		KnightsTour(graph, r + 2, c + 1, move + 1);
+		KnightsTour(graph, r + 2, c + 1, move + 1);
+		KnightsTour(graph, r + 2, c + 1, move + 1);
+		KnightsTour(graph, r + 2, c + 1, move + 1);
+		KnightsTour(graph, r + 2, c + 1, move + 1);
+		KnightsTour(graph, r + 2, c + 1, move + 1);
+
+		graph[r][c] = 0;
+
+	}
+
+	class Helper {
+		int vtx;int;int;
+
+		helper(int vtx , int  , int )
+		{
+			
+		}
+	}
+	}
+
+	public static void BFS(ArrayList<ArrayList<Edge>> Graph, int s, int d) {
+
+		LinkedList<Helper> queue = new LinkedList<>();
+		HashSet<Helper> visited = new HashSet<>();
+
+		Helper h = new Helper();
+
+		queue.addFirst(h);
+
+		while (queue.size() > 0) {
+
+			Helper hp = queue.removeFirst();
+
+			if (!visited.contains(h)) {
+
+			} else {
+				visited.add(h);
+			}
+
+			for (int i = 0; i < h.vtx.siz; i++) {
+				Helper<Helper> hp = new Helper();
+			}
+
+		}
 
 	}
 
@@ -325,6 +390,10 @@ public class Graph_AdjacencyLIst {
 		System.out.println();
 
 		HamitlonaianCycle(Graph, 1);
+
+		int[][] mat = new int[5][5];
+
+		KnightsTour(mat, 1, 3, 1);
 
 	}
 
