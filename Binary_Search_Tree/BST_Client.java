@@ -58,13 +58,16 @@ public class BST_Client {
 		System.out.println();
 
 		bst.printRightView();
-		
 
 		System.out.println();
 		System.out.println();
 
-		
 		bst.printleftView();
+
+		System.out.println();
+		System.out.println();
+
+		bst.FindPair(112);
 
 	}
 

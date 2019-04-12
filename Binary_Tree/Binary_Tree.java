@@ -163,13 +163,14 @@ public class Binary_Tree {
 
 	private ArrayList<Integer> nodeToRootPath(Node node, int data) {
 
+		ArrayList<Integer> list = new ArrayList<>();
+
 		if (node == null) {
 			ArrayList<Integer> bres = new ArrayList<>();
 			return bres;
 		}
 
 		if (node.data == data) {
-			ArrayList<Integer> list = new ArrayList<>();
 			list.add(node.data);
 			return list;
 		}
@@ -191,28 +192,6 @@ public class Binary_Tree {
 		return res;
 
 	}
-
-	/*
-	 * public void KDown_self(int data, int k) { KDown_self(root, data, k, 0); }
-	 * 
-	 * private void KDown_self(Node node, int data, int k, int i) {
-	 * 
-	 * if (node == null) { return; }
-	 * 
-	 * if (i == k) { System.out.println(node.data); return; }
-	 * 
-	 * if (node.data == data) {
-	 * 
-	 * KDown_self(node.left, data, k, i + 1);
-	 * 
-	 * KDown_self(node.right, data, k, i + 1);
-	 * 
-	 * return; }
-	 * 
-	 * KDown_self(node.left, data, k, i); KDown_self(node.right, data, k, i);
-	 * 
-	 * }
-	 */
 
 	public int lca(int i, int j) {
 
@@ -355,115 +334,58 @@ public class Binary_Tree {
 
 	}
 
-	public class bst {
-		int max;
-		int min;
-		boolean bst;
-	}
-
-	public boolean isbst() {
-
-		bst ans = isbst(root);
-
-		return ans.bst;
-
-	}
-
-	private bst isbst(Node node) {
-
-		if (node == null) {
-			bst baseres = new bst();
-			baseres.bst = true;
-			baseres.min = Integer.MAX_VALUE;
-			baseres.max = Integer.MIN_VALUE;
-			return baseres;
-		}
-
-		bst myres = new bst();
-
-		bst ls = isbst(node.left);
-
-		if (ls.max > node.data || ls.bst == false) {
-			myres.bst = false;
-		}
-
-		bst rs = isbst(node.right);
-
-		if (rs.min < node.data || rs.bst == false) {
-			myres.bst = false;
-		}
-
-		if (ls.max < node.data && rs.min > node.data) {
-			myres.bst = true;
-		} else {
-			myres.bst = false;
-		}
-
-		myres.min = Math.min(Math.min(ls.min, rs.min), node.data);
-
-		myres.max = Math.max(Math.max(ls.max, ls.max), node.data);
-
-		return myres;
-
-	}
-
-	private void isbstLARGEST(Node node) {
-
-	}
+	Node head = new Node();
 
 	static Node prev = null;
 
 	public void BTtoDLL() {
-		Node head = new Node();
 
-		BTtoDLL(root, head);
+		BTtoDLL(root);
+
+		System.out.println(head.data);
 
 		printDLL(head);
 	}
 
-	private void BTtoDLL(Node node, Node head) {
+	private void BTtoDLL(Node node) {
+
 		if (node == null) {
 			return;
 		}
 
-		BTtoDLL(node.left, node);
+		BTtoDLL(node.left);
 
 		if (prev == null) {
-
 			head = node;
-
 		} else {
-
-			node.left = prev;
 			prev.right = node;
-
+			root.left = prev;
 		}
-
 		prev = node;
 
-		BTtoDLL(node.right, head);
+		BTtoDLL(node.right);
 
 	}
 
 	private void printDLL(Node node) {
 
 		while (node != null) {
-			System.out.print(node.data + " ");
+			System.out.print(node.data + " -> ");
 			node = node.right;
 		}
+
+		System.out.println();
+
 	}
 
 	public void removeLeaves() {
-		root = removeLeaves(root);
+		removeLeaves(root);
 	}
 
 	private Node removeLeaves(Node node) {
 
-		if (node == null) {
-			return null;
-		}
+		if (node.left == null && node.right == null) {
 
-		if (node.right == null && node.left == null) {
 			return null;
 		}
 

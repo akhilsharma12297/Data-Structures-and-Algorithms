@@ -44,6 +44,14 @@ public class Binary_Tree_Client {
 
 		System.out.println(bt.lca(12, 62));
 
+		System.out.println();
+
+//		bt.BTtoDLL();
+
+		System.out.println();
+
+		bt.removeLeaves();
+		bt.display();
 	}
 
 }

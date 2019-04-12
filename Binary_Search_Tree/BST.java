@@ -163,18 +163,18 @@ public class BST {
 
 		if (node.data == val) {
 
-			if (node.left == null && node.right == null) {				
-				
+			if (node.left == null && node.right == null) {
+
 				return null;
-				
+
 			} else if (node.left == null) {
-				
+
 				return node.right;
-			
+
 			} else if (node.right == null) {
-				
+
 				return node.left;
-		
+
 			} else {
 				int lmax = max(node.left);
 				node.data = lmax;
@@ -195,9 +195,9 @@ public class BST {
 	}
 
 	public void printInRange(int lo, int hi) {
-		
+
 		printInRange(root, lo, hi);
-	
+
 	}
 
 	private void printInRange(Node node, int lo, int hi) {
@@ -396,4 +396,61 @@ public class BST {
 
 	}
 
+	public void FindPair(int tar) {
+
+		ArrayList<Integer> list = new ArrayList<Integer>();
+
+		boolean found = false;
+
+		FindPair(root, list);
+
+		Collections.sort(list);
+
+		int start = 0;
+		int end = list.size() - 1;
+		while (start < end) {
+
+			if (list.get(start) + list.get(end) == tar) {
+
+				System.out.println(list.get(start) + " + " + list.get(end) + " = " + tar);
+
+				start++;
+				end--;
+
+				found = true;
+
+			}
+
+			if (list.get(start) + list.get(end) > tar) {
+
+				end--;
+
+			}
+
+			if (list.get(start) + list.get(end) < tar) {
+
+				start++;
+
+			}
+
+		}
+
+		if (!found) {
+			System.out.println("NOT FOUND !");
+		}
+	}
+
+	private void FindPair(Node node, ArrayList<Integer> list) {
+
+		if (node == null) {
+			return;
+		}
+
+		list.add(node.data);
+
+		FindPair(node.left, list);
+
+		FindPair(node.right, list);
+
+	}
 }
