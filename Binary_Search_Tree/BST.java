@@ -322,8 +322,11 @@ public class BST {
 		LinkedList<Node> que2 = new LinkedList<Node>();
 
 		que1.addLast(root);
+		
 		while (!que1.isEmpty()) {
+		
 			Node node1 = que1.removeFirst();
+			
 			System.out.print(node1.data + " ");
 
 			if (node1.left != null) {

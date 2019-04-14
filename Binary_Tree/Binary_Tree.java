@@ -330,8 +330,6 @@ public class Binary_Tree {
 
 		}
 
-		// System.out.println((char) path.get(k) + data);
-
 	}
 
 	Node head = new Node();
@@ -402,24 +400,59 @@ public class Binary_Tree {
 
 	private void printSinglechild(Node node) {
 
-		if (node == null) {
+		if (node.left == null && node.right != null) {
+
+			System.out.println(node.data);
+			return;
+
+		}
+
+		if (node.right == null && node.left != null) {
+
+			System.out.println(node.data);
 			return;
 		}
 
+		printSinglechild(node.left);
+
+		printSinglechild(node.right);
+
 	}
 
-	public void PathinRange(Node node, int low, int high, int str, int sum) {
+	static int sum = 0;
+
+	public void printInRange(int lo, int hi) {
+
+		printInRange(root, lo, 1000, 0, "");
+
+	}
+
+	private void printInRange(Node node, int lo, int hi, int sum, String str) {
 
 		if (node == null) {
 
-			if (sum > low && sum < high) {
-				System.out.println(str + " ->  " + sum);
+			if (sum >= lo && sum <= hi) {
+
+				System.out.println("bye");
+				System.out.println(str);
+
 			}
 			return;
 		}
 
-		PathinRange(node.left, low, high, str + node.data, sum + node.data);
+		if (sum >= lo && sum <= hi) {
 
-		PathinRange(node.right, low, high, str + node.data, sum + node.data);
+			System.out.println("HELLO");
+			System.out.println(str);
+
+		}
+
+		sum += node.data;
+
+		printInRange(node.left, lo, hi, sum, str + " " + node.data);
+
+		printInRange(node.right, lo, hi, sum, str + " " + node.data);
+
+		sum -= node.data;
 	}
 }

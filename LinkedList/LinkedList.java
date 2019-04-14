@@ -328,7 +328,7 @@ public class LinkedList {
 			int temp = left.node.data;
 			left.node.data = right.data;
 			right.data = temp;
-			
+
 			left.node = left.node.next;
 		}
 
@@ -368,7 +368,7 @@ public class LinkedList {
 		Node curr = head.next;
 
 		while (curr != null) {
-		
+
 			Node next = curr.next;
 			curr.next = prev;
 			prev = curr;
@@ -507,7 +507,7 @@ public class LinkedList {
 
 	}
 
-	public void unfoldList() { 
+	public void unfoldList() {
 
 		unfoldList(head, head.next);
 
@@ -687,7 +687,7 @@ public class LinkedList {
 
 	}
 
-	public void kReverse(int k) {
+	public void kreverse(int k) {
 
 		LinkedList curr = new LinkedList();
 
@@ -709,6 +709,10 @@ public class LinkedList {
 
 			curr = new LinkedList();
 		}
+		this.head = prev.head;
+		this.tail = prev.tail;
+		this.size = prev.size;
+
 	}
 
 	private Node removeFirstNode() {

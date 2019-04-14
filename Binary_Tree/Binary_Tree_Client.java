@@ -50,8 +50,12 @@ public class Binary_Tree_Client {
 
 		System.out.println();
 
-		bt.removeLeaves();
+//		bt.removeLeaves();
 		bt.display();
+
+		System.out.println();
+
+		bt.printInRange(0, 5000);
 	}
 
 }

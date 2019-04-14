@@ -29,6 +29,10 @@ public class LinkedList_Client {
 
 		ll.display();
 
+		ll.kreverse(3);
+
+		ll.display();
+
 		ll.addat(100, 5);
 
 		System.out.println();
