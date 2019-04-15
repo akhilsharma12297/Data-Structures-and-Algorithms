@@ -51,11 +51,21 @@ public class Binary_Tree_Client {
 		System.out.println();
 
 //		bt.removeLeaves();
+
 		bt.display();
 
 		System.out.println();
 
 		bt.printInRange(0, 5000);
+
+		System.out.println();
+
+		bt.printleftView();
+
+		System.out.println();
+
+		bt.printRightView();
+
 	}
 
 }

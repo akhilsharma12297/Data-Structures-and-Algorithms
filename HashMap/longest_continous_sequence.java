@@ -1,6 +1,5 @@
 package HashMap;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class longest_continous_sequence {
@@ -13,15 +12,16 @@ public class longest_continous_sequence {
 
 	}
 
-
 	public static void LCS(Integer[] arr) {
 
 		HashMap<Integer, Boolean> fmap = new HashMap<>();
-		
+
 		for (int i = 0; i < arr.length; i++) {
 
 			fmap.put(arr[i], true);
 		}
+
+		System.out.println(fmap);
 
 		for (int j = 0; j < arr.length; j++) {
 			if (fmap.containsKey((arr[j] - 1))) {
@@ -29,6 +29,9 @@ public class longest_continous_sequence {
 				fmap.put(arr[j], false);
 			}
 		}
+
+		System.out.println(fmap);
+
 		int range = 0;
 		int sp = 0;
 

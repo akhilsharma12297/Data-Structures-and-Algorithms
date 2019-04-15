@@ -53,8 +53,7 @@ public class Queens_Combination {
 
 		queenscombination(arr, 2, 0, "", 0);
 
-		// TODO Auto-generated method stub
-
+	
 	}
 
 }

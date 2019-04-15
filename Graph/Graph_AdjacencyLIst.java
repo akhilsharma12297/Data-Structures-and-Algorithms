@@ -6,8 +6,6 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import Graphs.Graph.Edge;
-
 public class Graph_AdjacencyLIst {
 
 	public static class Edge {
@@ -313,40 +311,55 @@ public class Graph_AdjacencyLIst {
 
 	}
 
-	class Helper {
-		int vtx;int;int;
+	private static class Helper {
+		int vtx;
+		String psf;
+		int dsf;
 
-		helper(int vtx , int  , int )
-		{
-			
+		Helper(int vtx, String psf, int dsf) {
+
+			this.vtx = vtx;
+			this.psf = psf;
+			this.dsf = dsf;
 		}
 	}
-	}
 
-	public static void BFS(ArrayList<ArrayList<Edge>> Graph, int s, int d) {
+	public static boolean BFS(ArrayList<ArrayList<Edge>> Graph, int s, int d) {
 
-		LinkedList<Helper> queue = new LinkedList<>();
-		HashSet<Helper> visited = new HashSet<>();
+		LinkedList<Helper> queue = new LinkedList<Helper>();
+		HashSet<Helper> visited = new HashSet<Helper>();
 
-		Helper h = new Helper();
+		Helper base = new Helper(s, "" + s, 0);
 
-		queue.addFirst(h);
+		queue.add(base);
 
 		while (queue.size() > 0) {
 
-			Helper hp = queue.removeFirst();
+			Helper temp = queue.removeFirst();
 
-			if (!visited.contains(h)) {
+			System.out.println(temp.vtx + "via" + temp.psf + " " + temp.dsf);
 
+			if (!visited.contains(temp)) {
+				continue;
 			} else {
-				visited.add(h);
+				visited.add(temp);
 			}
 
-			for (int i = 0; i < h.vtx.siz; i++) {
-				Helper<Helper> hp = new Helper();
+			if (temp.vtx == d) {
+				return true;
+			}
+
+			for (int i = 0; i < Graph.get(temp.vtx).size(); i++) {
+
+				Edge x = Graph.get(temp.vtx).get(i);
+				if (!visited.contains(x.v2)) {
+					Helper ch = new Helper(x.v2, temp.psf + x.v2, temp.dsf + x.weight);
+					queue.addLast(ch);
+				}
 			}
 
 		}
+		return false;
 
 	}
 
@@ -394,6 +407,10 @@ public class Graph_AdjacencyLIst {
 		int[][] mat = new int[5][5];
 
 		KnightsTour(mat, 1, 3, 1);
+
+		System.out.println();
+
+		BFS(Graph, 0, 6);
 
 	}
 

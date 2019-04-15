@@ -1,6 +1,7 @@
 package Binary_Tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class Binary_Tree {
@@ -432,19 +433,13 @@ public class Binary_Tree {
 		if (node == null) {
 
 			if (sum >= lo && sum <= hi) {
-
-				System.out.println("bye");
 				System.out.println(str);
-
 			}
 			return;
 		}
 
 		if (sum >= lo && sum <= hi) {
-
-			System.out.println("HELLO");
 			System.out.println(str);
-
 		}
 
 		sum += node.data;
@@ -455,4 +450,47 @@ public class Binary_Tree {
 
 		sum -= node.data;
 	}
+
+	public void printleftView() {
+		leftView(root, 0);
+	}
+
+	static int max_level = -1;
+
+	private void leftView(Node node, int level) {
+		if (node == null) {
+			return;
+		}
+		if (level > max_level) {
+			System.out.print(node.data + " ");
+			max_level = level;
+		}
+
+		leftView(node.left, level + 1);
+		leftView(node.right, level + 1);
+
+	}
+
+	public void printRightView() {
+		rightview(root, 0);
+	}
+
+	static int max_level_R = -1;
+
+	private void rightview(Node node, int level) {
+
+		if (node == null) {
+			return;
+		}
+
+		if (level > max_level_R) {
+			System.out.print(node.data + " ");
+			max_level_R = level;
+		}
+
+		rightview(node.right, level + 1);
+		rightview(node.left, level + 1);
+
+	}
+
 }

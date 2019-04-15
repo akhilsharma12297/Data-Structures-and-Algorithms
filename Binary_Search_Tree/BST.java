@@ -1,6 +1,7 @@
 package Binary_Search_Tree;
 
 import java.util.*;
+
 import Queue.Queue;
 
 public class BST {
@@ -322,11 +323,11 @@ public class BST {
 		LinkedList<Node> que2 = new LinkedList<Node>();
 
 		que1.addLast(root);
-		
+
 		while (!que1.isEmpty()) {
-		
+
 			Node node1 = que1.removeFirst();
-			
+
 			System.out.print(node1.data + " ");
 
 			if (node1.left != null) {
@@ -345,57 +346,45 @@ public class BST {
 		}
 	}
 
-	public void printRightView() {
-
-		printRightView(root);
-
-	}
-
-	private void printRightView(Node root) {
-
-		LinkedList<Node> queue = new LinkedList<>();
-		queue.add(root);
-
-		while (!queue.isEmpty()) {
-
-			int n = queue.size();
-
-			for (int i = 1; i <= n; i++) {
-				Node temp = queue.removeFirst();
-
-				if (i == n)
-					System.out.print(temp.data + " ");
-
-				if (temp.left != null)
-					queue.add(temp.left);
-
-				if (temp.right != null)
-					queue.add(temp.right);
-			}
-		}
-	}
-
-	private static class Pair {
-		private int depth = -1;
-	}
-
-	Pair pair = new Pair();
-
 	public void printleftView() {
-		leftView(root, 0, pair);
+		leftView(root, 0);
 	}
 
-	private void leftView(Node node, int level, Pair pair) {
+	static int max_level = -1;
+
+	private void leftView(Node node, int level) {
 		if (node == null) {
 			return;
 		}
-		if (level > pair.depth) {
+		if (level > max_level) {
 			System.out.print(node.data + " ");
-			pair.depth++;
+			max_level = level;
 		}
 
-		leftView(node.left, level + 1, pair);
-		leftView(node.right, level + 1, pair);
+		leftView(node.left, level + 1);
+		leftView(node.right, level + 1);
+
+	}
+
+	public void printRightView() {
+		rightview(root, 0);
+	}
+
+	static int max_level_R = -1;
+
+	private void rightview(Node node, int level) {
+
+		if (node == null) {
+			return;
+		}
+
+		if (level > max_level_R) {
+			System.out.print(node.data + " ");
+			max_level_R = level;
+		}
+
+		rightview(node.right, level + 1);
+		rightview(node.left, level + 1);
 
 	}
 

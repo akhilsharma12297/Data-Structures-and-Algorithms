@@ -29,7 +29,7 @@ public class LinkedList_Client {
 
 		ll.display();
 
-		ll.kreverse(3);
+//		ll.kreverse(2);
 
 		ll.display();
 
@@ -168,18 +168,9 @@ public class LinkedList_Client {
 		l4.display();
 
 		System.out.println();
+		System.out.println();
 
 		l5.display();
-
-		System.out.println();
-
-		System.out.println();
-
-		System.out.println();
-
-		System.out.println();
-
-		System.out.println();
 
 		System.out.println();
 
