@@ -2,6 +2,7 @@ package Binary_Search_Tree;
 
 import java.util.*;
 
+import Binary_Tree.Binary_Tree.Node;
 import Queue.Queue;
 
 public class BST {
@@ -385,6 +386,54 @@ public class BST {
 
 		rightview(node.right, level + 1);
 		rightview(node.left, level + 1);
+
+	}
+
+	static HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+	public void printBottomView() {
+
+		printBottomView(root, 0);
+
+		System.out.println(map.values());
+	}
+
+	public void printBottomView(Node node, int hd) {
+
+		if (node == null) {
+			return;
+		}
+
+		map.put(hd, node.data);
+
+		printBottomView(node.left, hd - 1);
+		printBottomView(node.right, hd + 1);
+
+	}
+
+	static HashMap<Integer, Integer> map2 = new HashMap<Integer, Integer>();
+
+	public void printTopView() {
+
+		printTopView(root, 0);
+
+		System.out.println(map2.values());
+	}
+
+	public void printTopView(Node node, int hd) {
+
+		if (node == null) {
+			return;
+		}
+
+		if (!map2.containsKey(hd)) {
+
+			map2.put(hd, node.data);
+
+		}
+
+		printTopView(node.left, hd - 1);
+		printTopView(node.right, hd + 1);
 
 	}
 

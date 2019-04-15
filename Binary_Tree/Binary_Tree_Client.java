@@ -63,9 +63,18 @@ public class Binary_Tree_Client {
 		bt.printleftView();
 
 		System.out.println();
+		System.out.println();
 
 		bt.printRightView();
 
+		System.out.println();
+		System.out.println();
+
+		bt.printBottomView();
+
+		System.out.println();
+
+		bt.printTopView();
 	}
 
 }
