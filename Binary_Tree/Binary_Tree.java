@@ -542,4 +542,27 @@ public class Binary_Tree {
 
 	}
 
+	public void diameter() {
+
+		System.out.println(diameter(root));
+
+	}
+
+	static int dia = 0;
+
+	private int diameter(Node node) {
+
+		if (node == null) {
+			return 0;
+		}
+
+		int lh = height(node.left);
+		int rh = height(node.right);
+
+		int ld = diameter(node.left);
+		int rd = diameter(node.right);
+
+		return Math.max(lh + rh + 1, Math.max(ld, rd));
+
+	}
 }

@@ -2,7 +2,6 @@ package Binary_Search_Tree;
 
 import java.util.*;
 
-import Binary_Tree.Binary_Tree.Node;
 import Queue.Queue;
 
 public class BST {
