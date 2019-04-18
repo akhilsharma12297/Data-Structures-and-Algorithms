@@ -1,5 +1,7 @@
 package Recursion;
 
+import java.awt.Checkbox;
+
 public class All_Palindomes_of_a_String {
 
 	public static void main(String[] args) {
@@ -22,23 +24,34 @@ public class All_Palindomes_of_a_String {
 
 				if (temp.length() >= 2) {
 
-					for (int k = temp.length() - 1; k >= 0; k--) {
-
-						buf = buf + temp.charAt(k);
+					if (Check(temp)) {
+						System.out.println(temp);
 
 					}
-
 				}
-
-				if (buf.equals(temp)) {
-
-					System.out.println(temp);
-
-				}
-				buf = new String();
 
 			}
 		}
+	}
+
+	private static boolean Check(String str) {
+
+		int i = 0;
+		int j = str.length() - 1;
+
+		while (i < j) {
+
+			if (str.charAt(i) != str.charAt(j)) {
+				return false;
+			}
+
+			i++;
+			j--;
+
+		}
+
+		return true;
+
 	}
 
 }
