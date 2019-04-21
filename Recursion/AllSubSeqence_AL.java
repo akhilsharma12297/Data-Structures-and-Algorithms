@@ -43,6 +43,7 @@ public class AllSubSeqence_AL {
 		System.out.println(gss(str));
 
 		ArrayList<String> find = gss(str);
+
 		System.out.println(find);
 
 		System.out.println(find.size());

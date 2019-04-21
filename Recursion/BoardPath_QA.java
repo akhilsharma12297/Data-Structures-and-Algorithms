@@ -22,7 +22,7 @@ public class BoardPath_QA {
 
 	public static void main(String[] args) {
 
-		BoardPath_QA(0, 10, "");
+		BoardPath_QA(0, 6, "");
 
 	}
 

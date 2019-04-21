@@ -1,7 +1,5 @@
 package Recursion;
 
-import java.awt.Checkbox;
-
 public class All_Palindomes_of_a_String {
 
 	public static void main(String[] args) {
@@ -15,8 +13,6 @@ public class All_Palindomes_of_a_String {
 
 	public static void func(String str) {
 		String temp = "";
-
-		String buf = "";
 
 		for (int i = 0; i < str.length(); i++) {
 			for (int j = i + 1; j <= str.length(); j++) {

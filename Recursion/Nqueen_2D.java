@@ -1,6 +1,6 @@
 package Recursion;
 
-public class Nqueen {
+public class Nqueen_2D {
 
 	static int ctr = 0;
 

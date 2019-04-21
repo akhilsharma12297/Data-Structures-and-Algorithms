@@ -14,7 +14,6 @@ public class AllOccurence {
 
 		func(arr, idx + 1, n);
 
-
 	}
 
 	public static void main(String[] args) {

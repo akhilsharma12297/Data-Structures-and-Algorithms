@@ -9,7 +9,7 @@ public class Sum_of_all_possible_SubSet {
 
 		int arr[] = { 5, 4, 3 };
 
-		subset(arr, 0, arr.length - 1, 1);
+		subset(arr, 0, arr.length - 1, 0);
 	}
 
 	public static void subset(int[] arr, int lo, int hi, int sum) {

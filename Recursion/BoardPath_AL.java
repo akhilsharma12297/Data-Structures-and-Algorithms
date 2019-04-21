@@ -6,7 +6,7 @@ public class BoardPath_AL {
 
 	public static void main(String[] args) {
 
-		System.out.println(getBPaths(0, 10));
+		System.out.println(getBPaths(0, 1990));
 
 	}
 

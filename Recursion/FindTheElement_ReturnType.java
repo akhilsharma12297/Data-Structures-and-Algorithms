@@ -43,6 +43,7 @@ public class FindTheElement_ReturnType {
 		int[] arr = { 9, 8, 7, 4, 2, 6, 3, 2, 1 };
 
 		System.out.println(FTH_RT(arr, 2, 0));
+		
 		System.out.println();
 
 		System.out.println(lastindex(arr, 0, 2));

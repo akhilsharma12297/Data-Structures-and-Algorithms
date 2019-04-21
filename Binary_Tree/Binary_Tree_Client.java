@@ -74,6 +74,8 @@ public class Binary_Tree_Client {
 
 		bt.diameter();
 
+		System.out.println();
+
 	}
 
 }

@@ -54,7 +54,7 @@ public class Job_sequencing {
 		PriorityQueue<Pair> pq = new PriorityQueue<>(Collections.reverseOrder());
 
 		for (int i = 0; i < dlines.length; i++) {
-			pq.add(new Pair(jobs.charAt(i), dlines[i], profits[i]));
+//			pq.add(new Pair(jobs.charAt(i), dlines[i], profits[i]));
 		}
 
 		int[] space = new int[dlines.length];

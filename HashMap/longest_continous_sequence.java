@@ -21,16 +21,12 @@ public class longest_continous_sequence {
 			fmap.put(arr[i], true);
 		}
 
-		System.out.println(fmap);
-
 		for (int j = 0; j < arr.length; j++) {
 			if (fmap.containsKey((arr[j] - 1))) {
 
 				fmap.put(arr[j], false);
 			}
 		}
-
-		System.out.println(fmap);
 
 		int range = 0;
 		int sp = 0;
@@ -52,7 +48,7 @@ public class longest_continous_sequence {
 		}
 
 		for (int i = 0; i < range; i++) {
-			System.out.println(sp + i);
+			System.out.print(sp + i + " ");
 		}
 	}
 
