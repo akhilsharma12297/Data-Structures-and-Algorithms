@@ -42,7 +42,7 @@ public class Queens_Permutation {
 		}
 
 	}
-
+  
 	public static void main(String[] args) {
 
 		boolean[] arr = new boolean[4];

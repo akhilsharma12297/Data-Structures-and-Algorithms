@@ -142,7 +142,7 @@ public class Nqueen_2D {
 	public static void main(String[] args) {
 		boolean[][] board = new boolean[5][5];
 
-//nqueensPERMUTATION(board, 0, "");
+		// nqueensPERMUTATION(board, 0, "");
 
 		System.out.println();
 
