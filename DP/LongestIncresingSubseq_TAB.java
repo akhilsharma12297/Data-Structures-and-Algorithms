@@ -8,22 +8,6 @@ public class LongestIncresingSubseq_TAB {
 		int[] arr = new int[] { 0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 3, 13, 11, 7, 15 };
 		System.out.println(LIS(arr));
 
-		ArrayList<String> list = new ArrayList<>();
-
-		list.add("9");
-		list.add(":");
-		list.add("0");
-		list.add("0");
-
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i) == ":") {
-				list.remove(i);
-			}
-
-		}
-
-		System.out.println(list);
-
 	}
 
 	public static int LIS(int[] arr) {

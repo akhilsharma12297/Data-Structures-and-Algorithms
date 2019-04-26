@@ -472,6 +472,35 @@ public class LinkedList {
 
 	}
 
+	static Node left = null;
+
+	public boolean isPalindrome_Global() {
+
+		left = head;
+
+		return isPalindrome_Global(head, left, 0);
+	}
+
+	private boolean isPalindrome_Global(Node right, Node left, int ctr) {
+
+		if (right == null) {
+			return true;
+		}
+
+		boolean ans = isPalindrome_Global(right.next, left, ctr + 1);
+
+		if (ctr >= size / 2) {
+
+			if (left.data != right.data) {
+				return false;
+			}
+
+			left = left.next;
+
+		}
+		return ans;
+	}
+
 	public void foldList() {
 
 		HeapMover left = new HeapMover();
@@ -821,4 +850,5 @@ public class LinkedList {
 		}
 
 	}
+
 }

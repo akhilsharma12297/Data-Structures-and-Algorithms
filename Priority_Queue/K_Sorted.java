@@ -7,7 +7,7 @@ public class K_Sorted {
 	public static void main(String[] args) {
 		int[] arr = { 30, 20, 10, 60, 50, 40, 87 };
 
-		k_sorted(arr, 2);
+		k_sorted(arr, 5);
 
 	}
 

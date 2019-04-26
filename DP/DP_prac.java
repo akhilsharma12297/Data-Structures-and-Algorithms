@@ -360,14 +360,21 @@ public class DP_prac {
 
 	public static void coinchangePermutation(int[] coins, int amt) {
 		int[] strg = new int[amt + 1];
+
 		strg[0] = 1;
+
 		for (int i = 1; i < strg.length; i++) {
+
 			for (int j = 0; j < coins.length; j++) {
+
 				if (i - coins[j] >= 0) {
+
 					strg[i] += strg[i - coins[j]];
+
 				}
 			}
 		}
+
 		System.out.print(strg[strg.length - 1]);
 	}
 

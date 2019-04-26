@@ -10,7 +10,7 @@ public class k_Smallest {
 
 		int[] arr = { 10, 1, 23, 55, 45, 98, 62, 12, 35, 9 };
 
-		printKSmallest2(arr, 3);
+		printKSmallest(arr, 3);
 
 	}
 

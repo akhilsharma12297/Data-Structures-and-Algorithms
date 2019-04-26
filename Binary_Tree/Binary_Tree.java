@@ -566,4 +566,77 @@ public class Binary_Tree {
 
 	}
 
+	class DiaPair {
+		int height;
+		int dia;
+	}
+
+	public int diameter_Better() {
+
+		DiaPair dp = diameter_Better(root);
+
+		return dp.dia;
+
+	}
+
+	private DiaPair diameter_Better(Node node) {
+
+		if (node == null) {
+			DiaPair bres = new DiaPair();
+			bres.height = -1;
+			bres.dia = 0;
+		}
+
+		DiaPair lp = diameter_Better(node.left);
+		DiaPair rp = diameter_Better(node.right);
+
+		DiaPair mp = new DiaPair();
+
+		mp.height = Math.max(lp.height, lp.height) + 1;
+		mp.dia = Math.max(lp.dia, lp.dia) + 1;
+
+		return mp;
+	}
+
+	public boolean isBalanced() {
+		return isBalanced(root);
+	}
+
+	private boolean isBalanced(Node node) {
+		if (node == null) {
+			return true;
+		}
+
+		boolean lb = isBalanced(node.left);
+		boolean rb = isBalanced(node.right);
+
+		int lh = height(node.left);
+		int rh = height(node.right);
+
+		return lb && rb && Math.abs(lh - rh) <= 1;
+
+	}
+
+	class BSTPairs {
+		boolean isBST;
+		int max;
+		int min;
+	}
+
+	public boolean isBST() {
+		return isBST(root);
+	}
+
+	private boolean isBST(Node node) {
+		if (node == null) {
+			BSTPairs bp = new BSTPairs();
+
+			bp.isBST = true;
+			bp.max = Integer.MIN_VALUE;
+			bp.min = Integer.MAX_VALUE;
+
+		}
+		
+		return false; 
+	}
 }
