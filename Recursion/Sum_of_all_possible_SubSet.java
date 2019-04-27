@@ -7,7 +7,7 @@ public class Sum_of_all_possible_SubSet {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		int arr[] = { 5, 4, 3 };
+		int arr[] = { 2, 0, 11, 3, 0 };
 
 		subset(arr, 0, arr.length - 1, 0);
 	}
