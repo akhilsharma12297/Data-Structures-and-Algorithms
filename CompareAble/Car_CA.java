@@ -24,7 +24,7 @@ public class Car_CA {
 
 		@Override
 		public int compareTo(Car o) {
-			return o.speed - this.price;
+			return o.speed - this.speed;
 		}
 
 	}
@@ -35,7 +35,7 @@ public class Car_CA {
 
 		cars[0] = new Car(100, 50, "A");
 		cars[1] = new Car(200, 40, "B");
-		cars[2] = new Car(300, 30, "C");
+		cars[2] = new Car(600, 30, "C");
 		cars[3] = new Car(400, 20, "D");
 		cars[4] = new Car(500, 10, "E");
 
