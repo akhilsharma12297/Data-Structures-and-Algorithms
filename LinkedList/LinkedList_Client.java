@@ -180,7 +180,7 @@ public class LinkedList_Client {
 
 		System.out.println();
 
-		ll.oddeven();
+		ll.zigzag();
 
 		System.out.println();
 
