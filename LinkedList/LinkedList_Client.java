@@ -186,5 +186,7 @@ public class LinkedList_Client {
 
 		ll.display();
 
+		System.out.println();
+
 	}
 }

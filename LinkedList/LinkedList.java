@@ -879,4 +879,5 @@ public class LinkedList {
 		a.data = b.data;
 		b.data = t;
 	}
+
 }
