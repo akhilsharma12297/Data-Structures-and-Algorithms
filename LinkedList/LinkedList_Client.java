@@ -180,13 +180,17 @@ public class LinkedList_Client {
 
 		System.out.println();
 
-		ll.zigzag();
+		// ll.zigzag();
 
 		System.out.println();
 
 		ll.display();
 
 		System.out.println();
+
+		System.out.println();
+
+		ll.target(50);
 
 	}
 }

@@ -880,4 +880,33 @@ public class LinkedList {
 		b.data = t;
 	}
 
+	public void target(int tar) {
+		Node left = head;
+		boolean flag = false;
+		target(head, left, tar);
+	}
+
+	static boolean right_flag = false;
+
+	private void target(Node right, Node left, int tar) {
+
+		if (right == null || left == null) {
+			return;
+		}
+
+		if ((right.data + left.data) == tar) {
+
+			System.out.println(right.data + " + " + left.data);
+
+		}
+
+		if (right_flag == false) {
+
+			target(right.next, left, tar);
+
+		}
+
+		right_flag = true;
+		target(right, left.next, tar);
+	}
 }
