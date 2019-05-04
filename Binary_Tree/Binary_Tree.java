@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Stack;
 
+
 public class Binary_Tree {
 
 	private class Node {
@@ -425,7 +426,7 @@ public class Binary_Tree {
 
 	public void printInRange(int lo, int hi) {
 
-		printInRange(root, lo, 1000, 0, "");
+		printInRange(root, lo, hi, 0, "");
 
 	}
 
@@ -450,6 +451,106 @@ public class Binary_Tree {
 		printInRange(node.right, lo, hi, sum, str + " " + node.data);
 
 		sum -= node.data;
+	}
+
+	public void levelorder() {
+		levelorder(root);
+	}
+
+	private void levelorder(Node node) {
+		LinkedList<Node> queue = new LinkedList<>();
+
+		queue.add(node);
+
+		while (queue.size() > 0) {
+
+			Node temp = queue.removeFirst();
+
+			System.out.print(temp.data + "  ");
+
+			if (temp.left != null) {
+				queue.addLast(temp.left);
+			}
+
+			if (temp.right != null) {
+				queue.addLast(temp.right);
+			}
+
+		}
+
+	}
+
+	public void levelorder_lineWise_NULL() {
+
+		levelorder_lineWise_NULL(root);
+
+	}
+
+	private void levelorder_lineWise_NULL(Node node) {
+
+		LinkedList<Node> queue = new LinkedList<>();
+
+		queue.add(node);
+		queue.add(null);
+
+		while (queue.size() > 0) {
+			Node temp = queue.removeFirst();
+
+			if (temp != null) {
+
+				System.out.print(temp.data + "  ");
+				if (temp.left != null) {
+					queue.addLast(temp.left);
+				}
+
+				if (temp.right != null) {
+					queue.addLast(temp.right);
+				}
+
+			} else {
+				if (queue.size() == 0) {
+					return;
+				}
+				System.out.println();
+				queue.addLast(null);
+			}
+
+		}
+
+	}
+
+	public void levelorder_linewise_TWO_QUEUE() {
+
+		levelorder_linewise_TWO_QUEUE(root);
+
+	}
+
+	public void levelorder_linewise_TWO_QUEUE(Node node) {
+		LinkedList<Node> que1 = new LinkedList<Node>();
+		LinkedList<Node> que2 = new LinkedList<Node>();
+
+		que1.addLast(root);
+
+		while (!que1.isEmpty()) {
+
+			Node node1 = que1.removeFirst();
+
+			System.out.print(node1.data + " ");
+
+			if (node1.left != null) {
+				que2.addLast(node1.left);
+			}
+			if (node1.right != null) {
+				que2.addLast(node1.right);
+			}
+
+			if (que1.isEmpty()) {
+				LinkedList<Node> temp = que1;
+				que1 = que2;
+				que2 = temp;
+				System.out.println();
+			}
+		}
 	}
 
 	public void printleftView() {
@@ -636,7 +737,8 @@ public class Binary_Tree {
 			bp.min = Integer.MAX_VALUE;
 
 		}
-		
-		return false; 
+
+		return false;
 	}
+
 }

@@ -50,7 +50,7 @@ public class Binary_Tree_Client {
 
 		System.out.println();
 
-		bt.printInRange(0, 5000);
+		bt.printInRange(0, 100);
 
 		System.out.println();
 
@@ -76,6 +76,7 @@ public class Binary_Tree_Client {
 
 		System.out.println();
 
+	
 	}
 
 }
