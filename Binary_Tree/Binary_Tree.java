@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Stack;
 
-
 public class Binary_Tree {
 
 	private class Node {
@@ -212,7 +211,7 @@ public class Binary_Tree {
 
 		int b = p2.size() - 1;
 
-		while (a > 0 && b > 0) {
+		while (a >= 0 && b >= 0) {
 
 			if (p1.get(a) != p2.get(b)) {
 
