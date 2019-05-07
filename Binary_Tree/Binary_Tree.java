@@ -228,6 +228,18 @@ public class Binary_Tree {
 
 	}
 
+	public int distanceBWnode(int i, int j) {
+		ArrayList<Integer> iList = nodeToRootPath(i);
+
+		ArrayList<Integer> jList = nodeToRootPath(j);
+
+		int x = lca(i, j);
+
+		ArrayList<Integer> xList = nodeToRootPath(x);
+
+		return ((iList.size() + jList.size()) - 2 * xList.size());
+	}
+
 	public Node findNode(int data) {
 		return findNode(root, data);
 	}
