@@ -76,7 +76,6 @@ public class Binary_Tree_Client {
 
 		System.out.println();
 
-	
 	}
 
 }
