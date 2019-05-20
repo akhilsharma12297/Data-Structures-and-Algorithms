@@ -31,9 +31,7 @@ public class NokiaKeypad_QA {
 
 	public static void main(String[] args) {
 
-		getKPC("369", "");
-		
-		
+		getKPC("339", "");
 
 	}
 
