@@ -674,7 +674,7 @@ public class Binary_Tree {
 		int ld = diameter(node.left);
 		int rd = diameter(node.right);
 
-		return Math.max(lh + rh + 1, Math.max(ld, rd));
+		return Math.max(lh + rh + 2, Math.max(ld, rd));
 
 	}
 
@@ -704,28 +704,37 @@ public class Binary_Tree {
 
 		DiaPair mp = new DiaPair();
 
-		mp.height = Math.max(lp.height, lp.height) + 1;
-		mp.dia = Math.max(lp.dia, lp.dia) + 1;
+		mp.height = Math.max(lp.height, rp.height) + 1;
+		mp.dia = Math.max((lp.height + rp.height) + 2, Math.max(lp.height, rp.height));
 
 		return mp;
 	}
 
-	public boolean isBalanced() {
-		return isBalanced(root);
+	class BalPair {
+		Boolean isbalanced;
+		int height;
 	}
 
-	private boolean isBalanced(Node node) {
+	public boolean isBalanced() {
+		return isBalanced(root).isbalanced;
+	}
+
+	private BalPair isBalanced(Node node) {
 		if (node == null) {
-			return true;
+			BalPair bp = new BalPair();
+			bp.height = -1;
+			bp.isbalanced = true;
 		}
 
-		boolean lb = isBalanced(node.left);
-		boolean rb = isBalanced(node.right);
+		BalPair lb = isBalanced(node.left);
+		BalPair rb = isBalanced(node.right);
 
-		int lh = height(node.left);
-		int rh = height(node.right);
+		BalPair mypair = new BalPair();
 
-		return lb && rb && Math.abs(lh - rh) <= 1;
+		mypair.isbalanced = lb.isbalanced && rb.isbalanced && Math.abs(lb.height - rb.height) <= 1;
+		mypair.height = Math.max(lb.height, rb.height) + 1;
+
+		return mypair;
 
 	}
 
@@ -736,18 +745,31 @@ public class Binary_Tree {
 	}
 
 	public boolean isBST() {
-		return isBST(root);
+
+		return isBST(root).isBST;
 	}
 
-	private boolean isBST(Node node) {
+	private BSTPairs isBST(Node node) {
+
 		if (node == null) {
 			BSTPairs bp = new BSTPairs();
-
 			bp.isBST = true;
 			bp.max = Integer.MIN_VALUE;
 			bp.min = Integer.MAX_VALUE;
 
+			return bp;
 		}
+
+		BSTPairs lp = isBST(node.left);
+		BSTPairs rp = isBST(node.right);
+
+		BSTPairs mypair = new BSTPairs();
+
+		mypair.isBST = lp.isBST && rp.isBST && node.data >= lp.max && node.data < rp.min;
+		mypair.max = Math.max(node.data, Math.max(lp.max, rp.max));
+		mypair.max = Math.max(node.data, Math.max(lp.min, rp.min));
+
+		return mypair;
 
 		return false;
 	}

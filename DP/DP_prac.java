@@ -1,7 +1,5 @@
 package DP;
 
-import java.util.List;
-
 public class DP_prac {
 
 	public static int fibmem(int n, int[] qb) {
