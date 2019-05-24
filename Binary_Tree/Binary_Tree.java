@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Stack;
 
+import Binary_Tree.No319_Vertical_Order_Traversal.Node;
+
 public class Binary_Tree {
 
 	private class Node {
@@ -562,6 +564,53 @@ public class Binary_Tree {
 				System.out.println();
 			}
 		}
+	}
+
+	public void zigzag() {
+		boolean ltr = false;
+
+		LinkedList<Node> curr = new LinkedList<Node>();
+		LinkedList<Node> next = new LinkedList<Node>();
+
+		curr.add(root);
+
+		while (!curr.isEmpty()) {
+
+			Node temp = curr.removeFirst();
+
+			System.out.print(temp.data + " ");
+
+			if (ltr) {
+				if (temp.left != null) {
+					curr.add(temp.left);
+				}
+
+				if (temp.right != null) {
+					curr.add(temp.right);
+				}
+			} else {
+
+				if (temp.right != null) {
+					curr.add(temp.right);
+				}
+				if (temp.left != null) {
+					curr.add(temp.left);
+				}
+
+			}
+
+			if (curr.isEmpty()) {
+				ltr = !ltr;
+
+				LinkedList<Node> tempList = curr;
+
+				curr = next;
+				next = tempList;
+				curr = new LinkedList<Node>();
+
+			}
+		}
+
 	}
 
 	public void printleftView() {
