@@ -771,7 +771,57 @@ public class Binary_Tree {
 
 		return mypair;
 
-		return false;
+	}
+
+	class LargestBSTPairs {
+		boolean isBST;
+		int max;
+		int min;
+		int Lbst_size;
+		Node Lbst_root;
+	}
+
+	public void isLargestBST() {
+
+		LargestBSTPairs pair = isLargestBST(root);
+
+		System.out.println(pair.Lbst_root + " " + pair.Lbst_size);
+	}
+
+	private LargestBSTPairs isLargestBST(Node node) {
+
+		if (node == null) {
+			LargestBSTPairs bp = new LargestBSTPairs();
+			bp.isBST = true;
+			bp.max = Integer.MIN_VALUE;
+			bp.min = Integer.MAX_VALUE;
+
+			return bp;
+		}
+
+		LargestBSTPairs lp = isLargestBST(node.left);
+		LargestBSTPairs rp = isLargestBST(node.right);
+
+		LargestBSTPairs mypair = new LargestBSTPairs();
+
+		mypair.isBST = lp.isBST && rp.isBST && node.data >= lp.max && node.data < rp.min;
+		mypair.max = Math.max(node.data, Math.max(lp.max, rp.max));
+		mypair.max = Math.max(node.data, Math.max(lp.min, rp.min));
+
+		if (mypair.isBST) {
+			mypair.Lbst_root = node;
+			mypair.Lbst_size = mypair.Lbst_size + rp.Lbst_size + 1;
+		} else {
+			if (lp.Lbst_size > rp.Lbst_size) {
+				mypair.Lbst_root = lp.Lbst_root;
+				mypair.Lbst_size = lp.Lbst_size;
+			} else {
+				mypair.Lbst_root = rp.Lbst_root;
+				mypair.Lbst_size = rp.Lbst_size;
+			}
+		}
+		return mypair;
+
 	}
 
 }
