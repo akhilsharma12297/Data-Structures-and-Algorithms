@@ -856,9 +856,9 @@ public class LinkedList {
 			return;
 		}
 		Node curr = head;
-		int count = 0;
+		Boolean turner = true;
 		while (curr.next != null) {
-			if (count % 2 == 0) {
+			if (turner) {
 				// check if curr < curr.next
 				if (curr.data > curr.next.data) {
 					swap(curr, curr.next);
@@ -869,7 +869,7 @@ public class LinkedList {
 					swap(curr, curr.next);
 				}
 			}
-			count++;
+			turner = !turner;
 			curr = curr.next;
 		}
 	}
@@ -882,7 +882,7 @@ public class LinkedList {
 
 	public void target(int tar) {
 		Node left = head;
-		boolean flag = false;
+
 		target(head, left, tar);
 	}
 

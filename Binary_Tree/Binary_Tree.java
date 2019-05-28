@@ -873,4 +873,38 @@ public class Binary_Tree {
 
 	}
 
+	public void inroderSucessor(int data) {
+
+		inroderSucessor(root, data);
+
+		if (trigger) {
+			System.out.println(" No inorder Successor ");
+		}
+
+	}
+
+	static Boolean trigger = false;
+
+	private void inroderSucessor(Node node, int data) {
+
+		if (node == null) {
+			return;
+		}
+
+		inroderSucessor(node.left, data);
+
+		if (trigger) {
+			System.out.println(node.data);
+			trigger = false;
+		}
+
+		if (data == node.data) {
+			trigger = true;
+
+		}
+
+		inroderSucessor(node.right, data);
+
+	}
+
 }

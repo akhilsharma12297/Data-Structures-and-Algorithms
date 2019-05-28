@@ -76,6 +76,8 @@ public class Binary_Tree_Client {
 
 		System.out.println();
 
+		bt.inroderSucessor(87);
+
 	}
 
 }

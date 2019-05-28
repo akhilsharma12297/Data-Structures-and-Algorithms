@@ -142,10 +142,6 @@ public class LinkedList_Client {
 
 		l3.display();
 
-		System.out.println();
-
-		l3.display();
-
 		LinkedList l4 = new LinkedList();
 
 		l4.addLast(55);
@@ -163,6 +159,7 @@ public class LinkedList_Client {
 
 		LinkedList l5 = LinkedList.Merge(l4);
 
+		System.out.println();
 		System.out.println();
 
 		l4.display();
@@ -191,6 +188,8 @@ public class LinkedList_Client {
 		System.out.println();
 
 		ll.target(50);
+
+		System.out.println();
 
 	}
 }
