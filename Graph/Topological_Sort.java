@@ -12,21 +12,16 @@ public class Topological_Sort {
 		LinkedList<Integer> stack = new LinkedList<>();
 
 		for (int i = 0; i < graph.length; i++) {
-
 			if (visited.contains(i) == false) {
 
 				topologicalSorthelper(graph, i, visited, stack);
-
 			}
-
 		}
-
 		System.out.println(stack);
 
 	}
 
-	private static void topologicalSorthelper(int[][] graph, int src, HashSet<Integer> visited,
-			LinkedList<Integer> stack) {
+	private static void topologicalSorthelper(int[][] graph, int src, HashSet<Integer> visited,LinkedList<Integer> stack) {
 
 		visited.add(src);
 
