@@ -24,7 +24,7 @@ public class LongestIncreasingSubsequence_tab {
 		String max_lis_path = "";
 
 		for (int i = 1; i < arr.length; i++) {
-			for (int j = 0; j < arr.length; j++) {
+			for (int j = 0; j <= i - 1; j++) {
 
 				if (arr[j] < arr[i]) {
 					if (lis[j] > lis[i]) {
