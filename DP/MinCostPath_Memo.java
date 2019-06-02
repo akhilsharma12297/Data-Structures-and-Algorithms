@@ -45,6 +45,7 @@ public class MinCostPath_Memo {
 		System.out.println();
 
 		printMatrix(dp);
+		System.out.println();
 		System.out.println(dp[dp.length - 1][dp[0].length - 1]);
 	}
 
