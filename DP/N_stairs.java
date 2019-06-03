@@ -2,6 +2,15 @@ package DP;
 
 public class N_stairs {
 
+	public static void main(String[] args) {
+		int s = 4, m = 2;
+		System.out.println("Nuber of ways = " + countWays(s, m));
+	}
+
+	public static int countWays(int s, int m) {
+		return func(s + 1, m);
+	}
+
 	public static int func(int s, int m) {
 
 		int[] dp = new int[s];
@@ -18,15 +27,6 @@ public class N_stairs {
 		}
 
 		return dp[s - 1];
-	}
-
-	static int countWays(int s, int m) {
-		return func(s + 1, m);
-	}
-
-	public static void main(String[] args) {
-		int s = 4, m = 2;
-		System.out.println("Nuber of ways = " + countWays(s, m));
 	}
 
 }
