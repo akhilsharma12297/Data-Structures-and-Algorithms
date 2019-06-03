@@ -21,9 +21,12 @@ public class PalindromicSubstrings_tab {
 			int ep = diag;
 
 			while (ep < str.length()) {
+
 				if (diag == 0) {
+
 					dp[sp][ep] = true;
 				} else if (diag == 1) {
+
 					if (str.charAt(sp) == str.charAt(ep)) {
 						dp[sp][ep] = true;
 					}

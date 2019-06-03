@@ -4,7 +4,7 @@ public class LongestIncreasingSubsequence_tab {
 
 	public static void main(String[] args) {
 
-		int[] arr = new int[] { 10, 22, 9, 33, 21, 50, 41, 60, 1 };
+		int[] arr = new int[] { 10, 22, 9, 33, 21, 50, 41, 60, 80, 1 };
 
 		func(arr);
 
