@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Stack;
 
-import Binary_Tree.No319_Vertical_Order_Traversal.Node;
-
 public class Binary_Tree {
 
 	private class Node {
@@ -904,6 +902,53 @@ public class Binary_Tree {
 		}
 
 		inroderSucessor(node.right, data);
+
+	}
+
+	class levelPair {
+		int sum;
+		int n;
+	}
+
+	static HashMap<Integer, levelPair> avg = new HashMap<>();
+
+	public void levelAvg() {
+		levelAvg(root, 0);
+
+		for (levelPair pair : avg.values()) {
+
+			float ans = (float) (pair.sum / pair.n);
+
+			System.out.println(ans);
+
+		}
+
+	}
+
+	private void levelAvg(Node node, int vc) {
+
+		if (node == null) {
+			return;
+		}
+
+		if (avg.containsKey(vc)) {
+
+			levelPair pair = avg.get(vc);
+			pair.sum += node.data;
+			pair.n++;
+
+			avg.put(vc, pair);
+
+		} else {
+			levelPair pair = new levelPair();
+			pair.sum = node.data;
+			pair.n++;
+
+			avg.put(vc, pair);
+		}
+
+		levelAvg(node.left, vc + 1);
+		levelAvg(node.right, vc + 1);
 
 	}
 

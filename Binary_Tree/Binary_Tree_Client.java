@@ -78,6 +78,10 @@ public class Binary_Tree_Client {
 
 		bt.inroderSucessor(87);
 
+		System.out.println();
+
+		bt.levelAvg();
+
 	}
 
 }
