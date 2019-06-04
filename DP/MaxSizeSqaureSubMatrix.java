@@ -1,6 +1,6 @@
 package DP;
 
-public class Max_Size_Sqaure_SubMatrix {
+public class MaxSizeSqaureSubMatrix {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
