@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Stack;
 
+import Binary_Search_Tree.BST;
 import Binary_Tree.No320_Boundary_Traversal.Node;
 
 public class Binary_Tree {
@@ -994,4 +995,137 @@ public class Binary_Tree {
 
 	}
 
+	public void ExtremeEndAlternative() {
+		LinkedList<Node> curr = new LinkedList<>();
+		LinkedList<Node> next = new LinkedList<>();
+		boolean trigger = true;
+		boolean print = true;
+		curr.add(root);
+
+		while (!curr.isEmpty()) {
+
+			Node temp = curr.pop();
+
+			if (print) {
+				System.out.print(temp.data + " ");
+				print = !print;
+			}
+
+			if (trigger) {
+				if (temp.left != null) {
+					next.push(temp.left);
+				}
+
+				if (temp.right != null) {
+					next.push(temp.right);
+				}
+			} else {
+
+				if (temp.right != null) {
+					next.push(temp.right);
+				}
+				if (temp.left != null) {
+					next.push(temp.left);
+				}
+
+			}
+
+			if (curr.isEmpty()) {
+
+				LinkedList<Node> list = curr;
+				curr = next;
+				next = list;
+
+				trigger = !trigger;
+				print = !print;
+
+			}
+		}
+	}
+
+	public void printCommon(BST bt) {
+
+		Node root = this.root;
+		Node root2 = root;
+
+		Stack<Node> s = new Stack<Binary_Tree.Node>();
+		Stack<Node> s2 = new Stack<Binary_Tree.Node>();
+
+		while (true) {
+
+			if (root != null) {
+
+				s.push(root);
+				root = root.left;
+
+			} else if (root2 != null) {
+
+				s2.push(root2);
+				root2 = root2.left;
+
+			} else if (!s.isEmpty() && !s2.isEmpty()) {
+
+				root = s.peek();
+				root2 = s2.peek();
+
+				if (root.data == root2.data) {
+
+					System.out.print(root.data);
+
+					s.pop();
+					s2.pop();
+					root = root.right;
+					root2 = root2.right;
+
+				} else if (root.data > root2.data) {
+
+					s2.pop();
+					root2 = root2.left;
+					root = null;
+
+				} else if (root.data < root2.data) {
+
+					s.pop();
+					root = root.right;
+					root2 = null;
+
+				}
+			} else {
+				System.out.println("No Common");
+				break;
+			}
+
+		}
+
+	}
+
+	public void trimTreeWSumLessThanK(int k) {
+
+		root = trimTreeWSumLessThanK(root, k);
+
+	}
+
+	public Node trimTreeWSumLessThanK(Node node, int sum) {
+
+		// base case
+		if (node == null)
+			return null;
+
+		node.left = trimTreeWSumLessThanK(root.left, sum - node.data);
+		node.right = trimTreeWSumLessThanK(root.right, sum - node.data);
+
+		if (isLeaf(node)) {
+			if (sum > node.data)
+				node = null;
+		}
+
+		return root;
+	}
+
+	private boolean isLeaf(Node node) {
+		if (node.left == null && node.right == null) {
+			return true;
+		}
+		return false;
+	}
 }

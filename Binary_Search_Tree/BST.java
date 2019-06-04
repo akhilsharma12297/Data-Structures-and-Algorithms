@@ -2,8 +2,6 @@ package Binary_Search_Tree;
 
 import java.util.*;
 
-import Queue.Queue;
-
 public class BST {
 
 	private class Node {
@@ -193,6 +191,49 @@ public class BST {
 
 		return node;
 
+	}
+
+	public void removenode(int data) {
+		removenode(root, data);
+	}
+
+	private Node removenode(Node node, int data) {
+
+		if (node == null) {
+			return null;
+		}
+
+		if (data < node.data) {
+
+			removenode(node.left, data);
+
+		} else if (data > node.data) {
+
+			removenode(node.right, data);
+
+		} else {
+			if (node.left != null && node.right == null) {
+				return node.left;
+			}
+
+			if (node.left == null && node.right != null) {
+				return node.right;
+			}
+
+			if (node.right == null & node.right == null) {
+				return null;
+			}
+
+			if (node.left != null && node.right != null) {
+
+				node.data = max(node.left);
+
+				node.left = removenode(node.left, node.data);
+
+				return node;
+			}
+		}
+		return node;
 	}
 
 	public void printInRange(int lo, int hi) {

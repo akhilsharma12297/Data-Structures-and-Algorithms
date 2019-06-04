@@ -85,6 +85,9 @@ public class Binary_Tree_Client {
 		System.out.println();
 
 		bt.zigzag();
+		
+		
+		System.out.println();
 
 	}
 
