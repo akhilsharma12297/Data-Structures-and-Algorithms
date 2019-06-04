@@ -82,6 +82,10 @@ public class Binary_Tree_Client {
 
 		bt.levelAvg();
 
+		System.out.println();
+
+		bt.zigzag();
+
 	}
 
 }

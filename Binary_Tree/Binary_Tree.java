@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Stack;
 
+import Binary_Tree.No320_Boundary_Traversal.Node;
+
 public class Binary_Tree {
 
 	private class Node {
@@ -565,46 +567,47 @@ public class Binary_Tree {
 	}
 
 	public void zigzag() {
-		boolean ltr = false;
+		boolean ltr = true;
 
-		LinkedList<Node> curr = new LinkedList<Node>();
-		LinkedList<Node> next = new LinkedList<Node>();
+		Stack<Node> curr = new Stack<>();
+		Stack<Node> next = new Stack<>();
 
 		curr.add(root);
 
 		while (!curr.isEmpty()) {
 
-			Node temp = curr.removeFirst();
+			Node temp = curr.pop();
 
 			System.out.print(temp.data + " ");
 
 			if (ltr) {
 				if (temp.left != null) {
-					curr.add(temp.left);
+					next.push(temp.left);
 				}
 
 				if (temp.right != null) {
-					curr.add(temp.right);
+					next.push(temp.right);
 				}
 			} else {
 
 				if (temp.right != null) {
-					curr.add(temp.right);
+					next.push(temp.right);
 				}
 				if (temp.left != null) {
-					curr.add(temp.left);
+					next.push(temp.left);
 				}
 
 			}
 
 			if (curr.isEmpty()) {
+
+				System.out.println();
 				ltr = !ltr;
 
-				LinkedList<Node> tempList = curr;
+				Stack<Node> tempList = curr;
 
 				curr = next;
 				next = tempList;
-				curr = new LinkedList<Node>();
 
 			}
 		}
@@ -631,6 +634,26 @@ public class Binary_Tree {
 
 	}
 
+	private void printLeft(Node node) {
+
+		if (node != null) {
+
+			if (node.left != null) {
+
+				System.out.println(node.data);
+
+				printLeft(node.left);
+			} else if (node.right != null) {
+
+				System.out.println(node.data);
+
+				printLeft(node.right);
+			}
+
+		}
+
+	}
+
 	public void printRightView() {
 		rightview(root, 0);
 	}
@@ -650,6 +673,25 @@ public class Binary_Tree {
 
 		rightview(node.right, level + 1);
 		rightview(node.left, level + 1);
+
+	}
+
+	private void printRight(Node node) {
+		if (node != null) {
+
+			if (node.right != null) {
+
+				System.out.println(node.data);
+
+				printRight(node.right);
+			} else if (node.left != null) {
+
+				System.out.println(node.data);
+
+				printRight(node.left);
+			}
+
+		}
 
 	}
 
