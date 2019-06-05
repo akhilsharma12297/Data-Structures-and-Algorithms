@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class BoxStacking {
 
-	public int maxHeight(Box[] arr, int n) {
+	public static int maxHeight(Box[] arr, int n) {
 		Box[] rot = new Box[n * 3];
 
 		createAllRotation(arr, rot);
@@ -16,12 +16,13 @@ public class BoxStacking {
 
 		for (int i = 0; i < t.length; i++) {
 			t[i] = rot[i].h;
+			result[i] = i;
 		}
 
 		for (int i = 1; i < t.length; i++) {
 			for (int j = 0; j < i; j++) {
 
-				if (rot[i].area < rot[j].area) {
+				if (rot[i].l < rot[j].l && rot[i].w < rot[j].w) {
 
 					if (t[j] + rot[i].h > t[i]) {
 						t[i] = t[j] + rot[i].h;
@@ -32,11 +33,27 @@ public class BoxStacking {
 			}
 		}
 
-		return n;
+		for (int val : t) {
+			System.out.print(val + " ");
+		}
+		System.out.println();
+		for (int x : result) {
+			System.out.print(x + " ");
+		}
+
+		int max = Integer.MIN_VALUE;
+
+		for (int i = 0; i < t.length; i++) {
+			if (t[i] > max) {
+				max = t[i];
+			}
+		}
+
+		return max;
 
 	}
 
-	private void createAllRotation(Box[] arr, Box[] rot) {
+	private static void createAllRotation(Box[] arr, Box[] rot) {
 		int index = 0;
 		for (int i = 0; i < arr.length; i++) {
 			rot[index++] = new Box(arr[i].h, arr[i].l, arr[i].w);
@@ -49,7 +66,6 @@ public class BoxStacking {
 		int h;
 		int l;
 		int w;
-		int area = l * w;
 
 		public Box(int h, int l, int w) {
 			this.h = h;
@@ -59,7 +75,11 @@ public class BoxStacking {
 
 		@Override
 		public int compareTo(Box o) {
-			return o.area - this.area;
+			if (this.l * this.w >= o.l * o.w) {
+				return -1;
+			} else {
+				return 1;
+			}
 		}
 	}
 
@@ -69,5 +89,7 @@ public class BoxStacking {
 		arr[0] = new Box(3, 2, 5);
 		arr[1] = new Box(1, 2, 4);
 
+		System.out.println();
+		System.out.println("Ans :-" + maxHeight(arr, arr.length));
 	}
 }
