@@ -33,14 +33,6 @@ public class BoxStacking {
 			}
 		}
 
-		for (int val : t) {
-			System.out.print(val + " ");
-		}
-		System.out.println();
-		for (int x : result) {
-			System.out.print(x + " ");
-		}
-
 		int max = Integer.MIN_VALUE;
 
 		for (int i = 0; i < t.length; i++) {
@@ -56,9 +48,9 @@ public class BoxStacking {
 	private static void createAllRotation(Box[] arr, Box[] rot) {
 		int index = 0;
 		for (int i = 0; i < arr.length; i++) {
-			rot[index++] = new Box(arr[i].h, arr[i].l, arr[i].w);
-			rot[index++] = new Box(arr[i].l, arr[i].h, arr[i].w);
-			rot[index++] = new Box(arr[i].w, arr[i].l, arr[i].h);
+			rot[index++] = new Box(arr[i].h, Math.max(arr[i].l, arr[i].w), Math.min(arr[i].l, arr[i].w));
+			rot[index++] = new Box(arr[i].l, Math.max(arr[i].h, arr[i].w), Math.min(arr[i].h, arr[i].w));
+			rot[index++] = new Box(arr[i].w, Math.max(arr[i].l, arr[i].h), Math.min(arr[i].l, arr[i].h));
 		}
 	}
 
@@ -89,7 +81,9 @@ public class BoxStacking {
 		arr[0] = new Box(3, 2, 5);
 		arr[1] = new Box(1, 2, 4);
 
-		System.out.println();
+		// Box arr[] = { new Box(4, 6, 7), new Box(1, 2, 3), new Box(4, 5, 6), new
+		// Box(10, 12, 32) };
+		
 		System.out.println("Ans :-" + maxHeight(arr, arr.length));
 	}
 }
