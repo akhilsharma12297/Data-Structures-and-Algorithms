@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Stack;
 
-import Binary_Search_Tree.BST;
-import Binary_Tree.No320_Boundary_Traversal.Node;
-
 public class Binary_Tree {
 
 	private class Node {
@@ -1043,7 +1040,7 @@ public class Binary_Tree {
 		}
 	}
 
-	public void printCommon(BST bt) {
+	public void printCommon(Binary_Tree bt) {
 
 		Node root = this.root;
 		Node root2 = root;
@@ -1127,5 +1124,27 @@ public class Binary_Tree {
 			return true;
 		}
 		return false;
+	}
+
+	public void NodeToNode() {
+		NodeToNode(root);
+	}
+
+	static int res;
+
+	private int NodeToNode(Node node) {
+
+		if (node == null) {
+			return 0;
+		}
+
+		int ls = NodeToNode(node.left);
+		int rs = NodeToNode(node.right);
+
+		int max_single = Math.max(Math.max(ls, rs) + node.data, node.data);
+
+		int max = Math.max(max_single, ls + rs + node.data);
+		res = Math.max(res, max);
+		return max_single;
 	}
 }
