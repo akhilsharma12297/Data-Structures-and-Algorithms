@@ -46,8 +46,24 @@ public class PalindromicSubstrings_tab {
 			}
 		}
 
+		printMatrix(dp);
+
 		System.out.println(ctr);
 
+	}
+
+	private static void printMatrix(boolean[][] dp) {
+		for (int i = 0; i < dp.length; i++) {
+			for (int j = 0; j < dp[0].length; j++) {
+				if (dp[i][j] == true) {
+					System.out.print("T" + " ");
+				} else {
+					System.out.print("F" + " ");
+				}
+
+			}
+			System.out.println();
+		}
 	}
 
 }

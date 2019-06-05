@@ -14,6 +14,7 @@ public class Binary_Tree {
 	}
 
 	private Node root;
+	@SuppressWarnings("unused")
 	private int size = 0;
 
 	public Binary_Tree(int[] arr) {
@@ -1147,4 +1148,5 @@ public class Binary_Tree {
 		res = Math.max(res, max);
 		return max_single;
 	}
+
 }

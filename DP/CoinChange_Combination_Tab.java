@@ -31,9 +31,13 @@ public class CoinChange_Combination_Tab {
 
 		for (int i = 0; i < denoms.length; i++) {
 			for (int j = denoms[i]; j <= amt; j++) {
+
 				dp[j] = dp[j] + dp[j - denoms[i]];
+
 				for (String str : path[j - denoms[i]]) {
+
 					path[j].add(str + denoms[i]);
+
 				}
 			}
 		}

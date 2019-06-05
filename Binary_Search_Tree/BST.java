@@ -11,6 +11,7 @@ public class BST {
 	}
 
 	private Node root;
+	@SuppressWarnings("unused")
 	private int size = 0;
 
 	public BST(int[] arr) {
@@ -534,4 +535,48 @@ public class BST {
 		FindPair(node.right, list);
 
 	}
+
+	static Node first, middle, last, prev;
+
+	public void FixBST() {
+		first = middle = last = prev = null;
+		FixBST(root);
+
+		if (first != null && last != null) {
+			int temp = first.data;
+			first.data = last.data;
+			last.data = temp;
+		}
+
+		else if (first != null && middle != null) {
+
+			int temp = first.data;
+			first.data = middle.data;
+			middle.data = temp;
+
+		}
+
+	}
+
+	private void FixBST(Node node) {
+
+		if (node == null) {
+			return;
+		}
+
+		FixBST(node.left);
+
+		if (prev != null && prev.data > node.data) {
+			first = prev;
+			middle = node;
+		} else {
+			last = node;
+		}
+
+		prev = node;
+
+		FixBST(node.right);
+
+	}
+
 }

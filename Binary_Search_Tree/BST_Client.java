@@ -69,6 +69,9 @@ public class BST_Client {
 
 		bst.FindPair(112);
 
+		System.out.println();
+
+		// bst.FixBST();
 	}
 
 }
