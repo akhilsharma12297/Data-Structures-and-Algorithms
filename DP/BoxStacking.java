@@ -21,7 +21,6 @@ public class BoxStacking {
 
 		for (int i = 1; i < t.length; i++) {
 			for (int j = 0; j < i; j++) {
-
 				if (rot[i].l < rot[j].l && rot[i].w < rot[j].w) {
 
 					if (t[j] + rot[i].h > t[i]) {
