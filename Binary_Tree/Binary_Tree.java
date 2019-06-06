@@ -3,6 +3,7 @@ package Binary_Tree;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Stack;
 
 public class Binary_Tree {
@@ -1149,4 +1150,30 @@ public class Binary_Tree {
 		return max_single;
 	}
 
+	static PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+
+	public void KthLargest(int k) {
+		KthLargest(root, k);
+
+		System.out.println(pq.peek());
+	}
+
+	private void KthLargest(Node node, int k) {
+		if (node == null) {
+			return;
+		}
+
+		if (pq.size() == k) {
+			if (node.data > pq.peek()) {
+				pq.poll();
+
+				pq.add(node.data);
+			}
+		} else if (pq.size() < k) {
+			pq.add(node.data);
+		}
+
+		KthLargest(node.left, k);
+		KthLargest(node.right, k);
+	}
 }
