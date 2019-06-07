@@ -14,7 +14,16 @@ public class Trie_client {
 		T.addWord("seen");
 		T.addWord("see");
 
+		System.out.println(T.nodes);
+
+		System.out.println(T.words);
+
+		System.out.println();
 		T.displayTries();
+
+		System.out.println();
+
+		T.displayWords();
 
 		System.out.println();
 
