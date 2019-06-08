@@ -1,5 +1,7 @@
 package LinkedList;
 
+import LinkedList.isListPalindrome.Node;
+
 public class LinkedList {
 	private class Node {
 		int data;
@@ -441,6 +443,56 @@ public class LinkedList {
 
 	}
 
+	public boolean isPalindrome(Node head) {
+		Node slow = head;
+
+		Node fast = slow.next;
+
+		while (fast != null && fast.next.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		Node head1 = head;
+
+		Node head2 = slow.next;
+
+		slow.next = null;
+
+		head2 = reverseList(head2);
+
+		while (head1 != null && head2 != null) {
+			if (head1.data != head2.data) {
+				return false;
+			}
+			head1 = head1.next;
+			head2 = head2.next;
+		}
+
+		return true;
+	}
+
+	private Node reverseList(Node node) {
+
+		Node prev = null;
+		Node curr = node;
+		Node next = null;
+
+		while (curr != null) {
+
+			next = curr.next;
+
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+
+		}
+
+		node = prev;
+		return node;
+
+	}
+
 	public boolean isPalindrome() {
 
 		HeapMover left = new HeapMover();
@@ -512,6 +564,48 @@ public class LinkedList {
 		tail = left.node.next;
 		tail.next = null;
 
+	}
+
+	public Node FoldList_itrative(Node head) {
+
+		Node slow = head;
+
+		Node fast = head.next;
+
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		Node head1 = head;
+
+		Node head2 = slow.next;
+
+		slow.next = null;
+
+		head2 = reverseList(head2);
+
+		Node res = new Node();
+
+		Node ans = res;
+
+		while (head1 != null || head2 != null) {
+
+			if (head1 != null) {
+				ans.next = head1;
+				ans = ans.next;
+				head1 = head1.next;
+			}
+
+			if (head2 != null) {
+				ans.next = head2;
+				ans = ans.next;
+				head2 = head2.next;
+			}
+
+		}
+
+		return res.next;
 	}
 
 	private void foldList(Node right, HeapMover left, int ctr) {

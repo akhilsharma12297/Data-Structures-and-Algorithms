@@ -1176,4 +1176,73 @@ public class Binary_Tree {
 		KthLargest(node.left, k);
 		KthLargest(node.right, k);
 	}
+
+	public void MergeBT(Binary_Tree tree1, Binary_Tree tree2) {
+
+		Stack<Node> stack1 = new Stack<Node>();
+		Stack<Node> stack2 = new Stack<Node>();
+
+		Node curr1 = tree1.root;
+		Node curr2 = tree2.root;
+
+		while (curr1 != null && curr2 != null) {
+
+			while (curr1 != null) {
+				stack1.push(curr1);
+				curr1 = curr1.left;
+			}
+
+			while (curr2 != null) {
+				stack2.push(curr2);
+				curr2 = curr2.left;
+			}
+
+			curr1 = stack1.pop();
+			curr2 = stack2.pop();
+
+			if (curr1.data > curr2.data) {
+
+				System.out.println(curr1.data + " ");
+
+				curr1 = curr1.right;
+
+				stack1.push(curr1);
+
+				curr2 = null;
+			} else {
+
+				System.out.println(curr2.data + " ");
+
+				curr2 = curr2.right;
+
+				stack2.push(curr2);
+
+				curr1 = null;
+			}
+
+		}
+
+		if (!stack1.isEmpty())
+			printBSTFromStack(stack1);
+		if (!stack2.isEmpty())
+			printBSTFromStack(stack2);
+
+	}
+
+	private void printBSTFromStack(Stack<Node> stack) {
+
+		Node cur = null;
+		while (cur != null || !stack.isEmpty()) {
+
+			while (cur != null) {
+				stack.push(cur);
+				cur = cur.left;
+			}
+			cur = stack.pop();
+			System.out.print(cur.data + " ");
+			cur = cur.right;
+
+		}
+
+	}
 }
