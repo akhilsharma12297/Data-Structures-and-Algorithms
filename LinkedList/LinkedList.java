@@ -1003,4 +1003,21 @@ public class LinkedList {
 		right_flag = true;
 		target(right, left.next, tar);
 	}
+
+	public void removeDuplicateSorted() {
+
+		Node curr = head;
+
+		while (curr != null) {
+			Node temp = curr;
+
+			while (temp != null && temp.data == curr.data) {
+				temp = temp.next;
+			}
+
+			curr.next = temp;
+			curr = curr.next;
+		}
+	}
+
 }
