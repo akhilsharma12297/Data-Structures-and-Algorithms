@@ -190,6 +190,5 @@ public class LinkedList_Client {
 		ll.target(50);
 
 		System.out.println();
-
 	}
 }

@@ -46,7 +46,6 @@ public class Trie {
 		if (node.children.get(ch) == null) {
 			return false;
 		} else {
-
 			return searchword(node.children.get(ch), ros);
 		}
 	}

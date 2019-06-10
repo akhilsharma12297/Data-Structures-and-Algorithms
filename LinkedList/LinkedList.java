@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.HashSet;
+
 import LinkedList.isListPalindrome.Node;
 
 public class LinkedList {
@@ -659,35 +661,6 @@ public class LinkedList {
 
 	}
 
-	public void removeduplicate() {
-
-		Node curr = head;
-
-		Node next = head.next;
-
-		while (true) {
-
-			if (next == null) {
-				curr.next = null;
-				tail = curr;
-				break;
-			}
-
-			if (curr.data == next.data) {
-				next = next.next;
-			} else {
-				size++;
-
-				curr.next = next;
-				curr = next;
-
-				next = next.next;
-			}
-
-		}
-
-	}
-
 	public int mid() {
 		Node slow = head;
 
@@ -1018,6 +991,136 @@ public class LinkedList {
 			curr.next = temp;
 			curr = curr.next;
 		}
+	}
+
+	public int maxPalindrome() {
+		return maxPalindrome(head);
+	}
+
+	private int maxPalindrome(Node node) {
+
+		int res = 0;
+
+		Node prev = null;
+
+		Node curr = head;
+
+		while (curr != null) {
+			Node next = curr.next;
+
+			curr.next = prev;
+
+			res = Math.max(res, 2 * FindCommon(prev, next) + 1);
+
+			res = Math.max(res, 2 * FindCommon(curr, next));
+
+			prev = curr;
+			curr = next;
+		}
+
+		return res;
+
+	}
+
+	private int FindCommon(Node a, Node b) {
+
+		int count = 0;
+
+		while (a != null && b != null) {
+
+			if (a.data == b.data) {
+				count++;
+			} else {
+				break;
+			}
+
+			a = a.next;
+			b = b.next;
+		}
+		return count;
+	}
+
+	public void RemoveDuplicateSorted() {
+
+		removeDuplicateSorted(head);
+
+	}
+
+	private void removeDuplicateSorted(Node node) {
+
+		Node curr = head;
+		Node temp = null;
+
+		while (curr != null) {
+			temp = curr;
+
+			while (temp.next != null && curr.data == temp.data) {
+
+				temp = temp.next;
+
+			}
+
+			curr.next = temp;
+			curr = curr.next;
+		}
+
+	}
+
+	public void RemoveDuplicateUnsorted() {
+		RemoveDuplicateUnsorted(head);
+	}
+
+	private void RemoveDuplicateUnsorted(Node node) {
+
+		Node curr = head;
+
+		Node nxt = null;
+
+		Node temp = null;
+
+		while (curr != null && curr.next != null) {
+
+			nxt = curr;
+
+			while (nxt.next != null) {
+
+				if (nxt.data == nxt.next.data) {
+
+					temp = nxt.next;
+					nxt.next = nxt.next.next;
+
+				} else {
+					nxt = nxt.next;
+				}
+			}
+			curr = curr.next;
+
+		}
+
+	}
+
+	public void RemoveDuplicate() {
+		RemoveDuplicate(head);
+	}
+
+	private void RemoveDuplicate(Node head) {
+
+		HashSet<Integer> set = new HashSet<>();
+
+		Node current = head;
+		Node prev = null;
+		while (current != null) {
+			int curval = current.data;
+
+			if (set.contains(curval)) {
+				prev.next = current.next;
+			} else {
+				set.add(curval);
+				prev = current;
+			}
+			current = current.next;
+		}
+
 	}
 
 }
