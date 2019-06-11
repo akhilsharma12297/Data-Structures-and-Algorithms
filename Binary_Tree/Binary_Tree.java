@@ -1245,4 +1245,36 @@ public class Binary_Tree {
 		}
 
 	}
+
+	public void Ancestor_Difference() {
+		System.out.println(Ancestor_Difference(root));
+	}
+
+	public int Ancestor_Difference(Node node) {
+		if (node == null) {
+			return 0;
+		}
+
+		if (node.left == null && node.right == null) {
+			return 0;
+		}
+
+		int lmax = Ancestor_Difference(node.left);
+
+		int rmax = Ancestor_Difference(node.right);
+
+		int lmaxdiff = Integer.MIN_VALUE;
+		int rmaxdiff = Integer.MIN_VALUE;
+
+		if (node.left != null) {
+			lmaxdiff = node.data - (node.left.data - lmax);
+		}
+
+		if (node.right != null) {
+			rmaxdiff = node.data - (node.right.data - rmax);
+		}
+
+		return Math.max(lmaxdiff, rmaxdiff);
+	}
+
 }

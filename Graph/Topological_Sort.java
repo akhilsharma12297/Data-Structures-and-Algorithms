@@ -21,7 +21,8 @@ public class Topological_Sort {
 
 	}
 
-	private static void topologicalSorthelper(int[][] graph, int src, HashSet<Integer> visited,LinkedList<Integer> stack) {
+	private static void topologicalSorthelper(int[][] graph, int src, HashSet<Integer> visited,
+			LinkedList<Integer> stack) {
 
 		visited.add(src);
 
