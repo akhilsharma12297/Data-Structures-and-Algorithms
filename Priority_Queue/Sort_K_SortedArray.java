@@ -1,4 +1,4 @@
-package Recursion;
+package Priority_Queue;
 
 import java.util.PriorityQueue;
 
@@ -24,7 +24,6 @@ public class Sort_K_SortedArray {
 
 		int j = 0;
 		i = k;
-
 		while (j < arr.length && pq.size() > 0) {
 			arr[j] = pq.remove();
 			j++;

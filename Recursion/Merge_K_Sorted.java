@@ -33,10 +33,10 @@ public class Merge_K_Sorted {
 
 		public int compareTo(QueueNode o) {
 			if (this.val > o.val)
-				return 1;
+				return -1;
 
 			if (this.val < o.val)
-				return -1;
+				return 1;
 
 			return 0;
 		}
@@ -45,7 +45,7 @@ public class Merge_K_Sorted {
 
 	public static int[] Kmerger(int[][] arr) {
 
-		PriorityQueue<QueueNode> pq = new PriorityQueue<Merge_K_Sorted.QueueNode>();
+		PriorityQueue<QueueNode> pq = new PriorityQueue<Merge_K_Sorted.QueueNode>(Collections.reverseOrder());
 
 		int size = 0;
 		for (int i = 0; i < arr.length; i++) {
