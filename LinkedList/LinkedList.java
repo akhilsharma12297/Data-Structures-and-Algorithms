@@ -490,6 +490,8 @@ public class LinkedList {
 
 		}
 
+		System.out.println();
+
 		node = prev;
 		return node;
 
@@ -1130,27 +1132,30 @@ public class LinkedList {
 	}
 
 	private Node addList(Node n1, Node n2) {
-		// write your code here.
 		n1 = reverseList(n1);
 		n2 = reverseList(n2);
-		// write your code here.
+
 		Node head = null;
 		Node prev = null;
 		int sum = 0;
 		int carry = 0;
 
 		while (n1 != null || n2 != null) {
+
 			int ld, rd = 0;
+
 			if (n1 != null) {
 				ld = n1.data;
 			} else {
 				ld = 0;
 			}
+
 			if (n2 != null) {
 				rd = n2.data;
 			} else {
 				rd = 0;
 			}
+
 			sum = ld + rd + carry;
 			carry = sum / 10;
 			sum = sum % 10;
@@ -1181,6 +1186,89 @@ public class LinkedList {
 
 		head = reverseList(head);
 		return head;
+	}
+
+	public void removeTheLoop(Node head) {
+
+		if (head.next == head) {
+			head.next = null;
+		}
+		Node slow = head;
+		Node fast = head;
+
+		while (fast.next != null && fast.next.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+
+			if (fast.next == null || fast.next.next == null) {
+				return;
+			}
+			if (slow == fast) {
+				break;
+			}
+
+		}
+		slow = head;
+		while (slow.next != fast.next) {
+			slow = slow.next;
+			fast = fast.next;
+		}
+
+		fast.next = null;
+	}
+
+	public long multiplyTwoLists(Node one, Node two) {
+
+		long first = 0;
+		long mod = 1000000007;
+		long sec = 0;
+
+		while (one != null) {
+			first = (first * 10 + one.data) % mod;
+			one = one.next;
+		}
+
+		while (two != null) {
+			sec = (sec * 10 + two.data) % mod;
+			two = two.next;
+		}
+
+		return (first * sec) % mod;
+
+	}
+
+	private Node plusOne() {
+		return plusOne(head);
+	}
+
+	public Node plusOne(Node n) {
+
+		n = reverseList(n);
+
+		Node temp = n;
+
+		int carry = 1;
+		Integer sum = 0;
+
+		while (temp != null) {
+			sum = temp.data + carry;
+			carry = sum >= 10 ? 1 : 0;
+			temp.data = sum % 10;
+
+			temp = temp.next;
+		}
+
+		n = reverseList(n);
+
+		if (carry != 0) {
+			Node newcarryhead = new Node();
+			newcarryhead.data = carry;
+			newcarryhead.next = n;
+			n = newcarryhead;
+		}
+
+		return n;
+
 	}
 
 }
