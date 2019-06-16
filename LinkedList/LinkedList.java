@@ -1271,4 +1271,37 @@ public class LinkedList {
 
 	}
 
+	public Node mergeKList(Node[] arr, int k) {
+
+		int i = 1;
+		Node head = arr[0];
+
+		while (i < arr.length) {
+			head = mergeList(head, arr[i]);
+			i++;
+		}
+
+		return head;
+	}
+
+	public Node mergeList(Node a, Node b) {
+		if (a == null) {
+			return b;
+		}
+
+		if (b == null) {
+			return a;
+		}
+
+		Node small;
+		if (a.data < b.data) {
+			small = a;
+			small.next = mergeList(a.next, b);
+		} else {
+			small = b;
+			small.next = mergeList(a, b.next);
+		}
+		return small;
+	}
+
 }
