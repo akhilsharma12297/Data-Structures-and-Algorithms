@@ -20,14 +20,40 @@ public class quadruplets_target {
 				int l = j + 1;
 				int r = nums.length - 1;
 
-				while (l > r) {
+				while (l < r) {
+
+					if (nums[l] + nums[r] == newTarget) {
+						ArrayList<Integer> sum = new ArrayList<Integer>();
+						sum.add(nums[i]);
+						sum.add(nums[j]);
+						sum.add(nums[l]);
+						sum.add(nums[r]);
+						ans.add(sum);
+					}
+
+					while (l < r && nums[l] != nums[l + 1]) {
+						l++;
+					}
+
+					while (l < r && nums[r] != nums[l - 1]) {
+						r--;
+					}
 
 				}
+
+				while (j < nums.length - 1 && nums[j] != nums[j + 1]) {
+					j++;
+				}
+
+			}
+
+			while (i < nums.length - 1 && nums[i] != nums[i + 1]) {
+				i++;
 			}
 
 		}
 
-		return null;
+		return ans;
 
 		// write your code here
 	}

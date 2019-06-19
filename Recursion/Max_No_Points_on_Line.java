@@ -28,14 +28,14 @@ public class Max_No_Points_on_Line {
 				dy = dy / gcd;
 
 				Point temp = new Point(dx, dy);
-				map.put(temp, map.containsKey(temp) ? map.get(temp) + 1 : 1);
+				map.put(temp, map.containsKey(temp) ? map.get(temp) + 1 : 2);
 
 				max = Math.max(max, map.get(temp));
 
 			}
 			map.clear();
 		}
-		return max + 1;
+		return max;
 	}
 
 	private static int gcd(int a, int b) {
