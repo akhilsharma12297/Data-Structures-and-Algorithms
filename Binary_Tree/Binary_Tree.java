@@ -614,6 +614,52 @@ public class Binary_Tree {
 
 	}
 
+	public void zigzag_Recursion() {
+
+		int height = height(root);
+
+		boolean flag = false;
+
+		for (int i = 1; i <= height; i++) {
+
+			if (flag) {
+				printRightToLeft(root, i);
+				System.out.println();
+				flag = !flag;
+			} else {
+				printLeftToRight(root, i);
+				System.out.println();
+				flag = !flag;
+			}
+		}
+
+	}
+
+	private void printLeftToRight(Node node, int level) {
+		if (node == null) {
+			return;
+		}
+
+		if (level == 1) {
+			System.out.print(node.data + " ");
+		} else if (level > 1) {
+			printLeftToRight(node.left, level - 1);
+			printLeftToRight(node.right, level - 1);
+		}
+	}
+
+	private void printRightToLeft(Node node, int level) {
+		if (node == null) {
+			return;
+		}
+		if (level == 1) {
+			System.out.print(node.data + " ");
+		} else if (level > 1) {
+			printRightToLeft(node.right, level - 1);
+			printRightToLeft(node.left, level - 1);
+		}
+	}
+
 	public void printleftView() {
 		leftView(root, 0);
 	}
