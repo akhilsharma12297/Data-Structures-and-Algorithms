@@ -1,4 +1,4 @@
-package Recursion;
+package HashMap;
 
 import java.util.HashMap;
 import java.util.Scanner;

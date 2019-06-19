@@ -1,4 +1,4 @@
-package Recursion;
+package HashMap;
 
 public class MinSwap_to_increasing {
 
