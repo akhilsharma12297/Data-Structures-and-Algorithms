@@ -579,4 +579,70 @@ public class BST {
 
 	}
 
+	static Boolean trigger = false;
+
+	public void inroderPredecessor(int data) {
+
+		inroderPredecessor(root, data);
+
+		if (trigger) {
+			System.out.println(" No inorder Successor ");
+		}
+
+	}
+
+	private void inroderPredecessor(Node node, int data) {
+
+		if (node == null) {
+			return;
+		}
+
+		inroderPredecessor(node.right, data);
+
+		if (trigger) {
+			System.out.println(node.data);
+			trigger = false;
+		}
+
+		if (data == node.data) {
+			trigger = true;
+
+		}
+
+		inroderPredecessor(node.left, data);
+
+	}
+
+	public void inroderSucessor(int data) {
+
+		inroderSucessor(root, data);
+
+		if (trigger) {
+			System.out.println(" No inorder Successor ");
+		}
+
+	}
+
+	private void inroderSucessor(Node node, int data) {
+
+		if (node == null) {
+			return;
+		}
+
+		inroderSucessor(node.left, data);
+
+		if (trigger) {
+			System.out.println(node.data);
+			trigger = false;
+		}
+
+		if (data == node.data) {
+			trigger = true;
+
+		}
+
+		inroderSucessor(node.right, data);
+
+	}
+
 }
