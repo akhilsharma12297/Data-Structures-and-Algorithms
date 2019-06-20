@@ -2,8 +2,6 @@ package LinkedList;
 
 import java.util.HashSet;
 
-import LinkedList.isListPalindrome.Node;
-
 public class LinkedList {
 	private class Node {
 		int data;
@@ -811,6 +809,84 @@ public class LinkedList {
 		this.tail = prev.tail;
 		this.size = prev.size;
 
+	}
+
+	public Node kreverse_Better(Node node, int k) {
+		Node prev = null;
+		Node current = node;
+		Node next = null;
+
+		int count = 0;
+
+		/* 1) reverse first k nodes of the linked list */
+		while (current != null && count < k) {
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+			count++;
+		}
+
+		/*
+		 * 2) Now head points to the kth node. So change next of head to (k+1)th node
+		 */
+		if (node != null) {
+			node.next = current;
+		}
+
+		/*
+		 * 3) We do not want to reverse next k nodes. So move the current pointer to
+		 * skip next k nodes
+		 */
+		count = 0;
+		while (count < k - 1 && current != null) {
+			current = current.next;
+			count++;
+		}
+
+		/*
+		 * 4) Recursively call for the list starting from current->next. And make rest
+		 * of the list as next of first node
+		 */
+		if (current != null) {
+			current.next = kreverse_Better(current.next, k);
+		}
+
+		/* 5) prev is new head of the input list */
+		return prev;
+	}
+
+	public Node reverseBetween(Node head, int m, int n) {
+		if (head == null) {
+			return null;
+		}
+		Node cur = head;
+
+		Node prev = null;
+		while (m > 1) {
+			prev = cur;
+			cur = cur.next;
+			m--;
+			n--;
+		}
+		Node con = prev;
+		Node join = cur;
+		Node temp;
+		while (n > 0) {
+			temp = cur.next;
+			cur.next = prev;
+			prev = cur;
+			cur = temp;
+			n--;
+		}
+
+		if (con != null) {
+			con.next = prev;
+		} else {
+			head = prev;
+		}
+		join.next = cur;
+		return head;
 	}
 
 	private Node removeFirstNode() {
