@@ -1,4 +1,4 @@
-package CompareAble;
+package Comparable;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;

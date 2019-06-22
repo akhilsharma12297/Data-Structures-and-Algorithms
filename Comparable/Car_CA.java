@@ -1,4 +1,4 @@
-package CompareAble;
+package Comparable;
 
 import java.util.Arrays;
 
