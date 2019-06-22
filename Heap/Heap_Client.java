@@ -4,7 +4,7 @@ public class Heap_Client {
 
 	public static void main(String[] args) {
 
-		Heap min = new Heap(false  );
+		Heap min = new Heap(false);
 
 		min.add(1000);
 		min.add(700);
