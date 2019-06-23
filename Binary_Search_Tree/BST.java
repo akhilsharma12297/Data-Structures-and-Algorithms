@@ -539,6 +539,7 @@ public class BST {
 	static Node first, middle, last, prev;
 
 	public void FixBST() {
+		
 		first = middle = last = prev = null;
 		FixBST(root);
 
