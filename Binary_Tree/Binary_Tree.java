@@ -1323,4 +1323,36 @@ public class Binary_Tree {
 		return Math.max(lmaxdiff, rmaxdiff);
 	}
 
+	Node DllHead = new Node();
+	static Node prevNode = null;
+
+	private Node leafs_To_DLL() {
+
+		leafs_To_DLL(root);
+
+		printDLL(DllHead);
+
+		return DllHead;
+
+	}
+
+	public void leafs_To_DLL(Node node) {
+		if (node == null) {
+			return;
+		}
+
+		if (node.left == null && node.right == null) {
+
+			if (prevNode == null) {
+				DllHead = node;
+			} else {
+				prevNode.right = node;
+				root.left = prevNode;
+			}
+			prevNode = node;
+		}
+
+		leafs_To_DLL(node.left);
+		leafs_To_DLL(node.right);
+	}
 }

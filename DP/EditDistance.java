@@ -6,9 +6,9 @@ public class EditDistance {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String str = "akhil";
+		String str = "acrdey";
 
-		String str2 = "arpit";
+		String str2 = "abcgdy";
 
 		func(str, str2);
 	}
