@@ -1161,12 +1161,9 @@ public class LinkedList {
 			nxt = curr;
 
 			while (nxt.next != null) {
-
 				if (nxt.data == nxt.next.data) {
-
-					temp = nxt.next;
+					// temp = nxt.next;
 					nxt.next = nxt.next.next;
-
 				} else {
 					nxt = nxt.next;
 				}

@@ -1336,9 +1336,9 @@ public class Binary_Tree {
 
 	}
 
-	public void leafs_To_DLL(Node node) {
+	public Node leafs_To_DLL(Node node) {
 		if (node == null) {
-			return;
+			return null;
 		}
 
 		if (node.left == null && node.right == null) {
@@ -1350,9 +1350,12 @@ public class Binary_Tree {
 				root.left = prevNode;
 			}
 			prevNode = node;
+			return null;
 		}
 
-		leafs_To_DLL(node.left);
-		leafs_To_DLL(node.right);
+		node.left = leafs_To_DLL(node.left);
+		node.right = leafs_To_DLL(node.right);
+
+		return node;
 	}
 }

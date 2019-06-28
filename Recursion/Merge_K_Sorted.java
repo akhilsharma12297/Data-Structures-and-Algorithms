@@ -24,8 +24,6 @@ public class Merge_K_Sorted {
 		int val; // val of the array or
 
 		public QueueNode(int array, int idx, int val) {
-			// TODO Auto-generated constructor stub
-
 			this.array = array;
 			this.idx = idx;
 			this.val = val;
