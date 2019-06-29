@@ -6,13 +6,16 @@ import java.util.LinkedList;
 
 public class LRUCache_Deque {
 	static Deque<Integer> dq;
+
 	static HashMap<Integer, Integer> hm;
+
 	static int size = 0;
 
 	public LRUCache_Deque(int N) {
 		dq = new LinkedList<>();
 		hm = new HashMap<>();
 		size = N;
+
 	}
 
 	public static int get(int x) {
