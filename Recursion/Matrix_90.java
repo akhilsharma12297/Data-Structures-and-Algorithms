@@ -6,42 +6,43 @@ public class Matrix_90 {
 
 		int mat[][] = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
 
-		int n = mat.length;
-
 		printMatrix(mat);
 
-		rotateMatrixInplace(mat);
+		rotateMatrixTranspose(mat);
 
 		System.out.println();
 		System.out.println();
 
 		printMatrix(mat);
+
 	}
 
-	public static void func(int[][] arr, int n) {
+	public static void rotateMatrixTranspose(int[][] mat) {
 
-		for (int i = 0; i < n / 2; i++) {
-			for (int j = i; j < n - i; j++) {
-
-				int a = arr[i][j];
-
-				int x = arr[j][n - i];
-
-				int y = arr[n - i][n - j];
-
-				int b = arr[n - j][i];
-
-				arr[n - j][i] = a;
-				arr[i][j] = b;
-
-				arr[j][n - i] = y;
-				arr[n - i][n - j] = x;
-
+		for (int i = 0; i < mat.length; i++) {
+			for (int j = i; j < mat[0].length; j++) {
+				int temp = mat[i][j];
+				mat[i][j] = mat[j][i];
+				mat[j][i] = temp;
 			}
 		}
+
+		int i = 0;
+		int j = mat.length - 1;
+
+		while (j > i) {
+			for (int k = 0; k < mat.length; k++) {
+				int temp = mat[k][i];
+				mat[k][i] = mat[k][j];
+				mat[k][j] = temp;
+			}
+			i++;
+			j--;
+		}
+
 	}
 
-	public static void rotateMatrixInplace(int[][] matrix) {
+	public static void rotateMatrix(int[][] matrix) {
 		int length = matrix.length - 1;
 
 		for (int i = 0; i <= (length) / 2; i++) {
@@ -60,10 +61,10 @@ public class Matrix_90 {
 				int p4 = matrix[length - j][i];
 
 				// Swap values of 4 coordinates.
+				matrix[i][j] = p4;
 				matrix[j][length - i] = p1;
 				matrix[length - i][length - j] = p2;
 				matrix[length - j][i] = p3;
-				matrix[i][j] = p4;
 			}
 		}
 	}

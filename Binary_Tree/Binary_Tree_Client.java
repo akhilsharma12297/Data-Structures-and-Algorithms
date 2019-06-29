@@ -89,6 +89,10 @@ public class Binary_Tree_Client {
 		System.out.println();
 
 		bt.KthLargest(5);
+
+		System.out.println();
+
+		bt.Serialize();
 	}
 
 }

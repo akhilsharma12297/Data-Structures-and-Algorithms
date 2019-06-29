@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
+import Binary_Tree.No361_Serialize_Deserialize.Node;
+
 public class Binary_Tree {
 
 	private class Node {
@@ -1152,7 +1154,6 @@ public class Binary_Tree {
 
 	public Node trimTreeWSumLessThanK(Node node, int sum) {
 
-		// base case
 		if (node == null)
 			return null;
 
@@ -1324,6 +1325,7 @@ public class Binary_Tree {
 	}
 
 	Node DllHead = new Node();
+
 	static Node prevNode = null;
 
 	private Node leafs_To_DLL() {
@@ -1357,5 +1359,29 @@ public class Binary_Tree {
 		node.right = leafs_To_DLL(node.right);
 
 		return node;
+	}
+
+	static String str = new String();
+
+	public void Serialize() {
+		ArrayList<Integer> idx = new ArrayList<Integer>();
+		serialize(root, idx);
+		idx.add(-1);
+	}
+
+	private void serialize(Node node, ArrayList<Integer> idx) {
+
+		if (node == null) {
+			return;
+		}
+
+		idx.add(node.data);
+
+		serialize(node.left, idx);
+
+		serialize(node.right, idx);
+
+		idx.add(-1);
+
 	}
 }
