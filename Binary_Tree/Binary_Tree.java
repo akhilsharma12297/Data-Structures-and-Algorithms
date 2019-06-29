@@ -1219,8 +1219,8 @@ public class Binary_Tree {
 			pq.add(node.data);
 		}
 
-		KthLargest(node.left, k);
 		KthLargest(node.right, k);
+		KthLargest(node.left, k);
 	}
 
 	public void MergeBT(Binary_Tree tree1, Binary_Tree tree2) {

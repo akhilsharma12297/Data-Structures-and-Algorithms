@@ -9,11 +9,20 @@ public class RottenOrange_FireHouse {
 		int i;
 		int j;
 		int timestamp;
+
+		Node(int i, int j, int timestamp) {
+			this.i = i;
+			this.j = j;
+			this.timestamp = timestamp;
+
+		}
 	}
 
 	static int rotten = 0;
 
 	static int fresh = 0;
+
+	static int oldrotten = 0;
 
 	public static void fun(int[][] arr) {
 
@@ -23,19 +32,10 @@ public class RottenOrange_FireHouse {
 			for (int j = 0; j < arr[0].length; j++) {
 
 				if (arr[i][j] == 1) {
-
 					fresh++;
-
 				} else if (arr[i][j] == 2) {
-
-					Node node = new Node();
-
-					node.i = i;
-					node.j = j;
-					node.timestamp = 0;
-
-					queue.addLast(node);
-
+					queue.addLast(new Node(i, j, 0));
+					oldrotten++;
 				}
 
 			}
@@ -57,19 +57,10 @@ public class RottenOrange_FireHouse {
 			int j = temp.j;
 
 			if (isValid(i - 1, j, arr)) {
-
 				if (arr[i - 1][j] == 1) {
 					arr[i - 1][j] = 2;
-					Node node = new Node();
-
-					node.i = i - 1;
-					node.j = j;
-					node.timestamp = temp.timestamp + 1;
-
+					queue.addLast(new Node(i - 1, j, ts + 1));
 					rotten++;
-
-					queue.addLast(node);
-
 				}
 
 			}
@@ -77,15 +68,9 @@ public class RottenOrange_FireHouse {
 			if (isValid(i, j + 1, arr)) {
 				if (arr[i][j + 1] == 1) {
 					arr[i][j + 1] = 2;
-					Node node = new Node();
-
-					node.i = i;
-					node.j = j + 1;
-					node.timestamp = temp.timestamp + 1;
-
-					rotten++;
-
+					Node node = new Node(i, j + 1, ts + 1);
 					queue.addLast(node);
+					rotten++;
 
 				}
 			}
@@ -93,36 +78,23 @@ public class RottenOrange_FireHouse {
 			if (isValid(i + 1, j, arr)) {
 				if (arr[i + 1][j] == 1) {
 					arr[i + 1][j] = 2;
-					Node node = new Node();
-
-					node.i = i + 1;
-					node.j = j;
-					node.timestamp = temp.timestamp + 1;
-
-					rotten++;
+					Node node = new Node(i + 1, j, ts + 1);
 					queue.addLast(node);
-
+					rotten++;
 				}
 			}
 
 			if (isValid(i, j + 1, arr)) {
 				if (arr[i][j + 1] == 1) {
 					arr[i][j + 1] = 2;
-					Node node = new Node();
-
-					node.i = i;
-					node.j = j + 1;
-					node.timestamp = temp.timestamp + 1;
-
-					rotten++;
-
+					Node node = new Node(i, j + 1, ts + 1);
 					queue.addLast(node);
-
+					rotten++;
 				}
 			}
 		}
 
-		System.out.println(fresh + " " + rotten);
+		System.out.println(rotten + " + " + oldrotten + " = " + fresh);
 		System.out.println(ts);
 
 	}
