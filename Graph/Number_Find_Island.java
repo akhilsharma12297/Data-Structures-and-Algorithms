@@ -17,8 +17,8 @@ public class Number_Find_Island {
 			for (int j = 0; j < graph[i].length; j++) {
 
 				if (graph[i][j] == 1) {
-					islandCtr++;
 					markDone(graph, i, j);
+					islandCtr++;
 
 				}
 
