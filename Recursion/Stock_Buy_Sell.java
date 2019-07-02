@@ -2,60 +2,37 @@ package Recursion;
 
 public class Stock_Buy_Sell {
 
-	static int max = Integer.MIN_VALUE;
+	public static int maxProfit(final int[] A) {
 
-	static void stockBuySell(int[] price) {
-
-		int n = price.length;
-
-		if (n == 1) {
-			return;
-
+		if (A.length == 0) {
+			return 0;
 		}
 
-		int start = 0, end = 0;
+		int profit = -1;
 
-		int flag = 0;
+		int max = A[A.length - 1];
 
-		for (int i = 0; i < n - 1; i++) {
-
-			if (price[i + 1] - price[i] > 0)
-
-				flag = 1;
-
-			if (!(price[i + 1] - price[i] > 0) || price[i + 1] - price[i] > 0 && (i + 1 == n - 1)) {
-
-				if (i + 1 == n - 1)
-					end = i + 1;
-
-				else
-
-					end = i;
-
-				if ((end - start) > max) {
-					max = price[end] - price[start];
-
-					System.out.println(start + " " + end);
-
-				}
-
-				start = i + 1;
+		for (int i = A.length - 1; i >= 0; i--) {
+			if (A[i] > max) {
+				max = A[i];
+			} else {
+				profit = Math.max(profit, max - A[i]);
 			}
-
-			if (flag == 0)
-
-				System.out.println("not found");
-
 		}
+
+		if (max == A[A.length - 1]) {
+			return 0;
+		}
+
+		return profit;
+
 	}
 
 	public static void main(String args[]) {
 
 		int price[] = { 5, 9, 0, 1, 2, 4 };
 
-		stockBuySell(price);
-
-		System.out.println(max);
+		System.out.println(maxProfit(price));
 
 	}
 }
