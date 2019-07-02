@@ -3,9 +3,9 @@ package Recursion;
 public class i_j_arr {
 
 	public static void main(String[] args) {
-		int arr[] = { 9, 2, 3, 4, 5, 6, 7, 8, 18, 0 };
+		int arr[] = { 9, 2, 3, 4, 5, 6, 7, 8, 18 };
 		int n = arr.length;
-		maxIndexDiff(arr, n);
+		System.out.println(maxIndexDiff(arr, n));
 	}
 
 	static int maxIndexDiff(int arr[], int n) {
@@ -26,8 +26,7 @@ public class i_j_arr {
 		for (int val : LMin) {
 			System.out.print(val + " ");
 		}
-		
-		
+
 		System.out.println();
 
 		/*
@@ -56,7 +55,7 @@ public class i_j_arr {
 			} else
 				i = i + 1;
 		}
-
+		System.out.println();
 		return maxDiff;
 	}
 
