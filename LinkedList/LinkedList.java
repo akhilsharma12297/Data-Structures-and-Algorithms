@@ -856,6 +856,26 @@ public class LinkedList {
 		return prev;
 	}
 
+	public Node reverseList(Node node, int B) {
+		Node current = node;
+		Node previous = null;
+		Node next = null;
+
+		int count = B;
+		while (count-- > 0 && current != null) {
+			next = current.next;
+			current.next = previous;
+			previous = current;
+			current = next;
+		}
+
+		if (current != null) {
+			node.next = reverseList(current, B);
+		}
+
+		return previous;
+	}
+
 	public Node reverseBetween(Node head, int m, int n) {
 		if (head == null) {
 			return null;
