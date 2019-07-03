@@ -3,46 +3,86 @@ package Recursion;
 public class MedianOfUnequalSortedArray {
 
 	public static void main(String[] args) {
-		int[] arr = { 900 };
-		int[] arr2 = { 10, 13, 14 };
-		int arrsize = arr.length;
-		int arr2size = arr.length;
+		int[] arr = { 23, 26, 31, 35 };
+		int[] arr2 = { 3, 5, 7, 9, 11, 16 };
 
-		if (arrsize < arr2size) {
-			System.out.println(func(arr, arrsize, arr2, arr2size));
-		} else {
-			System.out.println(func(arr, arr2size, arr2, arrsize));
-		}
+		System.out.println(func(arr, arr2));
+		System.out.println(findMedianSortedArrays(arr, arr2));
 	}
 
-	private static int func(int[] arr1, int n, int[] arr2, int m) {
+	private static double func(int[] inputX, int[] inputY) {
 
-		int maxidx = n;
-		int minidx = m;
-		int i = 0;
-		int j = 0;
+		if (inputX.length > inputY.length) {
+			return func(inputY, inputX);
+		}
 
-		while (minidx <= maxidx) {
+		int x = inputX.length;
+		int y = inputY.length;
 
-			i = (minidx + maxidx) / 2;
-			j = ((n + m + 1) / 2) - i;
+		int low = 0;
+		int high = x;
 
-			if (i < n && j > 0 && arr2[j - 1] > arr1[i])
-				minidx = i + 1;
-			else if (i > 0 && j < m && arr2[j] < arr1[i - 1])
-				maxidx = i - 1;
-			else {
-				if (i == 0)
-					return arr2[j - 1];
+		while (low <= high) {
+			int partitionX = (low + high) / 2;
+			int partitionY = (x + y + 1) / 2 - partitionX;
 
-				if (j == 0)
-					return arr1[i - 1];
-				else
-					return Math.max(arr1[i - 1], arr2[j - 1]);
+			int maxLeftX = (partitionX == 0) ? Integer.MIN_VALUE : inputX[partitionX - 1];
+			int minRightX = (partitionX == x) ? Integer.MAX_VALUE : inputX[partitionX];
+
+			int maxLeftY = (partitionY == 0) ? Integer.MIN_VALUE : inputY[partitionY - 1];
+			int minRightY = (partitionY == y) ? Integer.MAX_VALUE : inputY[partitionY];
+
+			if (maxLeftX <= minRightY && maxLeftY <= minRightX) {
+				if ((x + y) % 2 == 0) {
+					return (double) (Math.max(maxLeftY, maxLeftX) + Math.min(minRightY, minRightX)) / 2;
+				} else {
+					return (double) Math.max(maxLeftX, maxLeftY);
+				}
+
+			} else if (maxLeftX > minRightY) {
+				high = partitionX - 1;
+
+			} else {
+				low = partitionX + 1;
 
 			}
 		}
-		return -1;
 
+		throw new IllegalAccessError();
+	}
+
+	public static double findMedianSortedArrays(int input1[], int input2[]) {
+		if (input1.length > input2.length) {
+			return findMedianSortedArrays(input2, input1);
+		}
+		int x = input1.length;
+		int y = input2.length;
+
+		int low = 0;
+		int high = x;
+		while (low <= high) {
+			int partitionX = (low + high) / 2;
+			int partitionY = (x + y + 1) / 2 - partitionX;
+
+			int maxLeftX = (partitionX == 0) ? Integer.MIN_VALUE : input1[partitionX - 1];
+			int minRightX = (partitionX == x) ? Integer.MAX_VALUE : input1[partitionX];
+
+			int maxLeftY = (partitionY == 0) ? Integer.MIN_VALUE : input2[partitionY - 1];
+			int minRightY = (partitionY == y) ? Integer.MAX_VALUE : input2[partitionY];
+
+			if (maxLeftX <= minRightY && maxLeftY <= minRightX) {
+				if ((x + y) % 2 == 0) {
+					return ((double) Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;
+				} else {
+					return (double) Math.max(maxLeftX, maxLeftY);
+				}
+			} else if (maxLeftX > minRightY) { // we are too far on right side for partitionX. Go on left side.
+				high = partitionX - 1;
+			} else { // we are too far on left side for partitionX. Go on right side.
+				low = partitionX + 1;
+			}
+		}
+
+		throw new IllegalArgumentException();
 	}
 }
