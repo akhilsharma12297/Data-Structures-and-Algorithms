@@ -1,12 +1,6 @@
 package Binary_Tree;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Stack;
-
-import Binary_Tree.No361_Serialize_Deserialize.Node;
+import java.util.*;
 
 public class Binary_Tree {
 
@@ -1382,6 +1376,54 @@ public class Binary_Tree {
 		serialize(node.right, idx);
 
 		idx.add(-1);
+
+	}
+
+	static String NullSymbol = "X";
+	static String Deltmiter = ",";
+
+	public String Serialize_LEETCODE() {
+		String code = Serialize_LEETCODE(root);
+
+		return code;
+
+	}
+
+	private String Serialize_LEETCODE(Node node) {
+
+		if (node == null) {
+			return NullSymbol + Deltmiter;
+		}
+
+		String left = Serialize_LEETCODE(node.left);
+		String right = Serialize_LEETCODE(node.right);
+
+		return node.data + Deltmiter + left + right;
+	}
+
+	public Node DeSerialize_LEETCODE(String Code) {
+
+		Queue<String> queue = new LinkedList<>();
+
+		queue.addAll(Arrays.asList(Code.split(Deltmiter)));
+
+		return DeSerialize_LEETCODE(queue);
+	}
+
+	private Node DeSerialize_LEETCODE(Queue<String> Serialized_Queue) {
+
+		String nodeVal = Serialized_Queue.poll();
+
+		if (nodeVal == NullSymbol) {
+			return null;
+		}
+		Node node = new Node();
+
+		node.data = Integer.valueOf(nodeVal);
+
+		node.left = DeSerialize_LEETCODE(Serialized_Queue);
+		node.right = DeSerialize_LEETCODE(Serialized_Queue);
+		return node;
 
 	}
 }

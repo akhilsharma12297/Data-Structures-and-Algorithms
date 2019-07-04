@@ -90,7 +90,7 @@ public class LinkedList {
 
 		size++;
 	}
-
+	
 	private void handlewhensize0(int data) {
 
 		Node node = new Node();
@@ -783,85 +783,17 @@ public class LinkedList {
 
 	}
 
-	public void kreverse(int k) {
-
-		LinkedList curr = new LinkedList();
-
-		LinkedList prev = new LinkedList();
-
-		while (this.size != 0) {
-			for (int i = 0; i < k; i++) {
-				curr.addfirstnode(this.removeFirstNode());
-			}
-
-			if (prev.size == 0) {
-				prev = curr;
-			} else {
-				prev.tail.next = curr.head;
-				prev.tail = curr.tail;
-				prev.size = curr.size;
-
-			}
-
-			curr = new LinkedList();
-		}
-		this.head = prev.head;
-		this.tail = prev.tail;
-		this.size = prev.size;
-
+	public void KreverseList(int k) {
+		this.head = reverseList(head, k);
 	}
 
-	public Node kreverse_Better(Node node, int k) {
-		Node prev = null;
-		Node current = node;
-		Node next = null;
+	public Node reverseList(Node node, int k) {
 
-		int count = 0;
-
-		/* 1) reverse first k nodes of the linked list */
-		while (current != null && count < k) {
-			next = current.next;
-			current.next = prev;
-			prev = current;
-			current = next;
-			count++;
-		}
-
-		/*
-		 * 2) Now head points to the kth node. So change next of head to (k+1)th node
-		 */
-		if (node != null) {
-			node.next = current;
-		}
-
-		/*
-		 * 3) We do not want to reverse next k nodes. So move the current pointer to
-		 * skip next k nodes
-		 */
-		count = 0;
-		while (count < k - 1 && current != null) {
-			current = current.next;
-			count++;
-		}
-
-		/*
-		 * 4) Recursively call for the list starting from current->next. And make rest
-		 * of the list as next of first node
-		 */
-		if (current != null) {
-			current.next = kreverse_Better(current.next, k);
-		}
-
-		/* 5) prev is new head of the input list */
-		return prev;
-	}
-
-	public Node reverseList(Node node, int B) {
 		Node current = node;
 		Node previous = null;
 		Node next = null;
 
-		int count = B;
+		int count = k;
 		while (count-- > 0 && current != null) {
 			next = current.next;
 			current.next = previous;
@@ -870,7 +802,7 @@ public class LinkedList {
 		}
 
 		if (current != null) {
-			node.next = reverseList(current, B);
+			node.next = reverseList(current, k);
 		}
 
 		return previous;
@@ -908,7 +840,7 @@ public class LinkedList {
 		join.next = cur;
 		return head;
 	}
-
+ 
 	private Node removeFirstNode() {
 		if (size == 0) {
 			System.out.println("List is empty");
