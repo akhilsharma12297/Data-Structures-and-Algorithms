@@ -90,7 +90,7 @@ public class LinkedList {
 
 		size++;
 	}
-	
+
 	private void handlewhensize0(int data) {
 
 		Node node = new Node();
@@ -840,7 +840,7 @@ public class LinkedList {
 		join.next = cur;
 		return head;
 	}
- 
+
 	private Node removeFirstNode() {
 		if (size == 0) {
 			System.out.println("List is empty");
@@ -1329,4 +1329,26 @@ public class LinkedList {
 		return small;
 	}
 
+	public Node mergeTwoLists(Node l1, Node l2) {
+
+		Node header = new Node();
+		Node tail = header;
+		Node temp;
+
+		while (l1 != null && l2 != null) {
+			if (l2.data > l1.data) {
+				temp = l1;
+				l1 = l1.next;
+			} else {
+				temp = l2;
+				l2 = l2.next;
+			}
+
+			tail.next = temp;
+			tail = temp;
+		}
+		tail.next = l1 != null ? l1 : l2;
+
+		return header.next;
+	}
 }

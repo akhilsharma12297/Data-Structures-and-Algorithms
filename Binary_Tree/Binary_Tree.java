@@ -2,6 +2,8 @@ package Binary_Tree;
 
 import java.util.*;
 
+import Binary_Tree.No338_Connect_Same_Level_Nodes.Node;
+
 public class Binary_Tree {
 
 	private class Node {
@@ -1427,6 +1429,59 @@ public class Binary_Tree {
 		node.right = DeSerialize_LEETCODE(Serialized_Queue);
 
 		return node;
+
+	}
+
+	public void Connect_Same_Level() {
+
+		HashMap<Integer, Node> map = new HashMap<>();
+
+		Connect_Same_Level(root, 0, map);
+	}
+
+	static int Max_Level = -1;
+
+	private void Connect_Same_Level(Node node, int level, HashMap<Integer, Node> map) {
+		if (node == null) {
+			return;
+		}
+
+		if (map.containsKey(level)) {
+
+			Node temp = map.get(level);
+//			temp.next = node;
+			map.put(level, node);
+
+		} else {
+			map.put(level, node);
+		}
+
+		Max_Level = Math.max(level, Max_Level);
+
+		Connect_Same_Level(node.left, level + 1, map);
+		Connect_Same_Level(node.right, level + 1, map);
+
+	}
+
+	public boolean TargetPair(int k) {
+
+		return TargetPair(root, k, new HashSet<Integer>());
+
+	}
+
+	private boolean TargetPair(Node node, int k, HashSet<Integer> set) {
+
+		if (node == null) {
+			return false;
+		}
+
+		if (set.contains(k - node.data)) {
+			return true;
+		}
+
+		set.add(node.data);
+
+		return TargetPair(node.left, k, set) || TargetPair(node.right, k, set);
 
 	}
 }
