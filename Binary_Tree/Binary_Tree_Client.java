@@ -93,6 +93,10 @@ public class Binary_Tree_Client {
 		System.out.println();
 
 		bt.Serialize();
+
+		System.out.println();
+
+		System.out.println(bt.Serialize_LEETCODE());
 	}
 
 }

@@ -1361,6 +1361,7 @@ public class Binary_Tree {
 		ArrayList<Integer> idx = new ArrayList<Integer>();
 		serialize(root, idx);
 		idx.add(-1);
+		System.out.println(idx);
 	}
 
 	private void serialize(Node node, ArrayList<Integer> idx) {
@@ -1422,7 +1423,9 @@ public class Binary_Tree {
 		node.data = Integer.valueOf(nodeVal);
 
 		node.left = DeSerialize_LEETCODE(Serialized_Queue);
+
 		node.right = DeSerialize_LEETCODE(Serialized_Queue);
+
 		return node;
 
 	}

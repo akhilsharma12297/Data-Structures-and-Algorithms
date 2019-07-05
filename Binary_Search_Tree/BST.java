@@ -536,27 +536,17 @@ public class BST {
 
 	}
 
-	static Node first, middle, last, prev;
+	static Node firstSwapped, lastSwapped, prevNode;
 
 	public void FixBST() {
-		
-		first = middle = last = prev = null;
+		firstSwapped = lastSwapped = prevNode = null;
 		FixBST(root);
 
-		if (first != null && last != null) {
-			int temp = first.data;
-			first.data = last.data;
-			last.data = temp;
-		}
+		int temp = firstSwapped.data;
 
-		else if (first != null && middle != null) {
+		firstSwapped.data = lastSwapped.data;
 
-			int temp = first.data;
-			first.data = middle.data;
-			middle.data = temp;
-
-		}
-
+		lastSwapped.data = temp;
 	}
 
 	private void FixBST(Node node) {
@@ -567,14 +557,16 @@ public class BST {
 
 		FixBST(node.left);
 
-		if (prev != null && prev.data > node.data) {
-			first = prev;
-			middle = node;
-		} else {
-			last = node;
+		if (prevNode != null) {
+			if (prevNode.data > node.data) {
+				if (firstSwapped == null) {
+					firstSwapped = prevNode;
+				}
+				lastSwapped = node;
+			}
 		}
 
-		prev = node;
+		prevNode = node;
 
 		FixBST(node.right);
 
@@ -646,4 +638,30 @@ public class BST {
 
 	}
 
+	public void MergeTree(BST tree) {
+
+		this.root = mergeTrees(this.root, tree.root);
+
+	}
+
+	private Node mergeTrees(Node t1, Node t2) {
+		if (t1 == null && t2 == null) {
+			return null;
+		}
+
+		if (t1 != null && t2 == null) {
+			return t1;
+		}
+
+		if (t1 == null && t2 != null) {
+			return t2;
+		}
+
+		t1.data += t2.data;
+
+		t1.left = mergeTrees(t1.left, t2.left);
+		t1.right = mergeTrees(t1.right, t2.right);
+
+		return t1;
+	}
 }
