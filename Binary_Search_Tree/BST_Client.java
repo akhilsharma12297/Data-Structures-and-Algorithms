@@ -67,7 +67,7 @@ public class BST_Client {
 		System.out.println();
 		System.out.println();
 
-		bst.FindPair(112);
+		bst.TargetPair(112);
 
 		System.out.println();
 

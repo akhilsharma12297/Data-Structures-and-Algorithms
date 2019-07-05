@@ -478,61 +478,25 @@ public class BST {
 
 	}
 
-	public void FindPair(int tar) {
+	public boolean TargetPair(int k) {
 
-		ArrayList<Integer> list = new ArrayList<Integer>();
+		return TargetPair(root, k, new HashSet<Integer>());
 
-		boolean found = false;
-
-		FindPair(root, list);
-
-		Collections.sort(list);
-
-		int start = 0;
-		int end = list.size() - 1;
-		while (start < end) {
-
-			if (list.get(start) + list.get(end) == tar) {
-
-				System.out.println(list.get(start) + " + " + list.get(end) + " = " + tar);
-
-				start++;
-				end--;
-
-				found = true;
-
-			}
-
-			if (list.get(start) + list.get(end) > tar) {
-
-				end--;
-
-			}
-
-			if (list.get(start) + list.get(end) < tar) {
-
-				start++;
-
-			}
-
-		}
-
-		if (!found) {
-			System.out.println("NOT FOUND !");
-		}
 	}
 
-	private void FindPair(Node node, ArrayList<Integer> list) {
+	private boolean TargetPair(Node node, int k, HashSet<Integer> set) {
 
 		if (node == null) {
-			return;
+			return false;
 		}
 
-		list.add(node.data);
+		if (set.contains(k - node.data)) {
+			return true;
+		}
 
-		FindPair(node.left, list);
+		set.add(node.data);
 
-		FindPair(node.right, list);
+		return TargetPair(node.left, k, set) || TargetPair(node.right, k, set);
 
 	}
 

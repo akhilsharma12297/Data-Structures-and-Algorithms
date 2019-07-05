@@ -2,8 +2,6 @@ package Binary_Tree;
 
 import java.util.*;
 
-import Binary_Tree.No338_Connect_Same_Level_Nodes.Node;
-
 public class Binary_Tree {
 
 	private class Node {
@@ -1483,5 +1481,28 @@ public class Binary_Tree {
 
 		return TargetPair(node.left, k, set) || TargetPair(node.right, k, set);
 
+	}
+
+	static int max = -1;
+
+	public void max_path_node_to_Node() {
+
+		max_path_node_to_Node(root);
+
+	}
+
+	private int max_path_node_to_Node(Node node) {
+		if (node == null) {
+			return 0;
+		}
+
+		int leftval = max_path_node_to_Node(node.left);
+		int rightval = max_path_node_to_Node(node.right);
+
+		int currentval = Math.max(Math.min(leftval, rightval) + node.data, node.data);
+
+		max = Math.max(currentval, leftval + node.data + rightval);
+
+		return currentval;
 	}
 }
