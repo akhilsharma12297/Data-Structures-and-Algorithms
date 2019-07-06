@@ -1,6 +1,6 @@
 package DP;
 
-public class N_stairs {
+public class N_ClimbStairs {
 
 	public static void main(String[] args) {
 		int s = 4, m = 2;

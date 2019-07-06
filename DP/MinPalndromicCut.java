@@ -6,21 +6,21 @@ public class MinPalndromicCut {
 
 		String str = "abccbc";
 
-		System.out.println(mcp(str, 0, str.length() - 1));
+		System.out.println(mpc(str, 0, str.length() - 1));
 
 	}
 
-	public static int mcp(String str, int sp, int ep) {
+	public static int mpc(String str, int sp, int ep) {
 
 		if (ispalndrome(str, sp, ep)) {
 			return 0;
 		}
 
 		int min = Integer.MAX_VALUE;
-		for (int cp = sp; cp < ep; cp++) {y 
+		for (int cp = sp; cp < ep; cp++) {
 
-			int lp = mcp(str, sp, cp);
-			int rp = mcp(str, cp + 1, ep);
+			int lp = mpc(str, sp, cp);
+			int rp = mpc(str, cp + 1, ep);
 
 			int total = lp + rp + 1;
 			min = Math.min(min, total);

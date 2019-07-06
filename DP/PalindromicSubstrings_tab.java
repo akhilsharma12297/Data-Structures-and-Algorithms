@@ -4,7 +4,7 @@ public class PalindromicSubstrings_tab {
 
 	public static void main(String[] args) {
 
-		String str = "geeksskeeg";
+		String str = "";
 
 		func(str);
 
