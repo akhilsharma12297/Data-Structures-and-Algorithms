@@ -5,6 +5,7 @@ public class RodCut_tab {
 	public static void main(String[] args) {
 
 		int[] arr = new int[] { 0, 3, 5, 6, 15, 10, 25, 12, 25 };
+
 		func(arr);
 	}
 
@@ -43,4 +44,5 @@ public class RodCut_tab {
 
 		System.out.println(dp[dp.length - 1] + " :- " + path[path.length - 1]);
 	}
+
 }
