@@ -17,7 +17,7 @@ public class MinPalndromicCut {
 		}
 
 		int min = Integer.MAX_VALUE;
-		for (int cp = sp; cp < ep; cp++) {
+		for (int cp = sp; cp < ep; cp++) {y 
 
 			int lp = mcp(str, sp, cp);
 			int rp = mcp(str, cp + 1, ep);
