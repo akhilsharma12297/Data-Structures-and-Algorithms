@@ -10,30 +10,27 @@ public class Target_sum_subset {
 	}
 
 	public static boolean func(int[] arr, int sum) {
+		int n = arr.length;
 
-		int n = arr.length - 1;
-		boolean subset[][] = new boolean[sum + 1][n + 1];
+		boolean dp[][] = new boolean[n + 1][sum + 1];
 
-		for (int i = 0; i <= n; i++)
-			subset[0][i] = true;
+		for (int i = 0; i < dp.length; i++) {
 
-		for (int i = 1; i <= sum; i++)
-			subset[i][0] = false;
+			for (int j = 0; j < dp[0].length; j++) {
 
-		for (int i = 1; i <= sum; i++) {
+				if (j == 0) {
 
-			for (int j = 1; j <= n; j++) {
+					dp[i][j] = true;
+				} else if (i >= 1 && dp[i - 1][j]) {
 
-				subset[i][j] = subset[i][j - 1];
+					dp[i][j] = dp[i - 1][j];
+				} else if (i >= 1 && j - arr[i - 1] >= 0) {
 
-				if (i >= arr[j - 1])
-
-					subset[i][j] = subset[i][j] || subset[i - arr[j - 1]][j - 1];
+					dp[i][j] = dp[i - 1][j - arr[i - 1]];
+				}
 			}
-
 		}
-
-		return subset[sum][n];
+		return dp[arr.length][sum];
 
 	}
 
