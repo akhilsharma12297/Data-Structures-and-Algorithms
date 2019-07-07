@@ -2,7 +2,7 @@ package Recursion;
 
 public class square_Root {
 	public static void main(String[] args) {
-		System.out.println(func(622521));
+		System.out.println(func(64));
 	}
 
 	public static int func(int x) {
@@ -26,8 +26,7 @@ public class square_Root {
 			}
 
 			if ((mid * mid) < x) {
-				start += 1;
-				end = mid;
+				start = mid + 1;
 			} else {
 				end = mid - 1;
 			}
@@ -36,4 +35,5 @@ public class square_Root {
 
 		return 0;
 	}
+
 }
