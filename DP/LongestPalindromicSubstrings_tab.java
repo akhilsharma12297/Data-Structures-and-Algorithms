@@ -1,6 +1,6 @@
 package DP;
 
-public class PalindromicSubstrings_tab {
+public class LongestPalindromicSubstrings_tab {
 
 	public static void main(String[] args) {
 
