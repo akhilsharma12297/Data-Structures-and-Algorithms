@@ -33,8 +33,8 @@ public class CoinChange_Permutation_Tab {
 			for (int i = 0; i < denoms.length; i++) {
 
 				if (j >= denoms[i]) {
-
 					dp[j] = dp[j] + dp[j - denoms[i]];
+
 					for (String str : path[j - denoms[i]]) {
 						path[j].add(str + denoms[i]);
 					}
