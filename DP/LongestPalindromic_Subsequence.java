@@ -4,22 +4,19 @@ public class LongestPalindromic_Subsequence {
 
 	public static void main(String[] args) {
 
-		String str = "agbdba";
-		System.out.println(lpsub(str));
-
-		System.out.println();
-
-		System.out.println(lps(str));
+		String str = "GEEKSFORGEEKS";
+		lpsub(str);
 
 	}
 
-	private static int lpsub(String str) {
+	private static void lpsub(String str) {
+		int n = str.length();
 
-		int[][] dp = new int[str.length()][str.length()];
+		int maxLength = -1;
+		int startpoint = -1;
+		int endpoint = -1;
 
-		for (int i = 0; i < str.length(); i++) {
-			dp[i][i] = 1;
-		}
+		int[][] dp = new int[n][n];
 
 		for (int diag = 0; diag < str.length(); diag++) {
 
@@ -27,58 +24,32 @@ public class LongestPalindromic_Subsequence {
 			int ep = diag;
 
 			while (ep < str.length()) {
-				if (diag == 2 && str.charAt(sp) == str.charAt(ep)) {
-					dp[sp][ep] = 2;
+
+				if (diag == 0) {
+					dp[sp][ep] = 1;
 				} else if (str.charAt(sp) == str.charAt(ep)) {
 					dp[sp][ep] = dp[sp + 1][ep - 1] + 2;
 				} else {
 					dp[sp][ep] = Math.max(dp[sp][ep - 1], dp[sp + 1][ep]);
+
+					if (maxLength < diag) {
+						maxLength = diag;
+						startpoint = sp;
+						endpoint = ep;
+					}
+
 				}
 
 				sp++;
 				ep++;
-
 			}
+
 		}
 
 		printMatrix(dp);
 
-		return dp[0][dp.length - 1];
+		System.out.println(str.substring(startpoint, endpoint + 1));
 
-	}
-
-	static int lps(String seq) {
-		int n = seq.length();
-		int i, j, cl;
-		// Create a table to store results of subproblems
-		int L[][] = new int[n][n];
-
-		// Strings of length 1 are palindrome of lentgh 1
-		for (i = 0; i < n; i++)
-			L[i][i] = 1;
-
-		// Build the table. Note that the lower
-		// diagonal values of table are
-		// useless and not filled in the process.
-		// The values are filled in a manner similar
-		// to Matrix Chain Multiplication DP solution (See
-		// https://www.geeksforgeeks.org/matrix-chain-multiplication-dp-8/).
-		// cl is length of substring
-		for (cl = 2; cl <= n; cl++) {
-			for (i = 0; i < n - cl + 1; i++) {
-				j = i + cl - 1;
-				if (seq.charAt(i) == seq.charAt(j) && cl == 2)
-					L[i][j] = 2;
-				else if (seq.charAt(i) == seq.charAt(j))
-					L[i][j] = L[i + 1][j - 1] + 2;
-				else
-					L[i][j] = Math.max(L[i][j - 1], L[i + 1][j]);
-			}
-		}
-
-		printMatrix(L);
-
-		return L[0][n - 1];
 	}
 
 	private static void printMatrix(int[][] cps) {

@@ -1,54 +1,59 @@
 package DP;
 
-public class CountPalindromic_Substrings {
-
+public class LongestPalindromic_SubString {
 	public static void main(String[] args) {
 
-		String str = "abccbc";
+		String str = "forgeeksskeegfor";
 
 		func(str);
 
 	}
 
-	public static void func(String str) {
+	private static void func(String str) {
 
-		int ctr = 0;
-		boolean[][] dp = new boolean[str.length()][str.length()];
+		int n = str.length();
 
-		for (int diag = 0; diag < str.length(); diag++) {
+		int maxLenght = -1;
+		int startpoint = -1;
+		int endpoint = -1;
+
+		boolean dp[][] = new boolean[n][n];
+
+		for (int diag = 0; diag < n; diag++) {
 
 			int sp = 0;
 			int ep = diag;
 
-			while (ep < str.length()) {
+			while (ep < n) {
 
 				if (diag == 0) {
-
 					dp[sp][ep] = true;
 				} else if (diag == 1) {
-
 					if (str.charAt(sp) == str.charAt(ep)) {
 						dp[sp][ep] = true;
 					}
-				} else {
-					if (str.charAt(sp) == str.charAt(ep) && dp[sp + 1][ep - 1] == true) {
-						dp[sp][ep] = true;
-					}
-				}
+				} else if (str.charAt(sp) == str.charAt(ep) && dp[sp + 1][ep - 1]) {
+					dp[sp][ep] = true;
 
-				if (dp[sp][ep] == true) {
-					ctr++;
+					if (diag > maxLenght) {
+						maxLenght = diag;
+						startpoint = sp;
+						endpoint = ep;
+					}
+
 				}
 
 				sp++;
 				ep++;
 
 			}
-		}
 
+		}
 		printMatrix(dp);
 
-		System.out.println(ctr);
+		System.out.println();
+
+		System.out.println(str.substring(startpoint, endpoint + 1));
 
 	}
 
@@ -65,5 +70,4 @@ public class CountPalindromic_Substrings {
 			System.out.println();
 		}
 	}
-
 }

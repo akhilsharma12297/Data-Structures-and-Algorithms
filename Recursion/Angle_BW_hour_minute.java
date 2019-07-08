@@ -3,7 +3,7 @@ package Recursion;
 public class Angle_BW_hour_minute {
 
 	public static void main(String[] args) {
-		System.out.println(func(9, 60));
+		System.out.println(func(3, 30));
 
 	}
 
