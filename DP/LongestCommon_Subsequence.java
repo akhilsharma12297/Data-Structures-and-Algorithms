@@ -1,6 +1,6 @@
 package DP;
 
-public class LongestCommonSubsequence {
+public class LongestCommon_Subsequence {
 
 	public static void main(String[] args) {
 		String str = "AGGTAB";

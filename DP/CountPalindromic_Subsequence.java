@@ -4,7 +4,7 @@ public class CountPalindromic_Subsequence {
 
 	public static void main(String[] args) {
 
-		String str = "GEEKSFORGEEKS";
+		String str = "agbdba";
 
 		System.out.println(cps(str));
 

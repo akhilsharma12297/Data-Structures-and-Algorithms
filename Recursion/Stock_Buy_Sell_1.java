@@ -1,6 +1,6 @@
 package Recursion;
 
-public class Stock_Buy_Sell {
+public class Stock_Buy_Sell_1 {
 
 	public static int maxProfit(final int[] A) {
 
