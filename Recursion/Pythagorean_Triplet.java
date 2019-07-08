@@ -11,13 +11,10 @@ public class Pythagorean_Triplet {
 	}
 
 	public static boolean func(int[] arr, int n) {
-
-		for (int i = 0; i < arr.length; i++) {
-			arr[i] = arr[i] + arr[i];
-		}
-
 		int zctr = 0;
 		for (int i = 0; i < arr.length; i++) {
+
+			arr[i] = arr[i] + arr[i];
 
 			if (arr[i] == 0) {
 				zctr++;
