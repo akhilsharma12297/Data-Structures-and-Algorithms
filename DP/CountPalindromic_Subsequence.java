@@ -13,7 +13,7 @@ public class CountPalindromic_Subsequence {
 	private static int cps(String str) {
 		int N = str.length();
 
-		int[][] dp = new int[N + 1][N + 1];
+		int[][] dp = new int[N][N];
 
 		for (int diag = 0; diag < str.length(); diag++) {
 
