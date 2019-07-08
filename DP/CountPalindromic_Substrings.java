@@ -1,10 +1,10 @@
 package DP;
 
-public class LongestPalindromicSubstrings_tab {
+public class CountPalindromic_Substrings {
 
 	public static void main(String[] args) {
 
-		String str = "";
+		String str = "abccbc";
 
 		func(str);
 
