@@ -4,7 +4,7 @@ public class LongestPalindromic_Subsequence {
 
 	public static void main(String[] args) {
 
-		String str = "GEEKSFORGEEKS";
+		String str = "agbdba";
 		lpsub(str);
 
 	}
@@ -32,12 +32,6 @@ public class LongestPalindromic_Subsequence {
 				} else {
 					dp[sp][ep] = Math.max(dp[sp][ep - 1], dp[sp + 1][ep]);
 
-					if (maxLength < diag) {
-						maxLength = diag;
-						startpoint = sp;
-						endpoint = ep;
-					}
-
 				}
 
 				sp++;
@@ -48,8 +42,7 @@ public class LongestPalindromic_Subsequence {
 
 		printMatrix(dp);
 
-		System.out.println(str.substring(startpoint, endpoint + 1));
-
+		System.out.println(dp[0][dp.length - 1]);
 	}
 
 	private static void printMatrix(int[][] cps) {
