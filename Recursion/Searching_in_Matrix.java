@@ -23,14 +23,16 @@ public class Searching_in_Matrix {
 			if (mat[i][j] == target) {
 				System.out.println(i + " , " + j);
 				return;
-			} else if (mat[i][j] > target) {
-
+			} else if (mat[i][j] < target) {
+				i++;
 			} else {
-
+				j--;
 			}
 
 		}
 
+		System.out.println("Not Found");
+		return;
 	}
 
 }
