@@ -1505,4 +1505,35 @@ public class Binary_Tree {
 
 		return currentval;
 	}
+
+	static boolean result = false;
+
+	public boolean Edge_tree_divide() {
+
+		Edge_tree_divide(root, NodeCount(root), result);
+
+		return result;
+	}
+
+	private int Edge_tree_divide(Node node, int count, boolean result) {
+
+		if (node == null) {
+			return 0;
+		}
+
+		int c = Edge_tree_divide(node.left, count, result) + Edge_tree_divide(node.right, count, result) + 1;
+
+		if (c == count - c) {
+			result = true;
+		}
+
+		return c;
+	}
+
+	private int NodeCount(Node node) {
+		if (node == null) {
+			return 0;
+		}
+		return (NodeCount(node.left) + NodeCount(node.right) + 1);
+	}
 }
