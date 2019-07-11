@@ -1,6 +1,7 @@
 package LinkedList;
 
 import java.util.HashSet;
+import java.util.PriorityQueue;
 
 public class LinkedList {
 	private class Node {
@@ -745,7 +746,7 @@ public class LinkedList {
 
 	}
 
-	public static LinkedList Merge(LinkedList list) {
+	public static LinkedList MergeSort(LinkedList list) {
 
 		if (list.size == 1) {
 			return list;
@@ -771,9 +772,9 @@ public class LinkedList {
 
 		l1.tail.next = null;
 
-		l1 = Merge(l1);
+		l1 = MergeSort(l1);
 
-		l2 = Merge(l2);
+		l2 = MergeSort(l2);
 
 		LinkedList l3 = MergeList(l1, l2);
 
@@ -781,6 +782,36 @@ public class LinkedList {
 
 		return l3;
 
+	}
+
+	class NodeK implements Comparable<NodeK> {
+		int data;
+		NodeK next;
+
+		public int compareTo(NodeK o) {
+			return o.data - this.data;
+		}
+	}
+
+	public LinkedList MergeKSorted(NodeK[] list) {
+		PriorityQueue<NodeK> pq = new PriorityQueue<>();
+
+		for (int i = 0; i < list.length; i++) {
+			pq.add(list[i]);
+		}
+
+		LinkedList ans = new LinkedList();
+
+		while (!pq.isEmpty()) {
+
+			NodeK temp = pq.poll();
+
+			pq.add(temp.next);
+
+			ans.addLast(temp.data);
+		}
+
+		return ans;
 	}
 
 	public void KreverseList(int k) {
@@ -812,18 +843,21 @@ public class LinkedList {
 		if (head == null) {
 			return null;
 		}
-		Node cur = head;
 
+		Node cur = head;
 		Node prev = null;
+
 		while (m > 1) {
 			prev = cur;
 			cur = cur.next;
 			m--;
 			n--;
 		}
+
 		Node con = prev;
 		Node join = cur;
 		Node temp;
+
 		while (n > 0) {
 			temp = cur.next;
 			cur.next = prev;
@@ -838,6 +872,7 @@ public class LinkedList {
 			head = prev;
 		}
 		join.next = cur;
+
 		return head;
 	}
 

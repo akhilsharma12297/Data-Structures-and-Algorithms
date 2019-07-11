@@ -157,7 +157,7 @@ public class LinkedList_Client {
 		l4.addLast(79);
 		l4.addLast(78);
 
-		LinkedList l5 = LinkedList.Merge(l4);
+		LinkedList l5 = LinkedList.MergeSort(l4);
 
 		System.out.println();
 		System.out.println();
