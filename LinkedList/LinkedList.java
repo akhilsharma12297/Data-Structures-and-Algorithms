@@ -806,8 +806,9 @@ public class LinkedList {
 
 			NodeK temp = pq.poll();
 
-			pq.add(temp.next);
-
+			if (temp.next != null) {
+				pq.add(temp.next);
+			}
 			ans.addLast(temp.data);
 		}
 
@@ -1040,6 +1041,30 @@ public class LinkedList {
 
 		right_flag = true;
 		target(right, left.next, tar);
+	}
+
+	public boolean targetBetter(int target) {
+		return targetBetter(head, target);
+	}
+
+	private boolean targetBetter(Node node, int target) {
+
+		Node temp = node;
+
+		HashSet<Integer> set = new HashSet<Integer>();
+
+		while (temp != null) {
+			int val = temp.data;
+
+			if (set.contains(target - val)) {
+				return true;
+			}
+
+			set.add(val);
+
+			temp = temp.next;
+		}
+		return false;
 	}
 
 	public void removeDuplicateSorted() {
