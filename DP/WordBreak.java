@@ -1,6 +1,7 @@
 package DP;
 
 import java.util.HashSet;
+import java.util.List;
 
 public class WordBreak {
 
@@ -15,12 +16,12 @@ public class WordBreak {
 			dict.add(str);
 		}
 
-		System.out.println(wordBreak("ilikesamsung"));
-		System.out.println(wordBreak("iiiiiiii"));
-		System.out.println(wordBreak(""));
-		System.out.println(wordBreak("ilikelikeimangoiii"));
-		System.out.println(wordBreak("samsungandmango"));
-		System.out.println(wordBreak("samsungandmangok"));
+		System.out.println(wordBreakDP("ilikesamsung"));
+		System.out.println(wordBreakDP("iiiiiiii"));
+		System.out.println(wordBreakDP(""));
+		System.out.println(wordBreakDP("ilikelikeimangoiii"));
+		System.out.println(wordBreakDP("samsungandmango"));
+		System.out.println(wordBreakDP("samsungandmangok"));
 
 	}
 
@@ -39,5 +40,23 @@ public class WordBreak {
 		}
 		return false;
 
+	}
+
+	public static boolean wordBreakDP(String s) {
+
+		boolean[] f = new boolean[s.length() + 1];
+
+		f[0] = true;
+
+		for (int i = 1; i <= s.length(); i++) {
+			for (int j = 0; j < i; j++) {
+				if (f[j] && dict.contains(s.substring(j, i))) {
+					f[i] = true;
+					break;
+				}
+			}
+		}
+
+		return f[s.length()];
 	}
 }

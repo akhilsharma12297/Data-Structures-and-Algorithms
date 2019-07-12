@@ -8,7 +8,7 @@ public class CoinChange_Permutation_Tab {
 
 		int amt = 10;
 
-		int[] coins = new int[] { 2, 3, 5, 6 };
+		int[] coins = new int[] { 2, 3, 5, 6 };   
 
 		func(coins, 10);
 
