@@ -3,27 +3,41 @@ package DP;
 public class Optimal_Binary_Search_Tree {
 
 	public static int minCost(int input[], int freq[]) {
-		int T[][] = new int[input.length][input.length];
+		int dp[][] = new int[input.length][input.length];
 
-		for (int i = 0; i < T.length; i++) {
-			T[i][i] = freq[i];
+		for (int i = 0; i < dp.length; i++) {
+			dp[i][i] = freq[i];
 		}
-
+		printMatrix(dp);
+		System.out.println();
 		for (int l = 2; l <= input.length; l++) {
 			for (int i = 0; i <= input.length - l; i++) {
 				int j = i + l - 1;
-				T[i][j] = Integer.MAX_VALUE;
+				dp[i][j] = Integer.MAX_VALUE;
 				int sum = getSum(freq, i, j);
 
 				for (int k = i; k <= j; k++) {
-					int val = sum + (k - 1 < i ? 0 : T[i][k - 1]) + (k + 1 > j ? 0 : T[k + 1][j]);
-					if (val < T[i][j]) {
-						T[i][j] = val;
+					int val = sum + (k - 1 < i ? 0 : dp[i][k - 1]) + (k + 1 > j ? 0 : dp[k + 1][j]);
+					if (val < dp[i][j]) {
+						dp[i][j] = val;
 					}
 				}
 			}
 		}
-		return T[0][input.length - 1];
+		printMatrix(dp);
+		System.out.println();
+		return dp[0][input.length - 1];
+	}
+
+	private static void printMatrix(int[][] mat) {
+		for (int i = 0; i < mat.length; i++) {
+			for (int j = 0; j < mat[0].length; j++) {
+
+				System.out.print(mat[i][j] + " ");
+
+			}
+			System.out.println();
+		}
 	}
 
 	private static int getSum(int freq[], int i, int j) {

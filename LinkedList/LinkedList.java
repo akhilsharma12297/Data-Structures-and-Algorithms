@@ -1067,22 +1067,6 @@ public class LinkedList {
 		return false;
 	}
 
-	public void removeDuplicateSorted() {
-
-		Node curr = head;
-
-		while (curr != null) {
-			Node temp = curr;
-
-			while (temp != null && temp.data == curr.data) {
-				temp = temp.next;
-			}
-
-			curr.next = temp;
-			curr = curr.next;
-		}
-	}
-
 	public int maxPalindrome() {
 		return maxPalindrome(head);
 	}
@@ -1130,6 +1114,19 @@ public class LinkedList {
 		return count;
 	}
 
+	public void RemoveDuplicate_RC() {
+		head = RemoveDuplicate_RC(head);
+	}
+
+	public Node RemoveDuplicate_RC(Node head) {
+		if (head == null || head.next == null)
+			return head;
+
+		head.next = RemoveDuplicate_RC(head.next);
+
+		return head.data == head.next.data ? head.next : head;
+	}
+
 	public void RemoveDuplicateSorted() {
 
 		removeDuplicateSorted(head);
@@ -1166,15 +1163,12 @@ public class LinkedList {
 
 		Node nxt = null;
 
-		Node temp = null;
-
 		while (curr != null && curr.next != null) {
 
 			nxt = curr;
 
 			while (nxt.next != null) {
 				if (nxt.data == nxt.next.data) {
-					// temp = nxt.next;
 					nxt.next = nxt.next.next;
 				} else {
 					nxt = nxt.next;
