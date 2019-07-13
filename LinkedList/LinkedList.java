@@ -886,12 +886,10 @@ public class LinkedList {
 		int i = 0;
 
 		while (temp != null) {
-
 			if (ctr >= m && n >= ctr) {
 				arr[i] = temp.data;
 				i++;
 			}
-
 			ctr++;
 			temp = temp.next;
 		}
