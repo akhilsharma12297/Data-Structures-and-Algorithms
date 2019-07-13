@@ -1267,6 +1267,64 @@ public class LinkedList {
 		return head;
 	}
 
+	private LinkedList AddList(Node l1, Node l2) {
+
+		LinkedList ansList = new LinkedList();
+
+		l1 = reverseList(l1);
+		l2 = reverseList(l2);
+
+		int carry = 0;
+		int val = 0;
+
+		while (l1 != null || l2 != null) {
+
+			val = l1.data + l2.data + carry;
+
+			if (val >= 10) {
+				carry = val / 10;
+				val = val % 10;
+			}
+
+			ansList.addFirst(val);
+
+			l1 = l1.next;
+			l2 = l2.next;
+		}
+
+		while (l1 != null) {
+			val = l1.data + carry;
+
+			if (val >= 10) {
+				carry = val / 10;
+				val = val % 10;
+			}
+
+			ansList.addFirst(val);
+
+			l1 = l1.next;
+		}
+
+		while (l2 != null) {
+			val = l2.data + carry;
+
+			if (val >= 10) {
+				carry = val / 10;
+				val = val % 10;
+			}
+
+			ansList.addFirst(val);
+
+			l2 = l2.next;
+		}
+
+		if (carry != 0) {
+			ansList.addFirst(carry);
+		}
+
+		return ansList;
+	}
+
 	public void removeTheLoop(Node head) {
 
 		if (head.next == head) {
