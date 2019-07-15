@@ -1021,7 +1021,26 @@ public class LinkedList {
 
 	}
 
-	public void zigzag() {
+	public void oddevenShuffle() {
+
+		Node odd = head;
+		Node even = head.next;
+
+		Node evenhead = even;
+
+		while (even != null && even.next != null) {
+			odd.next = even.next;
+			odd = odd.next;
+
+			even.next = odd.next;
+			even = even.next;
+		}
+
+		odd.next = evenhead;
+
+	}
+
+	public void zigzagArrange() {
 		if (head == null) {
 			return;
 		}
