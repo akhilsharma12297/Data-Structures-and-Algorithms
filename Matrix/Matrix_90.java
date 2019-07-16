@@ -1,4 +1,4 @@
-package Recursion;
+package Matrix;
 
 public class Matrix_90 {
 

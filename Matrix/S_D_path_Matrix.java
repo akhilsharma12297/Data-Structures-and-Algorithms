@@ -1,4 +1,4 @@
-package Recursion;
+package Matrix;
 
 public class S_D_path_Matrix {
 
