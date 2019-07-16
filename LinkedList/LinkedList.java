@@ -1035,9 +1035,9 @@ public class LinkedList {
 			even.next = odd.next;
 			even = even.next;
 		}
-
 		odd.next = evenhead;
 
+		
 	}
 
 	public void zigzagArrange() {

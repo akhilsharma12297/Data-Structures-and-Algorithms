@@ -1,6 +1,6 @@
 package Recursion;
 
-import java.util.*;
+import java.util.Random;
 
 public class Random_in_Array {
 	public static void main(String[] args) {
