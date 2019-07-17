@@ -628,4 +628,23 @@ public class BST {
 
 		return t1;
 	}
+
+	public void NextGreaterTree() {
+		NextGreaterTree(root);
+	}
+
+	static int Sum = 0;
+
+	private void NextGreaterTree(Node node) {
+
+		if (node == null) {
+			return;
+		}
+
+		NextGreaterTree(node.right);
+
+		NextGreaterTree(node.left);
+
+	}
+
 }
