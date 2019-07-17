@@ -2,6 +2,8 @@ package Binary_Tree;
 
 import java.util.*;
 
+import Binary_Tree.No320_Boundary_Traversal.Node;
+
 public class Binary_Tree {
 
 	private class Node {
@@ -676,26 +678,6 @@ public class Binary_Tree {
 
 	}
 
-	private void printLeft(Node node) {
-
-		if (node != null) {
-
-			if (node.left != null) {
-
-				System.out.println(node.data);
-
-				printLeft(node.left);
-			} else if (node.right != null) {
-
-				System.out.println(node.data);
-
-				printLeft(node.right);
-			}
-
-		}
-
-	}
-
 	public void printRightView() {
 		rightview(root, 0);
 	}
@@ -715,25 +697,6 @@ public class Binary_Tree {
 
 		rightview(node.right, level + 1);
 		rightview(node.left, level + 1);
-
-	}
-
-	private void printRight(Node node) {
-		if (node != null) {
-
-			if (node.right != null) {
-
-				System.out.println(node.data);
-
-				printRight(node.right);
-			} else if (node.left != null) {
-
-				System.out.println(node.data);
-
-				printRight(node.left);
-			}
-
-		}
 
 	}
 
@@ -1499,7 +1462,7 @@ public class Binary_Tree {
 		int leftval = max_path_node_to_Node(node.left);
 		int rightval = max_path_node_to_Node(node.right);
 
-		int currentval = Math.max(Math.min(leftval, rightval) + node.data, node.data);
+		int currentval = Math.max(Math.max(leftval, rightval) + node.data, node.data);
 
 		max = Math.max(currentval, leftval + node.data + rightval);
 
@@ -1536,4 +1499,79 @@ public class Binary_Tree {
 		}
 		return (NodeCount(node.left) + NodeCount(node.right) + 1);
 	}
+
+	public void Boundary_Traversal() {
+
+		Node node = this.root;
+
+		if (node != null) {
+
+			System.out.println(node.data);
+
+			printLeft(node.left);
+
+			printLeave(node.left);
+			printLeave(node.right);
+
+			printRight(node.right);
+
+		}
+
+	}
+
+	private void printLeft(Node node) {
+
+		if (node != null) {
+
+			if (node.left != null) {
+
+				System.out.println(node.data);
+
+				printLeft(node.left);
+			} else if (node.right != null) {
+
+				System.out.println(node.data);
+
+				printLeft(node.right);
+			}
+
+		}
+
+	}
+
+	private void printRight(Node node) {
+		if (node != null) {
+
+			if (node.right != null) {
+
+				System.out.println(node.data);
+
+				printRight(node.right);
+			} else if (node.left != null) {
+
+				System.out.println(node.data);
+
+				printRight(node.left);
+			}
+
+		}
+
+	}
+
+	private void printLeave(Node node) {
+
+		if (node == null) {
+			return;
+		}
+		if (node.left == null && node.right == null) {
+			System.out.println(node.data + " ");
+			return;
+		}
+
+		printLeave(node.left);
+
+		printLeave(node.right);
+
+	}
+
 }
