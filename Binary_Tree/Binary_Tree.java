@@ -2,8 +2,6 @@ package Binary_Tree;
 
 import java.util.*;
 
-import Binary_Tree.No320_Boundary_Traversal.Node;
-
 public class Binary_Tree {
 
 	private class Node {
@@ -1643,5 +1641,58 @@ public class Binary_Tree {
 		CountKFarLeaf(node.left, list, k);
 
 		list.remove(list.size() - 1);
+	}
+
+	public void LongestSequence() {
+		LongestSequence(root, 0);
+	}
+
+	static int ml = 0;
+
+	public void LongestSequence(Node node, int lsf) {
+
+		if (ml < lsf) {
+			ml = lsf;
+		}
+
+		if (node.left != null) {
+
+			LongestSequence(node.left, node.data < node.left.data ? lsf + 1 : 1);
+		}
+
+		if (node.right != null) {
+			LongestSequence(node.right, node.data < node.right.data ? lsf + 1 : 1);
+		}
+	}
+
+	public void LongestSequencePrint() {
+
+		LongestSequencePrint(root, 0);
+	}
+
+	static boolean Bflag = false;
+
+	static boolean Eflag = false;
+
+	private void LongestSequencePrint(Node node, int lsf) {
+		if (ml == lsf) {
+
+			Bflag = true;
+		}
+		if (!Bflag && node.left != null) {
+			LongestSequencePrint(node.left, node.data < node.left.data ? lsf + 1 : 1);
+		}
+
+		if (!Bflag && node.right != null) {
+			LongestSequencePrint(node.left, node.data < node.left.data ? lsf + 1 : 1);
+		}
+
+		if (Bflag == true && Eflag == false) {
+			System.out.println(node.data);
+			if (lsf == 1) {
+				Eflag = true;
+			}
+		}
+
 	}
 }
