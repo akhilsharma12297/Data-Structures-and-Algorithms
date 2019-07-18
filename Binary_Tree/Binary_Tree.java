@@ -346,6 +346,51 @@ public class Binary_Tree {
 
 	}
 
+	public void printKfarBetter(int data, int k) {
+		printKfarBetter(root, data, k);
+	}
+
+	static int dist = 0;
+
+	private boolean printKfarBetter(Node node, int data, int k) {
+		if (node == null) {
+			return false;
+		} else if (node.data == data) {
+
+			kDownBlocker(node, k, null);
+
+		} else if (printKfarBetter(node.left, data, k)) {
+
+			kDownBlocker(node, k - dist, node.left);
+
+			dist++;
+			return true;
+
+		} else if (printKfarBetter(node.right, data, k)) {
+
+			kDownBlocker(node, k - dist, node.right);
+			dist++;
+			return true;
+
+		}
+
+		return false;
+
+	}
+
+	private void kDownBlocker(Node node, int k, Node blocker) {
+		if (node == null || blocker == node || k < 0) {
+			return;
+		}
+
+		if (k == 0) {
+			System.out.println(node.data);
+		}
+
+		kDownBlocker(node.left, k - 1, blocker);
+		kDownBlocker(node.right, k - 1, blocker);
+	}
+
 	Node head = new Node();
 
 	static Node prev = null;
@@ -1344,6 +1389,7 @@ public class Binary_Tree {
 	}
 
 	static String NullSymbol = "X";
+
 	static String Deltmiter = ",";
 
 	public String Serialize_LEETCODE() {
@@ -1574,4 +1620,28 @@ public class Binary_Tree {
 
 	}
 
+	public void CountKFarLeaf(int k) {
+
+		ArrayList<Node> pathsofar = new ArrayList<Binary_Tree.Node>();
+		CountKFarLeaf(root, pathsofar, k);
+	}
+
+	private void CountKFarLeaf(Node node, ArrayList<Node> list, int k) {
+
+		if (node == null) {
+			return;
+		}
+
+		list.add(node);
+
+		if (list.size() > k && node.left == null && node.right == null) {
+			System.out.print(list.get(list.size() - k).data + " ");
+			list.set(list.size() - k, null);
+		}
+
+		CountKFarLeaf(node.left, list, k);
+		CountKFarLeaf(node.left, list, k);
+
+		list.remove(list.size() - 1);
+	}
 }

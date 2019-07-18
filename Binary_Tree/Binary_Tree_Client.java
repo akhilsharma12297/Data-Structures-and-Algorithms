@@ -97,6 +97,8 @@ public class Binary_Tree_Client {
 		System.out.println();
 
 		System.out.println(bt.Serialize_LEETCODE());
+
+		bt.CountKFarLeaf(1);
 	}
 
 }
