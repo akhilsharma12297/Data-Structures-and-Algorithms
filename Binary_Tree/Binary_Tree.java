@@ -904,7 +904,7 @@ public class Binary_Tree {
 
 		mypair.isBST = lp.isBST && rp.isBST && node.data >= lp.max && node.data < rp.min;
 		mypair.max = Math.max(node.data, Math.max(lp.max, rp.max));
-		mypair.min = Math.max(node.data, Math.max(lp.min, rp.min));
+		mypair.min = Math.min(node.data, Math.min(lp.min, rp.min));
 
 		return mypair;
 
