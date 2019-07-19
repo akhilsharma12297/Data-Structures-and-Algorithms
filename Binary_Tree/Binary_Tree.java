@@ -1809,4 +1809,37 @@ public class Binary_Tree {
 
 	}
 
+	public void reversePrint() {
+		reversePrint(root);
+	}
+
+	public void reversePrint(Node node) {
+		LinkedList<Node> queue = new LinkedList<>();
+		LinkedList<Node> stack = new LinkedList<>();
+
+		queue.addLast(node);
+
+		while (!queue.isEmpty()) {
+
+			int size = queue.size();
+
+			while (size-- > 0) {
+
+				Node temp = queue.removeFirst();
+
+				stack.addFirst(temp);
+
+				if (temp.right != null)
+					queue.addLast(temp.right);
+				if (temp.left != null)
+					queue.addLast(temp.left);
+
+			}
+		}
+
+		while (!stack.isEmpty()) {
+			System.out.print(stack.removeFirst().data + " ");
+		}
+	}
+
 }
