@@ -1695,4 +1695,49 @@ public class Binary_Tree {
 		}
 
 	}
+
+	public void morrisInorderTraversal() {
+
+		Node node = root;
+
+		while (node != null) {
+			if (node.left == null) {
+
+				System.out.println(node.data);
+
+				node = node.right;
+
+			} else {
+
+				Node l_rm = leftRMost(node);
+
+				if (l_rm.right == null) {
+
+					l_rm.right = node;
+
+					node = node.left;
+
+				} else if (l_rm.right == node) {
+
+					l_rm.right = null;
+
+					System.out.println(node.data);
+
+					node = node.right;
+				}
+			}
+		}
+
+	}
+
+	private Node leftRMost(Node node) {
+
+		Node l_rm = node.left;
+
+		while (l_rm.right != null && l_rm.right != node) {
+			l_rm = l_rm.right;
+		}
+		return l_rm;
+	}
+
 }
