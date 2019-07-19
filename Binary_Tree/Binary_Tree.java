@@ -1697,7 +1697,7 @@ public class Binary_Tree {
 	}
 
 	public void morrisInorderTraversal() {
-
+		// L-N-R
 		Node node = root;
 
 		while (node != null) {
@@ -1738,6 +1738,75 @@ public class Binary_Tree {
 			l_rm = l_rm.right;
 		}
 		return l_rm;
+	}
+
+	public void morrisPreorderTraversal() {
+		// N-L-R
+		Node node = root;
+
+		while (node != null) {
+			if (node.left == null) {
+
+				System.out.println(node.data);
+
+				node = node.right;
+
+			} else {
+
+				Node l_rm = leftRMost(node);
+
+				if (l_rm.right == null) {
+
+					System.out.println(node.data);
+
+					l_rm.right = node;
+
+					node = node.left;
+
+				} else if (l_rm.right == node) {
+
+					l_rm.right = null;
+
+					node = node.right;
+				}
+			}
+		}
+
+	}
+
+	public void TreefromPreOrderInOrder(String pre, String in) {
+
+		root = construct(pre.toCharArray(), 0, pre.length() - 1, in.toCharArray(), 0, in.length() - 1);
+
+	}
+
+	private Node construct(char[] pre, int psi, int pei, char[] in, int isi, int iei) {
+
+		if (psi < pei || isi < iei) {
+			return null;
+		}
+
+		int idx = -1;
+
+		for (int i = isi; i <= iei; i++) {
+			if (in[i] == pre[psi]) {
+				idx = i;
+				break;
+			}
+		}
+
+		int lhs = idx - isi;
+
+		Node node = new Node();
+		node.data = pre[psi];
+		node.left = construct(pre, psi + 1, pei, in, isi, idx - 1);
+		node.right = construct(pre, psi + lhs + 1, pei, in, idx + 1, iei);
+
+		return node;
+	}
+
+	public void TreefromPostOrderInOrder(String pre, String in) {
+
 	}
 
 }
