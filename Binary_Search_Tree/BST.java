@@ -668,4 +668,54 @@ public class BST {
 		}
 
 	}
+
+	public int Pca(int x, int y, int p) {
+
+		Node node = new Node();
+
+		Pca(root, x, y, p, node);
+
+		if (node.left != null && node.right != null) {
+
+			return node.right.data;
+		}
+		return -1;
+	}
+
+	private boolean Pca(Node node, int x, int y, int p, Node ans) {
+
+		if (node == null) {
+			return false;
+		}
+
+		if (node.data < x && node.data < y) {
+
+			boolean left = Pca(node.left, x, y, p, ans);
+
+			if (left && ans.data + 1 == p) {
+				ans.right = node;
+			}
+			ans.data += 1;
+			return left;
+
+		} else if (node.data > x && node.data > y) {
+
+			boolean right = Pca(node.right, x, y, p, ans);
+
+			if (right && ans.data + 1 == p) {
+				ans.right = node;
+			}
+			ans.data += 1;
+			return right;
+		} else {
+			ans.left = node;
+			ans.data = 1;
+			if (ans.data == p) {
+				ans.right = node;
+			}
+			return true;
+		}
+
+	}
+
 }
