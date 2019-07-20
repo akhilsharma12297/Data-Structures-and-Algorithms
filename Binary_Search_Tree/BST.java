@@ -718,4 +718,60 @@ public class BST {
 
 	}
 
+	static int idx = 0;
+
+	public void printLeafPreOrder(int[] arr) {
+		printLeafPreOrder(arr, Integer.MIN_VALUE, Integer.MAX_VALUE);
+	}
+
+	private boolean printLeafPreOrder(int[] arr, int min, int max) {
+
+		if (idx >= arr.length) {
+			return false;
+		}
+
+		int val = arr[idx];
+		if (min < val && val > max) {
+			boolean left = printLeafPreOrder(arr, min, val);
+			boolean right = printLeafPreOrder(arr, val, max);
+
+			if ((!left) && (!right)) {
+				System.out.print(val + " ");
+				return true;
+			}
+		}
+		return false;
+
+	}
+
+	public void printCommoninBST(Node node1, Node node2) {
+
+		LinkedList<Node> stack1 = new LinkedList<>();
+		getAllLeft(node1, stack1);
+
+		LinkedList<Node> stack2 = new LinkedList<>();
+		getAllLeft(node2, stack2);
+
+		while (!stack1.isEmpty() && !stack2.isEmpty()) {
+			if (stack1.getFirst().data == stack2.getFirst().data) {
+				System.out.print(stack1.getFirst().data + " ");
+
+				getAllLeft(stack1.removeFirst().right, stack1);
+				getAllLeft(stack2.removeFirst().right, stack2);
+
+			} else if (stack1.getFirst().data < stack2.getFirst().data) {
+				getAllLeft(stack1.removeFirst().right, stack1);
+			} else {
+				getAllLeft(stack2.removeFirst().right, stack2);
+			}
+
+		}
+	}
+
+	public void getAllLeft(Node node, LinkedList<Node> stack) {
+		while (node != null) {
+			stack.addFirst(node);
+			node = node.left;
+		}
+	}
 }
