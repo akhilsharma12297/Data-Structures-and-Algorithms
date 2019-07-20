@@ -500,40 +500,39 @@ public class BST {
 
 	}
 
-	static Node firstSwapped, lastSwapped, prevNode;
+	static Node first, second, prev;
 
 	public void FixBST() {
-		firstSwapped = lastSwapped = prevNode = null;
+
 		FixBST(root);
 
-		int temp = firstSwapped.data;
+		int temp = first.data;
 
-		firstSwapped.data = lastSwapped.data;
+		first.data = second.data;
 
-		lastSwapped.data = temp;
+		second.data = temp;
+
 	}
 
 	private void FixBST(Node node) {
-
 		if (node == null) {
 			return;
 		}
 
 		FixBST(node.left);
 
-		if (prevNode != null) {
-			if (prevNode.data > node.data) {
-				if (firstSwapped == null) {
-					firstSwapped = prevNode;
-				}
-				lastSwapped = node;
-			}
+		if (first != null && (prev == null || prev.data >= node.data)) {
+			first = prev;
 		}
 
-		prevNode = node;
+		if (first == null && prev.data >= node.data) {
+
+			second = node;
+		}
+
+		prev = node;
 
 		FixBST(node.right);
-
 	}
 
 	static Boolean trigger = false;
@@ -647,4 +646,26 @@ public class BST {
 
 	}
 
+	public int RangeSum(int l, int r) {
+		return RangeSum(root, l, r);
+	}
+
+	private int RangeSum(Node node, int l, int r) {
+
+		if (node == null) {
+			return 0;
+		}
+
+		if (node.data > r) {
+			return RangeSum(node.left, l, r);
+		} else if (node.data < l) {
+			return RangeSum(node.right, l, r);
+		} else {
+			int res = node.data;
+			res += RangeSum(node.left, l, r);
+			res += RangeSum(node.right, l, r);
+			return res;
+		}
+
+	}
 }

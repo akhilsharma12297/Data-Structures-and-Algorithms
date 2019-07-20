@@ -222,7 +222,7 @@ public class Binary_Tree {
 
 		}
 
-		return 0;
+		return -1;
 
 	}
 
