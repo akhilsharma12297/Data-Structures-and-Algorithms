@@ -825,4 +825,42 @@ public class BST {
 		}
 
 	}
+
+	public boolean isPerfect(Node node) {
+
+		int d = depth(node);
+		return isperfect(node, d, 0);
+
+	}
+
+	public boolean isperfect(Node node, int maxDepth, int level) {
+		if (node == null) {
+			return true;
+		}
+
+		if (level + 1 > maxDepth) {
+			return false;
+		}
+
+		if (node.left == null && node.right == null) {
+			return ((level + 1) == maxDepth);
+		}
+
+		else if (node.left == null || node.right == null) {
+			return false;
+		}
+
+		return (isperfect(node.left, maxDepth, level + 1) && isperfect(node.right, maxDepth, level + 1));
+	}
+
+	public int depth(Node node) {
+		int d = 0;
+		while (node != null) {
+			d++;
+			node = node.left;
+		}
+		return d;
+
+	}
+
 }
