@@ -774,4 +774,55 @@ public class BST {
 			node = node.left;
 		}
 	}
+
+	private class Res {
+		int pre = -1;
+		int suc = -1;
+	}
+
+	public void inorderPreSuc(int val) {
+		Res r = new Res();
+		inroderPreSuc(root, r, val);
+	}
+
+	private void inroderPreSuc(Node node, Res r, int val) {
+
+		if (node == null) {
+			return;
+		}
+
+		if (node.data == val) {
+
+			if (node.left != null) {
+
+				Node temp = node.left;
+				while (temp.right != null) {
+					node = node.right;
+				}
+				r.pre = node.data;
+
+			}
+
+			if (node.right != null) {
+
+				Node temp = node.right;
+				while (temp.left != null) {
+					node = node.right;
+				}
+				r.suc = node.data;
+
+			}
+
+		}
+
+		if (node.data > val) {
+			r.suc = node.data;
+			inroderPreSuc(node.left, r, val);
+
+		} else {
+			r.pre = node.data;
+			inroderPreSuc(node.right, r, val);
+		}
+
+	}
 }
