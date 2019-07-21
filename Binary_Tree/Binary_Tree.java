@@ -1717,7 +1717,7 @@ public class Binary_Tree {
 
 					node = node.left;
 
-				} else if (l_rm.right == node) {
+				} else if (l_rm.right != node) {
 
 					l_rm.right = null;
 
@@ -1761,7 +1761,7 @@ public class Binary_Tree {
 
 					node = node.left;
 
-				} else if (l_rm.right == node) {
+				} else if (l_rm.right != node) {
 
 					l_rm.right = null;
 
