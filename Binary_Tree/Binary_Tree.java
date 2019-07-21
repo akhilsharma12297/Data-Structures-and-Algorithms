@@ -1747,8 +1747,6 @@ public class Binary_Tree {
 		while (node != null) {
 			if (node.left == null) {
 
-				System.out.println(node.data);
-
 				node = node.right;
 
 			} else {
