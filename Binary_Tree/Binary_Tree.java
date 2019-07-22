@@ -1853,11 +1853,11 @@ public class Binary_Tree {
 
 	}
 
-	public static int sumNumbers(Node node) {
+	public int sumNumbers(Node node) {
 		return sumnumber(node, 0);
 	}
 
-	public static int sumnumber(Node node, int sum) {
+	public int sumnumber(Node node, int sum) {
 		if (node == null) {
 			return 0;
 		}
@@ -1870,6 +1870,60 @@ public class Binary_Tree {
 		ans += sumnumber(node.left, sum * 10 + node.data);
 		ans += sumnumber(node.right, sum * 10 + node.data);
 		return ans;
+	}
+
+	public int sumRootToLeaf(Node node) {
+		return pathSum_0_1_Tree(node, "");
+	}
+
+	public int pathSum_0_1_Tree(Node root, String binSoFar) {
+		if (root == null)
+			return 0;
+
+		binSoFar += root.data;
+
+		if (root.left == null && root.right == null)
+
+			return Integer.parseInt(binSoFar, 2);
+
+		return pathSum_0_1_Tree(root.right, binSoFar) + pathSum_0_1_Tree(root.left, binSoFar);
+	}
+
+	public int sumOfLeftLeaves(Node node) {
+		return helpersumOfLeftLeaves(node, false);
+	}
+
+	public int helpersumOfLeftLeaves(Node node, boolean isleaf) {
+
+		if (node == null) {
+			return 0;
+		}
+
+		if (node.left == null && node.right == null && (isleaf)) {
+			return node.data;
+		}
+
+		return helpersumOfLeftLeaves(node.left, true) + helpersumOfLeftLeaves(node.right, false);
+
+	}
+
+	public int rightLeafSum(Node root) {
+
+		return helperrightLeafSum(root, false);
+
+	}
+
+	public int helperrightLeafSum(Node node, boolean isRight) {
+		if (node == null) {
+			return 0;
+		}
+
+		if (node.right == null && node.left == null && (isRight)) {
+			return node.data;
+		}
+
+		return (helperrightLeafSum(node.left, false) + helperrightLeafSum(node.right, true));
+
 	}
 
 }
