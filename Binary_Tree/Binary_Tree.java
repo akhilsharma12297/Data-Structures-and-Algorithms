@@ -1840,4 +1840,36 @@ public class Binary_Tree {
 		}
 	}
 
+	public void printPostOrderIN_PRE(int in[], int pre[], int n) {
+		printPostOrderIN_PRE(pre, 0, n - 1, in, 0, n - 1);
+
+	}
+
+	private void printPostOrderIN_PRE(int[] pre, int psp, int pep, int[] in, int isp, int iep) {
+
+		if (psp > pep || isp > iep) {
+			return;
+		}
+
+	}
+
+	public static int sumNumbers(Node node) {
+		return sumnumber(node, 0);
+	}
+
+	public static int sumnumber(Node node, int sum) {
+		if (node == null) {
+			return 0;
+		}
+
+		if (node.left == null && node.right == null) {
+			return sum * 10 + node.data;
+		}
+
+		int ans = 0;
+		ans += sumnumber(node.left, sum * 10 + node.data);
+		ans += sumnumber(node.right, sum * 10 + node.data);
+		return ans;
+	}
+
 }
