@@ -1,8 +1,8 @@
 package DP;
 
-public class Jump_Game_Array {
+public class Min_Jump {
 	public static void main(String[] args) {
-		int[] arr = { 2, 3, 1, 1, 4 };
+		int[] arr = { 1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9 };
 		System.out.println(jump(arr));
 	}
 
@@ -13,6 +13,7 @@ public class Jump_Game_Array {
 		int jump = 0;
 
 		for (int idx = 0; idx < arr.length; idx++) {
+
 			if (idx == arr.length - 1) {
 				return jump;
 			}
