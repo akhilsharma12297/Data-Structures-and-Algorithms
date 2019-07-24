@@ -1224,6 +1224,48 @@ public class Binary_Tree {
 		KthLargest(node.left, k);
 	}
 
+	public void KthLargestBetter(int k) {
+		int count = 0;
+		Node node = root;
+
+		while (node != null) {
+			if (node.right == null) {
+
+				if (++count == k) {
+					System.out.println(node.data);
+				}
+				node = node.left;
+			} else {
+
+				Node temp = r_lM(node);
+
+				if (temp.left == null) {
+
+					temp.left = node;
+
+					node = node.left;
+
+				} else {
+
+					temp.left = null;
+
+					node = node.left;
+
+				}
+
+			}
+		}
+	}
+
+	private Node r_lM(Node node) {
+
+		Node temp = node.right;
+		while (node.left != null || temp.left != node) {
+			temp = temp.left;
+		}
+		return temp;
+	}
+
 	public void MergeBT(Binary_Tree tree1, Binary_Tree tree2) {
 
 		Stack<Node> stack1 = new Stack<Node>();
@@ -1925,5 +1967,4 @@ public class Binary_Tree {
 		return (helperrightLeafSum(node.left, false) + helperrightLeafSum(node.right, true));
 
 	}
-
 }
