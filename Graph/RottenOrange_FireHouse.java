@@ -41,11 +41,11 @@ public class RottenOrange_FireHouse {
 			}
 		}
 
-		rotorange(arr, queue);
+		System.out.println(rotorange(arr, queue));
 
 	}
 
-	private static void rotorange(int[][] arr, LinkedList<Node> queue) {
+	private static int rotorange(int[][] arr, LinkedList<Node> queue) {
 
 		int ts = 0;
 		while (!queue.isEmpty()) {
@@ -94,8 +94,11 @@ public class RottenOrange_FireHouse {
 			}
 		}
 
-		System.out.println(fresh + " + " + oldrotten + " = " + rotten);
-		System.out.println(ts);
+		if (fresh != rotten) {
+			return -1;
+		}
+
+		return ts;
 
 	}
 
@@ -114,6 +117,6 @@ public class RottenOrange_FireHouse {
 
 		int mat[][] = { { 2, 1, 1 }, { 1, 1, 0 }, { 0, 1, 1 } };
 
-		fun(arr);
+		fun(mat);
 	}
 }
