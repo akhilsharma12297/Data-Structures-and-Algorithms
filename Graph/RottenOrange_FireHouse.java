@@ -94,14 +94,14 @@ public class RottenOrange_FireHouse {
 			}
 		}
 
-		System.out.println(rotten + " + " + oldrotten + " = " + fresh);
+		System.out.println(fresh + " + " + oldrotten + " = " + rotten);
 		System.out.println(ts);
 
 	}
 
 	private static boolean isValid(int i, int j, int[][] arr) {
 
-		if (i > 0 && i < arr.length && j > 0 && j < arr[0].length)
+		if (i >= 0 && i < arr.length && j >= 0 && j < arr[0].length)
 			return true;
 
 		return false;
@@ -112,7 +112,7 @@ public class RottenOrange_FireHouse {
 				{ 0, 0, 0, 1, 1, 1, 0 }, { 0, 1, 0, 2, 1, 0, 0 }, { 2, 1, 0, 0, 1, 1, 0 }, { 0, 1, 1, 0, 0, 0, 0 },
 				{ 0, 0, 1, 1, 1, 1, 0 }, };
 
-		int mat[][] = { { 2, 1, 0, 2, 1 }, { 1, 0, 1, 2, 1 }, { 1, 0, 0, 2, 1 } };
+		int mat[][] = { { 2, 1, 1 }, { 1, 1, 0 }, { 0, 1, 1 } };
 
 		fun(arr);
 	}
