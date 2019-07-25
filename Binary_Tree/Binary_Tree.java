@@ -1190,10 +1190,7 @@ public class Binary_Tree {
 		int ls = NodeToNode(node.left);
 		int rs = NodeToNode(node.right);
 
-		int max_single = Math.max(Math.max(ls, rs) + node.data, node.data);
-
-		int max = Math.max(max_single, ls + rs + node.data);
-		res = Math.max(res, max);
+		int sum = Math.max(Math.max(ls, rs) + node.data, node.data);
 		return max_single;
 	}
 
@@ -1340,30 +1337,20 @@ public class Binary_Tree {
 	}
 
 	public int Ancestor_Difference(Node node) {
+
+		return Ancestor_Difference(node, node.data, node.data);
+	}
+
+	private int Ancestor_Difference(Node node, int min, int max) {
 		if (node == null) {
-			return 0;
+			return max - min;
 		}
 
-		if (node.left == null && node.right == null) {
-			return 0;
-		}
+		max = Math.max(max, node.data);
 
-		int lmax = Ancestor_Difference(node.left);
+		min = Math.min(min, node.data);
 
-		int rmax = Ancestor_Difference(node.right);
-
-		int lmaxdiff = Integer.MIN_VALUE;
-		int rmaxdiff = Integer.MIN_VALUE;
-
-		if (node.left != null) {
-			lmaxdiff = node.data - (node.left.data - lmax);
-		}
-
-		if (node.right != null) {
-			rmaxdiff = node.data - (node.right.data - rmax);
-		}
-
-		return Math.max(lmaxdiff, rmaxdiff);
+		return Math.max(Ancestor_Difference(node.left, min, max), Ancestor_Difference(node.right, min, max));
 	}
 
 	Node DllHead = new Node();
@@ -1675,9 +1662,9 @@ public class Binary_Tree {
 		list.add(node);
 
 		if (list.size() > k && node.left == null && node.right == null) {
-		
+
 			System.out.print(list.get(list.size() - k).data + " ");
-			
+
 			list.set(list.size() - k, null);
 		}
 
