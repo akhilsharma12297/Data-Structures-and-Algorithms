@@ -1243,7 +1243,7 @@ public class Binary_Tree {
 
 					temp.left = node;
 
-					node = node.left;
+					node = node.right;
 
 				} else {
 
