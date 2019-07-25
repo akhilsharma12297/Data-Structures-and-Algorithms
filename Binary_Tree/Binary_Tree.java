@@ -1675,7 +1675,9 @@ public class Binary_Tree {
 		list.add(node);
 
 		if (list.size() > k && node.left == null && node.right == null) {
+		
 			System.out.print(list.get(list.size() - k).data + " ");
+			
 			list.set(list.size() - k, null);
 		}
 
