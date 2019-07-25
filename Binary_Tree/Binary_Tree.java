@@ -1042,7 +1042,38 @@ public class Binary_Tree {
 
 	}
 
+	public void levelAvg_LevelOrder() {
+
+		LinkedList<Node> queue = new LinkedList<>();
+
+		queue.addFirst(root);
+
+		while (!queue.isEmpty()) {
+			int n = queue.size();
+
+			Double sum = 0.0;
+
+			for (int i = 0; i < n; i++) {
+				Node temp = queue.remove();
+
+				sum += temp.data;
+
+				if (temp.left != null) {
+					queue.addFirst(temp.left);
+				}
+
+				if (temp.right != null) {
+					queue.addFirst(temp.right);
+				}
+			}
+
+			System.out.println(sum / n);
+		}
+
+	}
+
 	public void ExtremeEndAlternative() {
+
 		LinkedList<Node> curr = new LinkedList<>();
 		LinkedList<Node> next = new LinkedList<>();
 		boolean trigger = true;
@@ -1157,15 +1188,16 @@ public class Binary_Tree {
 		if (node == null)
 			return null;
 
-		node.left = trimTreeWSumLessThanK(root.left, sum - node.data);
-		node.right = trimTreeWSumLessThanK(root.right, sum - node.data);
+		node.left = trimTreeWSumLessThanK(node.left, sum - node.data);
+
+		node.right = trimTreeWSumLessThanK(node.right, sum - node.data);
 
 		if (isLeaf(node)) {
 			if (sum > node.data)
 				node = null;
 		}
 
-		return root;
+		return node;
 	}
 
 	private boolean isLeaf(Node node) {
@@ -1173,25 +1205,6 @@ public class Binary_Tree {
 			return true;
 		}
 		return false;
-	}
-
-	public void NodeToNode() {
-		NodeToNode(root);
-	}
-
-	static int res;
-
-	private int NodeToNode(Node node) {
-
-		if (node == null) {
-			return 0;
-		}
-
-		int ls = NodeToNode(node.left);
-		int rs = NodeToNode(node.right);
-
-		int sum = Math.max(Math.max(ls, rs) + node.data, node.data);
-		return max_single;
 	}
 
 	static PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
@@ -1537,7 +1550,9 @@ public class Binary_Tree {
 
 		int currentval = Math.max(Math.max(leftval, rightval) + node.data, node.data);
 
-		max = Math.max(currentval, leftval + node.data + rightval);
+		int val = Math.max(currentval, leftval + node.data + rightval);
+
+		max = Math.max(max, val);
 
 		return currentval;
 	}
