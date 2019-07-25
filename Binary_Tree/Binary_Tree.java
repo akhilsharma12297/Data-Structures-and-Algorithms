@@ -409,12 +409,11 @@ public class Binary_Tree {
 		}
 
 		BTtoDLL(node.left);
-
 		if (prev == null) {
 			head = node;
 		} else {
 			prev.right = node;
-			root.left = prev;
+			node.left = prev;
 		}
 		prev = node;
 
@@ -599,9 +598,8 @@ public class Binary_Tree {
 			}
 
 			if (que1.isEmpty()) {
-				LinkedList<Node> temp = que1;
 				que1 = que2;
-				que2 = temp;
+				que2 = new LinkedList<>();
 				System.out.println();
 			}
 		}
@@ -645,10 +643,8 @@ public class Binary_Tree {
 				System.out.println();
 				ltr = !ltr;
 
-				Stack<Node> tempList = curr;
-
 				curr = next;
-				next = tempList;
+				next = new Stack<Binary_Tree.Node>();
 
 			}
 		}
@@ -1324,7 +1320,7 @@ public class Binary_Tree {
 
 	static Node prevNode = null;
 
-	private Node leafs_To_DLL() {
+	public Node leafs_To_DLL() {
 
 		leafs_To_DLL(root);
 
@@ -1345,7 +1341,7 @@ public class Binary_Tree {
 				DllHead = node;
 			} else {
 				prevNode.right = node;
-				root.left = prevNode;
+				node.left = prevNode;
 			}
 			prevNode = node;
 			return null;
