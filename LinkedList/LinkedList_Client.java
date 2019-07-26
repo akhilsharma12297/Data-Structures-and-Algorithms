@@ -27,9 +27,15 @@ public class LinkedList_Client {
 
 		System.out.println();
 
+		System.out.println();
+
 		ll.display();
 
-//		ll.KreverseList(3);
+		System.out.println();
+
+		ll.KreverseList(3);
+
+		System.out.println();
 
 		ll.display();
 

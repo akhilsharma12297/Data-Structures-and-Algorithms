@@ -291,14 +291,13 @@ public class Binary_Tree {
 
 	private ArrayList<Node> nodeToRootPath_Node(Node node, int data) {
 
-		ArrayList<Node> list = new ArrayList<>();
-
 		if (node == null) {
 			ArrayList<Node> bres = new ArrayList<>();
 			return bres;
 		}
 
 		if (node.data == data) {
+			ArrayList<Node> list = new ArrayList<>();
 			list.add(node);
 			return list;
 		}
@@ -353,9 +352,12 @@ public class Binary_Tree {
 	private boolean printKfarBetter(Node node, int data, int k) {
 		if (node == null) {
 			return false;
+
 		} else if (node.data == data) {
 
 			kDownBlocker(node, k, null);
+
+			return true;
 
 		} else if (printKfarBetter(node.left, data, k)) {
 

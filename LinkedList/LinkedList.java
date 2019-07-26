@@ -700,33 +700,30 @@ public class LinkedList {
 
 	}
 
-	public static LinkedList MergeList(LinkedList l1, LinkedList l2) {
+	public static LinkedList MergeList(LinkedList list1, LinkedList list2) {
 		LinkedList list = new LinkedList();
+		Node dummyTail = list.head;
+		Node temp;
 
-		Node temp1 = l1.head;
-		Node temp2 = l2.head;
+		Node l1 = list1.head;
+		Node l2 = list2.head;
 
-		while (temp1 != null && temp2 != null) {
-			if (temp1.data < temp2.data) {
-				list.addLast(temp1.data);
-				temp1 = temp1.next;
+		while (l1 != null && l2 != null) {
+			if (l1.data < l2.data) {
+				temp = l1;
+				l1 = l1.next;
 			} else {
-				list.addLast(temp2.data);
-				temp2 = temp2.next;
+				temp = l2;
+				l2 = l2.next;
 			}
-		}
 
-		while (temp1 != null) {
-			list.addLast(temp1.data);
-			temp1 = temp1.next;
+			dummyTail.next = temp;
+			dummyTail = temp;
 		}
-
-		while (temp2 != null) {
-			list.addLast(temp2.data);
-			temp2 = temp2.next;
-		}
+		dummyTail.next = l1 != null ? l1 : l2;
 
 		return list;
+
 	}
 
 	public Node midNode() {
@@ -744,7 +741,7 @@ public class LinkedList {
 
 		return slow;
 
-	}
+	}o
 
 	public static LinkedList MergeSort(LinkedList list) {
 
@@ -757,17 +754,13 @@ public class LinkedList {
 		LinkedList l1 = new LinkedList();
 
 		l1.head = list.head;
-
 		l1.tail = list.midNode();
-
 		l1.size = (list.size + 1) / 2;
 
 		LinkedList l2 = new LinkedList();
 
 		l2.head = list.midNode().next;
-
 		l2.tail = list.tail;
-
 		l2.size = list.size - l1.size;
 
 		l1.tail.next = null;
@@ -1037,7 +1030,6 @@ public class LinkedList {
 		}
 		odd.next = evenhead;
 
-		
 	}
 
 	public void zigzagArrange() {
