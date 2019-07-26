@@ -1,6 +1,5 @@
 package Recursion;
 
-import java.util.ArrayList;
 
 public class Sum_of_all_possible_SubSet {
 

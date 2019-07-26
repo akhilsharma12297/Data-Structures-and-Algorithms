@@ -18,8 +18,6 @@ public class RottenOrange_FireHouse {
 		}
 	}
 
-	static int rotten = 0;
-
 	static int fresh = 0;
 
 	static int oldrotten = 0;
@@ -46,7 +44,7 @@ public class RottenOrange_FireHouse {
 	}
 
 	private static int rotorange(int[][] arr, LinkedList<Node> queue) {
-
+		int rotten = 0;
 		int ts = 0;
 		while (!queue.isEmpty()) {
 			Node temp = queue.removeFirst();

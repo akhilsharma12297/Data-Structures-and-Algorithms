@@ -6,7 +6,7 @@ public class Incl_Excl_No_Adjacent_Sum_Circular {
 
 		int arr[] = { 1, 2, 3, 1 };
 
-		System.out.println(Math.max(max1(arr), max2(arr)));
+		System.out.println(max1(arr));
 
 	}
 
@@ -58,35 +58,6 @@ public class Incl_Excl_No_Adjacent_Sum_Circular {
 		}
 
 		return Math.max(max1, max2);
-
-	}
-
-	private static int max2(int[] arr) {
-
-		int n = arr.length;
-
-		int dp[] = new int[n];
-
-		int max = -1;
-		for (int i = 0; i < n; i++) {
-			dp[i] = arr[i];
-		}
-
-		for (int i = 3; i < n - 1; i++) {
-			for (int j = 1; j < i - 1; j++) {
-
-				if (dp[i] < dp[j] + arr[i]) {
-					dp[i] = dp[j] + arr[i];
-				}
-
-				if (max < dp[i]) {
-					max = dp[i];
-				}
-
-			}
-		}
-
-		return max;
 
 	}
 

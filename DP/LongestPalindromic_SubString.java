@@ -3,7 +3,7 @@ package DP;
 public class LongestPalindromic_SubString {
 	public static void main(String[] args) {
 
-		String str = "forgeeksskeegfor";
+		String str = "abbcacbb";
 
 		func(str);
 

@@ -1,7 +1,5 @@
 package Recursion;
 
-import java.util.ArrayList;
-
 public class NokiaKeypad_QA {
 
 	static String[] codes = { ".", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz" };

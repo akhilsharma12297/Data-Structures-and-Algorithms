@@ -4,8 +4,8 @@ public class Max_Product_SubArray {
 
 	public static void main(String[] args) {
 		int[] arr = { 0, 0, 1, 2, 0, 2, 0, 0, 1, 0, 2, 0, -3, 3, 3, 0, 1, 2, 1 };
-
-		System.out.println(maxProduct(arr));
+		int arr2[] = { 1, -2, -3, 0, 7, -8, -2 };
+		System.out.println(maxProduct(arr2));
 
 	}
 
