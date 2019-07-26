@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.PriorityQueue;
 
 public class LinkedList {
-	private class Node {
+	static class Node {
 		int data;
 		Node next;
 	}
@@ -701,8 +701,8 @@ public class LinkedList {
 	}
 
 	public static LinkedList MergeList(LinkedList list1, LinkedList list2) {
-		LinkedList list = new LinkedList();
-		Node dummyTail = list.head;
+		Node header = new Node();
+		Node dummyTail = header;
 		Node temp;
 
 		Node l1 = list1.head;
@@ -722,7 +722,9 @@ public class LinkedList {
 		}
 		dummyTail.next = l1 != null ? l1 : l2;
 
-		return list;
+		LinkedList res = new LinkedList();
+		res.head = header.next;
+		return res;
 
 	}
 
@@ -741,7 +743,7 @@ public class LinkedList {
 
 		return slow;
 
-	}o
+	}
 
 	public static LinkedList MergeSort(LinkedList list) {
 
