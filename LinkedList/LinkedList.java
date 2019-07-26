@@ -700,31 +700,31 @@ public class LinkedList {
 
 	}
 
-	public static LinkedList MergeList(LinkedList list1, LinkedList list2) {
-		Node header = new Node();
-		Node dummyTail = header;
-		Node temp;
+	public static LinkedList MergeList(LinkedList l1, LinkedList l2) {
+		LinkedList list = new LinkedList();
 
-		Node l1 = list1.head;
-		Node l2 = list2.head;
+		Node temp1 = l1.head;
+		Node temp2 = l2.head;
 
-		while (l1 != null && l2 != null) {
-			if (l1.data < l2.data) {
-				temp = l1;
-				l1 = l1.next;
+		while (temp1 != null && l2 != null) {
+			if (temp1.data < temp2.data) {
+				temp1 = temp1.next;
 			} else {
-				temp = l2;
-				l2 = l2.next;
+				list.addLast(temp2.data);
+				temp2 = temp2.next;
 			}
-
-			dummyTail.next = temp;
-			dummyTail = temp;
 		}
-		dummyTail.next = l1 != null ? l1 : l2;
 
-		LinkedList res = new LinkedList();
-		res.head = header.next;
-		return res;
+		while (temp1 != null) {
+			list.addLast(temp1.data);
+			temp1 = temp1.next;
+		}
+
+		while (temp2 != null) {
+			list.addLast(temp2.data);
+			temp2 = temp2.next;
+		}
+		return list;
 
 	}
 
@@ -1512,5 +1512,50 @@ public class LinkedList {
 		tail.next = l1 != null ? l1 : l2;
 
 		return header.next;
+	}
+
+	public Node copyList(Node head) {
+
+		Node curr = head;
+
+		while (curr != null) {
+
+			Node temp = new Node();
+			temp.data = curr.data;
+
+			temp.next = curr.next;
+			curr.next = temp;
+
+			curr = curr.next.next;
+
+		}
+
+		curr = head;
+
+		while (curr != null) {
+			if (curr.next != null)
+//				curr.next.arb = (curr.arb != null) ? curr.arb.next : curr.arb;
+
+				// move to the next newly added node by
+				// skipping an original node
+				curr = (curr.next != null) ? curr.next.next : curr.next;
+		}
+
+		curr = head;
+		Node copy = head.next;
+
+		Node temp = copy;
+
+		while (curr != null && copy != null) {
+
+			curr.next = (curr.next != null) ? curr.next.next : curr.next;
+
+			copy.next = (copy.next != null) ? copy.next.next : copy.next;
+			curr = curr.next;
+			copy = copy.next;
+		}
+
+		return temp;
+
 	}
 }

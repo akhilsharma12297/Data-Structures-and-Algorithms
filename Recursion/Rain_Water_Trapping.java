@@ -1,6 +1,6 @@
 package Recursion;
 
-public class Trap_Rain_Water {
+public class Rain_Water_Trapping {
 
 	public static void main(String[] args) {
 

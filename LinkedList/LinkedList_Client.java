@@ -163,7 +163,7 @@ public class LinkedList_Client {
 		l4.addLast(79);
 		l4.addLast(78);
 
-		LinkedList l5 = LinkedList.MergeSort(l4);
+//		LinkedList l5 = LinkedList.MergeSort(l4);
 
 		System.out.println();
 		System.out.println();
@@ -173,7 +173,7 @@ public class LinkedList_Client {
 		System.out.println();
 		System.out.println();
 
-		l5.display();
+//		l5.display();
 
 		System.out.println();
 
