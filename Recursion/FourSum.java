@@ -32,8 +32,11 @@ public class FourSum {
 				}
 
 				int l = j + 1;
+
 				int r = nums.length - 1;
+
 				int sumReq = target - (nums[i] + nums[j]);
+
 				while (l < r) {
 					int sum = nums[l] + nums[r];
 					if (sum < sumReq) {

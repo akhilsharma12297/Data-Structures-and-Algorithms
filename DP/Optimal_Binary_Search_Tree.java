@@ -48,6 +48,31 @@ public class Optimal_Binary_Search_Tree {
 		return sum;
 	}
 
+	public static void bst(int[] input, int[] freq) {
+
+		int dp[][] = new int[input.length][input.length];
+
+		for (int diag = 0; diag < dp.length; diag++) {
+
+			int sp = 0;
+
+			int ep = diag;
+
+			while (ep < dp.length) {
+
+				if (diag == 0) {
+					dp[sp][ep] = Math.min(dp[sp + 1][ep], dp[sp][ep - 1]);
+				} else {
+					for (int k = sp; k <= ep; k++) {
+						dp[sp][ep] = Math.min(Math.min(dp[sp][ep], dp[sp][k]), dp[k + 1][ep]);
+					}
+
+				}
+			}
+		}
+
+	}
+
 	public static void main(String args[]) {
 		int input[] = { 10, 12, 20, 35, 46 };
 		int freq[] = { 34, 8, 50, 21, 16 };

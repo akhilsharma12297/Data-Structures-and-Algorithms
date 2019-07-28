@@ -1,6 +1,5 @@
 package Priority_Queue;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
@@ -10,7 +9,7 @@ public class k_Smallest {
 
 		int[] arr = { 10, 1, 23, 55, 45, 98, 62, 12, 35, 9 };
 
-		printKSmallest(arr, 3);
+		printKSmallest2(arr, 3);
 
 	}
 
