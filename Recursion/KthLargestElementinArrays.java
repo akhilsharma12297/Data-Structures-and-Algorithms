@@ -11,7 +11,7 @@ public class KthLargestElementinArrays {
 		return quickSelect(0, nums.length - 1, nums.length - k);
 	}
 
-	int quickSelect(int left, int right, int kSmallest) {
+	int quickSelect(int left, int right, int k) {
 		while (true) {
 			if (left >= right)
 				return nums[left];
@@ -19,15 +19,15 @@ public class KthLargestElementinArrays {
 			int partIdx = left + rand.nextInt(right - left);
 
 			partIdx = partition(left, right, partIdx);
-			if (kSmallest == partIdx) {
+			if (k == partIdx) {
 				break;
-			} else if (kSmallest < partIdx) {
+			} else if (k < partIdx) {
 				right = partIdx - 1;
 			} else {
 				left = partIdx + 1;
 			}
 		}
-		return nums[kSmallest];
+		return nums[k];
 	}
 
 	int partition(int l, int r, int pivotIdx) {
@@ -49,4 +49,5 @@ public class KthLargestElementinArrays {
 		nums[i] = nums[j];
 		nums[j] = t;
 	}
+
 }
