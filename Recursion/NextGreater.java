@@ -35,30 +35,20 @@ public class NextGreater {
 
 	}
 
-	public static void func(int[] arr) {
-		Stack<Integer> stack = new Stack<>();
-
-		for (int val : arr) {
-			if (!stack.isEmpty() && stack.peek() < val) {
-				stack.pop();
-			} else {
-				stack.push(val);
-			}
-		}
-
-		System.out.println(stack);
-
-	}
-
 	public static void printNGE(int arr[]) {
+
 		int i = 0;
+
 		int n = arr.length;
+
 		Stack<Integer> stack = new Stack<>();
+
 		int element, next;
 
 		stack.push(arr[0]);
 
 		for (i = 1; i < n; i++) {
+
 			next = arr[i];
 
 			if (stack.isEmpty() == false) {
@@ -84,5 +74,4 @@ public class NextGreater {
 			System.out.print(next + " ");
 		}
 	}
-
 }
