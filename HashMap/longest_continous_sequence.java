@@ -35,7 +35,6 @@ public class longest_continous_sequence {
 
 			if (fmap.get(val)) {
 				int temp = 1;
-				sp = val;
 				while (fmap.containsKey(val + temp)) {
 					temp++;
 				}

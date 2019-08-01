@@ -1145,7 +1145,7 @@ public class LinkedList {
 		return res;
 
 	}
-
+	
 	private int FindCommon(Node a, Node b) {
 
 		int count = 0;
