@@ -1924,11 +1924,11 @@ public class Binary_Tree {
 
 	}
 
-	public void postorderTraversal() {
-		postorderTraversal(root);
+	public void postorderTraversalTwoStack() {
+		postorderTraversalTwoStack(root);
 	}
 
-	private void postorderTraversal(Node node) {
+	private void postorderTraversalTwoStack(Node node) {
 
 		LinkedList<Node> stack1 = new LinkedList<>();
 		LinkedList<Node> stack2 = new LinkedList<>();
@@ -1955,4 +1955,61 @@ public class Binary_Tree {
 
 	}
 
+	public void postorderTraversalOneStack() {
+		postorderTraversalOneStack(root);
+	}
+
+	private void postorderTraversalOneStack(Node node) {
+
+		Node curr = node;
+
+		LinkedList<Node> stack = new LinkedList<>();
+
+		while (curr != null || !stack.isEmpty()) {
+
+			if (curr != null) {
+				stack.addFirst(curr);
+				curr = curr.left;
+			} else {
+				Node temp = stack.peek().right;
+
+				if (temp == null) {
+					temp = stack.poll();
+					System.out.print(temp.data + " ");
+
+					while (!stack.isEmpty() && temp == stack.peek().right) {
+						temp = stack.poll();
+						System.out.print(temp.data + " ");
+					}
+				} else {
+					curr = temp;
+				}
+			}
+
+		}
+
+	}
+
+	public void postOrderItrOneStack(Node root) {
+		Node current = root;
+		Deque<Node> stack = new LinkedList<>();
+		while (current != null || !stack.isEmpty()) {
+			if (current != null) {
+				stack.addFirst(current);
+				current = current.left;
+			} else {
+				Node temp = stack.peek().right;
+				if (temp == null) {
+					temp = stack.poll();
+					System.out.print(temp.data + " ");
+					while (!stack.isEmpty() && temp == stack.peek().right) {
+						temp = stack.poll();
+						System.out.print(temp.data + " ");
+					}
+				} else {
+					current = temp;
+				}
+			}
+		}
+	}
 }

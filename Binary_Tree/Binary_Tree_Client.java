@@ -106,9 +106,11 @@ public class Binary_Tree_Client {
 		System.out.println();
 		System.out.println();
 
-		bt.postorderTraversal();
+		bt.postorderTraversalTwoStack();
 
 		System.out.println();
+
+		bt.postorderTraversalOneStack();
 
 	}
 
