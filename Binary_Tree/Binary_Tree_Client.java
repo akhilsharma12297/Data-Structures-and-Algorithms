@@ -99,8 +99,17 @@ public class Binary_Tree_Client {
 		System.out.println();
 
 		System.out.println(bt.Serialize_LEETCODE());
+		System.out.println();
 
 		bt.CountKFarLeaf(1);
+
+		System.out.println();
+		System.out.println();
+
+		bt.postorderTraversal();
+
+		System.out.println();
+
 	}
 
 }

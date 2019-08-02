@@ -1923,4 +1923,36 @@ public class Binary_Tree {
 		return (helperrightLeafSum(node.left, false) + helperrightLeafSum(node.right, true));
 
 	}
+
+	public void postorderTraversal() {
+		postorderTraversal(root);
+	}
+
+	private void postorderTraversal(Node node) {
+
+		LinkedList<Node> stack1 = new LinkedList<>();
+		LinkedList<Node> stack2 = new LinkedList<>();
+
+		stack1.addFirst(node);
+
+		while (!stack1.isEmpty()) {
+			Node temp = stack1.removeFirst();
+
+			if (temp.left != null) {
+				stack1.addFirst(temp.left);
+			}
+
+			if (temp.right != null) {
+				stack1.addFirst(temp.right);
+			}
+
+			stack2.addFirst(temp);
+
+		}
+		while (!stack2.isEmpty()) {
+			System.out.print(stack2.pollFirst().data + " ");
+		}
+
+	}
+
 }
