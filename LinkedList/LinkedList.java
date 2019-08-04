@@ -756,14 +756,10 @@ public class LinkedList {
 		LinkedList l1 = new LinkedList();
 
 		l1.head = list.head;
-		l1.tail = list.midNode();
-		l1.size = (list.size + 1) / 2;
 
 		LinkedList l2 = new LinkedList();
 
 		l2.head = list.midNode().next;
-		l2.tail = list.tail;
-		l2.size = list.size - l1.size;
 
 		l1.tail.next = null;
 
@@ -772,8 +768,6 @@ public class LinkedList {
 		l2 = MergeSort(l2);
 
 		LinkedList l3 = MergeList(l1, l2);
-
-		l1.tail.next = middle;
 
 		return l3;
 
