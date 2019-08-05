@@ -15,24 +15,18 @@ public class Find_the_missing_1_n {
 
 	private static void FuncXor(int[] arr) {
 
-		int x1 = arr[0];
-
-		for (int i = 1; i < arr.length; i++) {
-			x1 = x1 ^ arr[i];
-		}
-		int x2 = 1;
-
-		for (int i = 2; i <= arr.length + 1; i++) {
-			x2 = x2 ^ i;
+		int xor = 0, i = 0;
+		for (i = 0; i < arr.length; i++) {
+			xor = xor ^ i ^ arr[i];
 		}
 
-		System.out.println(x1 ^ x2);
+		System.out.println(xor ^ i);
 	}
 
 	public static void funcSum(int[] arr) {
 		int n = arr.length;
 
-		int sum = (n + 1) * (n + 2) / 2;
+		int sum = (n) * (n + 1) / 2;
 
 		for (int i = 0; i < arr.length; i++) {
 			sum -= arr[i];

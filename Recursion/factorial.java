@@ -4,7 +4,7 @@ public class factorial {
 
 	public static void main(String[] args) {
 
-		System.out.println(factorial(5));
+		System.out.println(factorial(4));
 
 		// TODO Auto-generated method stub
 
@@ -16,11 +16,7 @@ public class factorial {
 			return 1;
 		}
 
-		int fnm1 = factorial(n - 1);
-		int fn = n * fnm1;
-
-		return fn;
-
+		return n * factorial(n - 1);
 	}
 
 }

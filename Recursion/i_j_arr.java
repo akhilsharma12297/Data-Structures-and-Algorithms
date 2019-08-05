@@ -31,7 +31,7 @@ public class i_j_arr {
 
 		/*
 		 * Construct RMax[] such that RMax[j] stores the maximum value from (arr[n-1],
-		 * arr[n-2], ..arr[0])
+		 * arr[n-2], . .arr[0])
 		 */
 		RMax[n - 1] = arr[n - 1];
 		for (j = n - 2; j >= 0; --j)

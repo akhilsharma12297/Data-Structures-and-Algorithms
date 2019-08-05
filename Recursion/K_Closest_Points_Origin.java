@@ -9,7 +9,7 @@ public class K_Closest_Points_Origin {
 		int arr[][] = { { 2, 3 }, { 12, 30 }, { 40, 50 }, { 5, 1 }, { 12, 10 }, { 3, 4 } };
 		int k = 2;
 
-		printMatrix(func(arr, k));
+		func(arr, k);
 
 	}
 
@@ -29,7 +29,7 @@ public class K_Closest_Points_Origin {
 		}
 	}
 
-	private static int[][] func(int[][] points, int k) {
+	private static void func(int[][] points, int k) {
 
 		PriorityQueue<pair> pq = new PriorityQueue<>();
 
@@ -47,22 +47,9 @@ public class K_Closest_Points_Origin {
 
 			pair temp = pq.remove();
 
-			ans[i][0] = temp.x;
-			ans[i][1] = temp.y;
-		}
-
-		return ans;
-
-	}
-
-	private static void printMatrix(int[][] mat) {
-		for (int i = 0; i < mat.length; i++) {
-			for (int j = 0; j < mat[0].length; j++) {
-
-				System.out.print(mat[i][j] + " ");
-
-			}
+			System.out.print(temp.x + " , " + temp.y);
 			System.out.println();
 		}
 	}
+
 }

@@ -2,40 +2,6 @@ package Recursion;
 
 public class Candy_Distribution {
 
-	public static void code(int[] ratings) {
-
-		if (ratings == null || ratings.length == 0)
-			return;
-
-		int[] candies = new int[ratings.length];
-
-		candies[0] = 1;
-
-		for (int i = 1; i < ratings.length; i++) {
-
-			if (ratings[i] > ratings[i - 1])
-				candies[i] = candies[i - 1] + 1;
-			else {
-				candies[i] = 1;
-			}
-		}
-
-		int result = candies[candies.length - 1];
-
-		for (int i = ratings.length - 2; i >= 0; i--) {
-			int cur = 1;
-			if (ratings[i] > ratings[i + 1])
-				cur = candies[i + 1] + 1;
-			result += Math.max(cur, candies[i]);
-
-			candies[i] = cur;
-
-			System.out.print(candies[i] + " ");
-		}
-		System.out.println();
-		System.out.print(result);
-	}
-
 	public static void ans(int[] arr) {
 
 		int n = arr.length;
