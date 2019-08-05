@@ -700,7 +700,37 @@ public class LinkedList {
 
 	}
 
-	public static LinkedList MergeList(Node l1, Node l2) {
+	public static LinkedList MergeList(LinkedList l1, LinkedList l2) {
+
+		LinkedList list = new LinkedList();
+
+		Node temp1 = l1.head;
+		Node temp2 = l2.head;
+
+		while (temp1 != null && l2 != null) {
+			if (temp1.data < temp2.data) {
+				temp1 = temp1.next;
+
+			} else {
+				list.addLast(temp2.data);
+				temp2 = temp2.next;
+			}
+		}
+
+		while (temp1 != null) {
+			list.addLast(temp1.data);
+			temp1 = temp1.next;
+		}
+
+		while (temp2 != null) {
+			list.addLast(temp2.data);
+			temp2 = temp2.next;
+		}
+
+		return list;
+	}
+
+	public static Node MergeListNode(Node l1, Node l2) {
 		Node head = new Node();
 
 		while (l1 != null && l2 != null) {
@@ -743,7 +773,7 @@ public class LinkedList {
 
 	}
 
-	public static LinkedList MergeSort(Node listhead) {
+	public static Node MergeSort(Node listhead) {
 
 		Node h1 = listhead;
 
@@ -754,10 +784,10 @@ public class LinkedList {
 		middleNode.next = null;
 
 		MergeSort(h1);
-		
+
 		MergeSort(h2);
-		
-		return MergeList(l1, l2)
+
+		return MergeListNode(h1, h2);
 	}
 
 	class NodeK implements Comparable<NodeK> {
