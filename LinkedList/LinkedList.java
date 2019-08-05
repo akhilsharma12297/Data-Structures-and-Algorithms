@@ -700,35 +700,33 @@ public class LinkedList {
 
 	}
 
-	public static LinkedList MergeList(LinkedList l1, LinkedList l2) {
-		LinkedList list = new LinkedList();
+	public static LinkedList MergeList(Node l1, Node l2) {
+		Node head = new Node();
 
-		Node temp1 = l1.head;
-		Node temp2 = l2.head;
-
-		while (temp1 != null && l2 != null) {
-			if (temp1.data < temp2.data) {
-				temp1 = temp1.next;
+		while (l1 != null && l2 != null) {
+			if (l1.data < l2.data) {
+				head.next = l1;
+				l1 = l1.next;
 			} else {
-				list.addLast(temp2.data);
-				temp2 = temp2.next;
+				head.next = l2;
+				l2 = l2.next;
 			}
+			head = head.next;
 		}
 
-		while (temp1 != null) {
-			list.addLast(temp1.data);
-			temp1 = temp1.next;
+		if (l1 != null) {
+			head.next = l1;
 		}
 
-		while (temp2 != null) {
-			list.addLast(temp2.data);
-			temp2 = temp2.next;
+		if (l2 != null) {
+			head.next = l2;
 		}
-		return list;
+
+		return head.next;
 
 	}
 
-	public Node midNode() {
+	public static Node midNode(Node head) {
 		Node slow = head;
 
 		Node fast = head;
@@ -745,32 +743,21 @@ public class LinkedList {
 
 	}
 
-	public static LinkedList MergeSort(LinkedList list) {
+	public static LinkedList MergeSort(Node listhead) {
 
-		if (list.size == 1) {
-			return list;
-		}
+		Node h1 = listhead;
 
-		Node middle = list.midNode();
+		Node middleNode = midNode(listhead);
 
-		LinkedList l1 = new LinkedList();
+		Node h2 = middleNode.next;
 
-		l1.head = list.head;
+		middleNode.next = null;
 
-		LinkedList l2 = new LinkedList();
-
-		l2.head = list.midNode().next;
-
-		l1.tail.next = null;
-
-		l1 = MergeSort(l1);
-
-		l2 = MergeSort(l2);
-
-		LinkedList l3 = MergeList(l1, l2);
-
-		return l3;
-
+		MergeSort(h1);
+		
+		MergeSort(h2);
+		
+		return MergeList(l1, l2)
 	}
 
 	class NodeK implements Comparable<NodeK> {
