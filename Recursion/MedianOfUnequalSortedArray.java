@@ -48,7 +48,7 @@ public class MedianOfUnequalSortedArray {
 			}
 		}
 
-		throw new IllegalAccessError();
+		throw new IllegalArgumentException();
 	}
 
 	public static double findMedianSortedArrays(int input1[], int input2[]) {
