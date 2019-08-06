@@ -34,8 +34,9 @@ public class No_of_Inverstion {
 		int inv_count = 0;
 
 		i = left;
-		j = mid;
 		k = left;
+		j = mid;
+
 		while ((i <= mid - 1) && (j <= right)) {
 			if (arr[i] <= arr[j]) {
 				temp[k++] = arr[i++];

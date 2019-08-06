@@ -3,7 +3,7 @@ package Recursion;
 public class Min_element_Sorted_Rotated_Array {
 
 	public static void main(String[] args) {
-		int[] arr = {5, 6, 7, 8, 9, 10, 1, 2, 3};
+		int[] arr = { 5, 6, 7, 8, 9, 10, 1, 2, 3 };
 		System.out.println(minSearch(arr));
 	}
 

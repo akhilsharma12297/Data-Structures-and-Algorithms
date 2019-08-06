@@ -26,7 +26,7 @@ public class Missing_Number_in_AP {
 
 		int mid = (lo + hi) / 2;
 
-		if (arr[mid + 1] - arr[mid] != diff) {
+		if (mid < arr.length - 1 && arr[mid + 1] - arr[mid] != diff) {
 			return (arr[mid] + diff);
 		}
 

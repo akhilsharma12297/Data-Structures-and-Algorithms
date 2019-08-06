@@ -6,7 +6,7 @@ public class Pythagorean_Triplet {
 
 	public static void main(String[] args) {
 
-		int[] arr = { 0, 4, 6, 12, 5 };
+		int[] arr = { 3, 1, 4, 6, 5 };
 		System.out.println(func(arr, arr.length));
 	}
 
@@ -14,7 +14,7 @@ public class Pythagorean_Triplet {
 		int zctr = 0;
 		for (int i = 0; i < arr.length; i++) {
 
-			arr[i] = arr[i] + arr[i];
+			arr[i] = arr[i] * arr[i];
 
 			if (arr[i] == 0) {
 				zctr++;

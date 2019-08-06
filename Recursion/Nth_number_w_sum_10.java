@@ -2,7 +2,7 @@ package Recursion;
 
 public class Nth_number_w_sum_10 {
 	public static void main(String[] args) {
-		func(5);
+		func(100);
 	}
 
 	private static void func(int n) {
