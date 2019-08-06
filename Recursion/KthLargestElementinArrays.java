@@ -12,7 +12,7 @@ public class KthLargestElementinArrays {
 	}
 
 	int quickSelect(int left, int right, int k) {
-		while (true) {
+	while (true) {
 			if (left >= right)
 				return nums[left];
 
