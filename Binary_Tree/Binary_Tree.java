@@ -193,6 +193,58 @@ public class Binary_Tree {
 
 	}
 
+	public ArrayList<Integer> NodeToNodePath(int i, int j) {
+
+		ArrayList<Integer> list1 = nodeToRootPath(i);
+
+		ArrayList<Integer> list2 = nodeToRootPath(j);
+
+		int t1 = list1.size() - 1;
+		int t2 = list2.size() - 1;
+
+		int lca_val = 0;
+
+		while (t1 > 0 && t2 > 0) {
+			if (list1.get(t1) != list2.get(t2)) {
+				lca_val = list1.get(t1 + 1);
+				break;
+			}
+			t1--;
+			t2--;
+		}
+
+		ArrayList<Integer> ans = new ArrayList<Integer>();
+
+		for (int k = 0; k < list1.size(); k++) {
+
+			if (list1.get(k) != lca_val) {
+				ans.add(list1.get(k));
+			} else {
+				break;
+			}
+
+		}
+
+		ans.add(lca_val);
+
+		boolean trigger = false;
+
+		for (int k = list2.size() - 1; k >= 0; k--) {
+
+			if (trigger) {
+				ans.add(list2.get(k));
+			}
+
+			if (list2.get(k) == lca_val) {
+				trigger = true;
+			}
+
+		}
+
+		return ans;
+
+	}
+
 	public int lca(int i, int j) {
 
 		return lca(root, i, j);
@@ -2012,4 +2064,5 @@ public class Binary_Tree {
 			}
 		}
 	}
+
 }

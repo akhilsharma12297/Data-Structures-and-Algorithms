@@ -90,7 +90,7 @@ public class Graph_Matrix {
 		return false;
 
 	}
-
+	
 	public static void allPath(Integer[][] graph, int s, int d) {
 
 		HashSet<Integer> visited = new HashSet<Integer>();

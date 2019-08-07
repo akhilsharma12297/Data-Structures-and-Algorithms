@@ -112,6 +112,11 @@ public class Binary_Tree_Client {
 
 		bt.postorderTraversalOneStack();
 
+		System.out.println();
+
+		System.out.println();
+
+		System.out.println(bt.NodeToNodePath(12, 87));
 	}
 
 }
