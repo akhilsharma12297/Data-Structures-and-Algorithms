@@ -1,5 +1,6 @@
 package Binary_Tree;
 
+import java.sql.NClob;
 import java.util.*;
 
 public class Binary_Tree {
@@ -2065,4 +2066,59 @@ public class Binary_Tree {
 		}
 	}
 
+	public Node CloneBst() {
+		extendTree(root);
+		cloneTree(root);
+		return seprateTree(root);
+	}
+
+	private void extendTree(Node node) {
+		if (node == null) {
+			return;
+		}
+		extendTree(node.left);
+		extendTree(node.right);
+
+		Node newleft = new Node();
+
+		newleft.data = node.data;
+		newleft.left = node.left;
+
+		node.left = newleft;
+	}
+
+	private void cloneTree(Node node) {
+		if (node == null) {
+			return;
+		}
+
+		// node.left.random = node.random.left;
+
+		cloneTree(node.left);
+		cloneTree(node.right);
+	}
+
+	private Node seprateTree(Node Onode) {
+
+		Node Clonenode = new Node();
+		Node lcnode = null;
+		Node rcnode = null;
+
+		if (Onode.left != null && Onode.left.left != null) {
+			lcnode = seprateTree(Onode.left.left);
+		}
+
+		if (Onode.right != null) {
+			lcnode = seprateTree(Onode.right);
+		}
+
+		Onode.left = Clonenode.left;
+
+		Clonenode.left = lcnode;
+
+		Clonenode.right = rcnode;
+
+		return Clonenode;
+
+	}
 }
