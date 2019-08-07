@@ -20,11 +20,11 @@ public class Rotation_count_of_a_Sorted_Rotated_Array {
 
 		int mid = (low + high) / 2;
 
-		if (mid < high && arr[mid + 1] < arr[mid]) {
+		if (mid < arr.length - 1 && arr[mid + 1] < arr[mid]) {
 			return mid + 1;
 		}
 
-		if (mid > low && arr[mid] < arr[mid - 1]) {
+		if (mid > 0 && arr[mid] < arr[mid - 1]) {
 			return mid;
 		}
 

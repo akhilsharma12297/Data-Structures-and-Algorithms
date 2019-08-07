@@ -21,10 +21,15 @@ public class Searching_in_Sorted_R_C_Matrix {
 		int high = row_num * col_num - 1;
 
 		while (low <= high) {
+
 			int mid = (low + high) / 2;
+
 			int val = mat[mid / col_num][mid % col_num];
+
 			if (val == target) {
+
 				System.out.println(mid / col_num + " , " + mid % col_num);
+
 				return;
 			} else if (val < target) {
 				low = mid + 1;
