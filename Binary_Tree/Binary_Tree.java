@@ -1,6 +1,5 @@
 package Binary_Tree;
 
-import java.sql.NClob;
 import java.util.*;
 
 public class Binary_Tree {
@@ -1248,6 +1247,7 @@ public class Binary_Tree {
 
 				if (++count == k) {
 					System.out.println(node.data);
+					break;
 				}
 				node = node.left;
 			} else {
@@ -1263,6 +1263,10 @@ public class Binary_Tree {
 				} else {
 
 					temp.left = null;
+					if (++count == k) {
+						System.out.println(node.data);
+						break;
+					}
 
 					node = node.left;
 
@@ -1689,7 +1693,7 @@ public class Binary_Tree {
 		}
 
 		CountKFarLeaf(node.left, list, k);
-		CountKFarLeaf(node.left, list, k);
+		CountKFarLeaf(node.right, list, k);
 
 		list.remove(list.size() - 1);
 	}
@@ -1754,7 +1758,7 @@ public class Binary_Tree {
 		while (node != null) {
 			if (node.left == null) {
 
-				System.out.println(node.data);
+				System.out.print(node.data + " ");
 
 				node = node.right;
 
@@ -1768,12 +1772,10 @@ public class Binary_Tree {
 
 					node = node.left;
 
-				} else if (l_rm.right != node) {
+				} else {
 
 					l_rm.right = null;
-
-					System.out.println(node.data);
-
+					System.out.print(node.data + " ");
 					node = node.right;
 				}
 			}
@@ -1797,7 +1799,7 @@ public class Binary_Tree {
 
 		while (node != null) {
 			if (node.left == null) {
-
+				System.out.print(node.data + " ");
 				node = node.right;
 
 			} else {
@@ -1806,13 +1808,13 @@ public class Binary_Tree {
 
 				if (l_rm.right == null) {
 
-					System.out.println(node.data);
-
 					l_rm.right = node;
+
+					System.out.print(node.data + " ");
 
 					node = node.left;
 
-				} else if (l_rm.right != node) {
+				} else {
 
 					l_rm.right = null;
 
@@ -2007,14 +2009,14 @@ public class Binary_Tree {
 
 	}
 
-	public void postorderTraversalTwoStack() {
-		postorderTraversalTwoStack(root);
+	public void postorderTraversalSQ() {
+		postorderTraversalSQ(root);
 	}
 
-	private void postorderTraversalTwoStack(Node node) {
+	private void postorderTraversalSQ(Node node) {
 
 		LinkedList<Node> stack1 = new LinkedList<>();
-		LinkedList<Node> stack2 = new LinkedList<>();
+		LinkedList<Node> queue = new LinkedList<>();
 
 		stack1.addFirst(node);
 
@@ -2029,11 +2031,11 @@ public class Binary_Tree {
 				stack1.addFirst(temp.right);
 			}
 
-			stack2.addFirst(temp);
+			queue.addFirst(temp);
 
 		}
-		while (!stack2.isEmpty()) {
-			System.out.print(stack2.pollFirst().data + " ");
+		while (!queue.isEmpty()) {
+			System.out.print(queue.pollFirst().data + " ");
 		}
 
 	}

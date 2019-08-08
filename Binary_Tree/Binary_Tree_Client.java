@@ -106,7 +106,7 @@ public class Binary_Tree_Client {
 		System.out.println();
 		System.out.println();
 
-		bt.postorderTraversalTwoStack();
+		bt.postorderTraversalSQ();
 
 		System.out.println();
 
@@ -129,6 +129,21 @@ public class Binary_Tree_Client {
 		System.out.println();
 
 		bt.Reverselevelorder();
+
+		System.out.println();
+
+		bt.morrisInorderTraversal();
+
+		System.out.println();
+
+		System.out.println();
+
+		bt.morrisPreorderTraversal();
+
+		System.out.println();
+
+		System.out.println();
+
 	}
 
 }
