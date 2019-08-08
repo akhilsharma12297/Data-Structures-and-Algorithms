@@ -117,6 +117,14 @@ public class Binary_Tree_Client {
 		System.out.println();
 
 		System.out.println(bt.NodeToNodePath(12, 87));
+
+		System.out.println();
+
+		bt.Reverselevelorder();
+
+		System.out.println();
+
+		bt.Reverselevelorder();
 	}
 
 }

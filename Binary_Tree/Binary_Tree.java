@@ -1858,11 +1858,11 @@ public class Binary_Tree {
 
 	}
 
-	public void reversePrint() {
-		reversePrint(root);
+	public void Reverselevelorder() {
+		Reverselevelorder(root);
 	}
 
-	public void reversePrint(Node node) {
+	public void Reverselevelorder(Node node) {
 		LinkedList<Node> queue = new LinkedList<>();
 		LinkedList<Node> stack = new LinkedList<>();
 
@@ -1891,6 +1891,39 @@ public class Binary_Tree {
 		}
 	}
 
+	public void Reverselevelorder_Easy() {
+		Reverselevelorder_Easy(root);
+	}
+
+	private void Reverselevelorder_Easy(Node node) {
+		LinkedList<Node> queue = new LinkedList<>();
+
+		LinkedList<Integer> stack = new LinkedList<>();
+
+		queue.add(node);
+
+		while (queue.size() > 0) {
+
+			Node temp = queue.removeFirst();
+
+			stack.addFirst(temp.data);
+			
+			if (temp.right != null) {
+				queue.addLast(temp.right);
+			}
+			
+			if (temp.left != null) {
+				queue.addLast(temp.left);
+			}
+
+		}
+
+		while (!stack.isEmpty()) {
+			System.out.print(stack.removeFirst() + " ");
+		}
+
+	}
+
 	public void printPostOrderIN_PRE(int in[], int pre[], int n) {
 		printPostOrderIN_PRE(pre, 0, n - 1, in, 0, n - 1);
 
@@ -1904,8 +1937,9 @@ public class Binary_Tree {
 
 	}
 
-	public int sumNumbers(Node node) {
-		return sumnumber(node, 0);
+	public int sumNumber() {
+
+		return sumnumber(root, 0);
 	}
 
 	public int sumnumber(Node node, int sum) {
