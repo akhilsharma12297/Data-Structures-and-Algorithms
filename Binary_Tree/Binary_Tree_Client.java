@@ -110,6 +110,8 @@ public class Binary_Tree_Client {
 
 		System.out.println();
 
+		System.out.println();
+
 		bt.postorderTraversalOneStack();
 
 		System.out.println();
@@ -121,6 +123,8 @@ public class Binary_Tree_Client {
 		System.out.println();
 
 		bt.Reverselevelorder();
+
+		System.out.println();
 
 		System.out.println();
 

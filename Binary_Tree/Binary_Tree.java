@@ -1907,11 +1907,11 @@ public class Binary_Tree {
 			Node temp = queue.removeFirst();
 
 			stack.addFirst(temp.data);
-			
+
 			if (temp.right != null) {
 				queue.addLast(temp.right);
 			}
-			
+
 			if (temp.left != null) {
 				queue.addLast(temp.left);
 			}
