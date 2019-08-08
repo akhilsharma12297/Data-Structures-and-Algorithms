@@ -1854,10 +1854,6 @@ public class Binary_Tree {
 		return node;
 	}
 
-	public void TreefromPostOrderInOrder(String pre, String in) {
-
-	}
-
 	public void Reverselevelorder() {
 		Reverselevelorder(root);
 	}
