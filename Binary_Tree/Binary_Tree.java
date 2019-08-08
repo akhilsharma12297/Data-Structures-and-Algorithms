@@ -2,6 +2,8 @@ package Binary_Tree;
 
 import java.util.*;
 
+import Binary_Tree.No330_Binary_Tree_To_Circular_LL.Node;
+
 public class Binary_Tree {
 
 	private class Node {
@@ -486,6 +488,40 @@ public class Binary_Tree {
 
 	}
 
+	public void sortedLLtoBST(Node head) {
+		this.root = toBST(head, null);
+
+		display(this.root);
+	}
+
+	private Node toBST(Node head, Node tail) {
+
+		if (head == tail) {
+			return null;
+		}
+		Node mid = MidNode(head, tail);
+
+		Node node = mid;
+
+		node.left = toBST(head, mid);
+
+		node.right = toBST(mid.right, tail);
+
+		return node;
+	}
+
+	private Node MidNode(Node node, Node tail) {
+
+		Node slow = node;
+		Node fast = node;
+
+		while (fast != tail && fast.right != tail) {
+			fast = fast.right.right;
+			slow = slow.right;
+		}
+		return slow;
+	}
+
 	public void removeLeaves() {
 		removeLeaves(root);
 	}
@@ -936,6 +972,7 @@ public class Binary_Tree {
 			bp.isBST = true;
 			bp.max = Integer.MIN_VALUE;
 			bp.min = Integer.MAX_VALUE;
+			bp.Lbst_size = 0;
 
 			return bp;
 		}
@@ -1080,8 +1117,11 @@ public class Binary_Tree {
 
 		LinkedList<Node> curr = new LinkedList<>();
 		LinkedList<Node> next = new LinkedList<>();
+
 		boolean trigger = true;
+
 		boolean print = true;
+
 		curr.add(root);
 
 		while (!curr.isEmpty()) {
