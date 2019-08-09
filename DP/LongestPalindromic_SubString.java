@@ -7,6 +7,8 @@ public class LongestPalindromic_SubString {
 
 		func(str);
 
+		System.out.println(LPSS("babad"));
+
 	}
 
 	private static void func(String str) {
@@ -70,4 +72,40 @@ public class LongestPalindromic_SubString {
 			System.out.println();
 		}
 	}
+
+	private static String LPSS(String str) {
+
+		if (str.length() == 1) {
+			return str;
+		}
+
+		String ans = "";
+
+		for (int i = 0; i < str.length() - 1; i++) {
+
+			String res = isPalindromeCenter(str, i, i);
+
+			if (res.length() > ans.length()) {
+				ans = res;
+			}
+
+			res = isPalindromeCenter(str, i, i + 1);
+
+			if (res.length() > ans.length()) {
+				ans = res;
+			}
+		}
+
+		return ans;
+	}
+
+	private static String isPalindromeCenter(String str, int j, int k) {
+
+		while (j >= 0 && k < str.length() && str.charAt(j) == str.charAt(k)) {
+			j--;
+			k++;
+		}
+		return str.substring(j + 1, k);
+	}
+
 }
