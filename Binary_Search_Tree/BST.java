@@ -521,11 +521,11 @@ public class BST {
 
 		FixBST(node.left);
 
-		if (first != null && (prev == null || prev.data >= node.data)) {
+		if (first == null && (prev == null || prev.data >= node.data)) {
 			first = prev;
 		}
 
-		if (first == null && prev.data >= node.data) {
+		if (first != null && prev.data >= node.data) {
 
 			second = node;
 		}
@@ -861,6 +861,40 @@ public class BST {
 		}
 		return d;
 
+	}
+
+	public void sortedLLtoBST(Node head) {
+		this.root = toBST(head, null);
+
+		display(this.root);
+	}
+
+	private Node toBST(Node head, Node tail) {
+
+		if (head == tail) {
+			return null;
+		}
+		Node mid = MidNode(head, tail);
+
+		Node node = mid;
+
+		node.left = toBST(head, mid);
+
+		node.right = toBST(mid.right, tail);
+
+		return node;
+	}
+
+	private Node MidNode(Node node, Node tail) {
+
+		Node slow = node;
+		Node fast = node;
+
+		while (fast != tail && fast.right != tail) {
+			fast = fast.right.right;
+			slow = slow.right;
+		}
+		return slow;
 	}
 
 }
