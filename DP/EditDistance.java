@@ -1,6 +1,5 @@
 package DP;
 
-
 public class EditDistance {
 
 	public static void main(String[] args) {
@@ -29,14 +28,7 @@ public class EditDistance {
 
 		}
 
-		for (int i = 0; i < dp.length; i++) {
-
-			for (int j = 0; j < dp[0].length; j++) {
-				System.out.print(dp[i][j] + " ");
-			}
-
-			System.out.println();
-		}
+		printMat(dp);
 
 		for (int i = 1; i < dp.length; i++) {
 
@@ -52,7 +44,12 @@ public class EditDistance {
 		}
 
 		System.out.println();
+		printMat(dp);
+		System.out.println();
+		System.out.println(dp[dp.length - 1][dp[0].length - 1]);
+	}
 
+	public static void printMat(int[][] dp) {
 		for (int i = 0; i < dp.length; i++) {
 
 			for (int j = 0; j < dp[0].length; j++) {
@@ -61,10 +58,6 @@ public class EditDistance {
 
 			System.out.println();
 		}
-
-		System.out.println();
-		System.out.println(dp[dp.length - 1][dp[0].length - 1]);
-
 	}
 
 }
