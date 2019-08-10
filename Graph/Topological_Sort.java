@@ -7,7 +7,7 @@ public class Topological_Sort {
 
 	public static void TopologicalSort(int[][] graph) {
 
-		HashSet visited = new HashSet<>();
+		HashSet<Integer> visited = new HashSet<>();
 
 		LinkedList<Integer> stack = new LinkedList<>();
 

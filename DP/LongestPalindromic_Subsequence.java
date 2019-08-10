@@ -10,11 +10,7 @@ public class LongestPalindromic_Subsequence {
 	}
 
 	private static void lpsub(String str) {
- 		int n = str.length();
-
-		int maxLength = -1;
-		int startpoint = -1;
-		int endpoint = -1;
+		int n = str.length();
 
 		int[][] dp = new int[n][n];
 
