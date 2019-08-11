@@ -1502,6 +1502,51 @@ public class LinkedList {
 		return small;
 	}
 
+	public Node mergeKLists_Better(Node[] lists) {
+
+		if (lists.length == 0) {
+			return null;
+		}
+
+		PriorityQueue<MergerNode> pq = new PriorityQueue<>();
+
+		for (int i = 0; i < lists.length; i++) {
+			if (lists[i] != null) {
+				pq.add(new MergerNode(lists[i].data, lists[i]));
+			}
+		}
+
+		Node ans = new Node();
+
+		Node result = ans;
+
+		while (!pq.isEmpty()) {
+			MergerNode temp = pq.remove();
+
+			if (temp.llnode.next != null) {
+				pq.add(new MergerNode(temp.llnode.next.data, temp.llnode.next));
+			}
+
+			ans.next = temp.llnode;
+			ans = ans.next;
+		}
+		return result.next;
+	}
+
+	static class MergerNode implements Comparable<MergerNode> {
+		int val;
+		Node llnode;
+
+		MergerNode(int val, Node llnode) {
+			this.val = val;
+			this.llnode = llnode;
+		}
+
+		public int compareTo(MergerNode o) {
+			return this.val - o.val;
+		}
+	}
+
 	public Node CloneLL(Node head) {
 
 		Node curr = head;
