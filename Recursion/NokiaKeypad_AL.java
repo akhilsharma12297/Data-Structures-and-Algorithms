@@ -78,7 +78,7 @@ public class NokiaKeypad_AL {
 
 	public static void main(String[] args) {
 
-		System.out.println(getKPCprac("367"));
+		System.out.println(getKPCprac("23"));
 
 		System.out.println();
 

@@ -280,6 +280,24 @@ public class Binary_Tree {
 
 	}
 
+	public Node lca_better(Node a, Node b) {
+
+		return lca_better(root, a, b);
+	}
+
+	private Node lca_better(Node node, Node a, Node b) {
+		if (node.data > a.data && node.data > b.data) {
+			lca_better(node.left, a, b);
+		}
+
+		if (node.data < a.data && node.data < b.data) {
+			lca_better(node.right, a, b);
+		}
+
+		return node;
+
+	}
+
 	public int distanceBWnode(int i, int j) {
 		ArrayList<Integer> iList = nodeToRootPath(i);
 
