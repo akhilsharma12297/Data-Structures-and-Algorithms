@@ -55,7 +55,6 @@ public class floodFill {
 		int[][] visited = new int[maze.length][maze[0].length];
 
 		floodfill(maze, visited, 0, 0, "");
-		// TODO Auto-generated method stub
 
 	}
 
