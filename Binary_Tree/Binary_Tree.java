@@ -892,6 +892,7 @@ public class Binary_Tree {
 			DiaPair bres = new DiaPair();
 			bres.height = -1;
 			bres.dia = 0;
+			return bres;
 		}
 
 		DiaPair lp = diameter_Better(node.left);
