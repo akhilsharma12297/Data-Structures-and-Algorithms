@@ -2212,4 +2212,26 @@ public class Binary_Tree {
 		return Clonenode;
 
 	}
+
+	public boolean isSymmetric(Node root) {
+		return root == null || isSymmetricHelp(root.left, root.right);
+	}
+
+	private boolean isSymmetricHelp(Node left, Node right) {
+		if (left == null || right == null)
+			return left == right;
+		if (left.data != right.data)
+			return false;
+		return isSymmetricHelp(left.left, right.right) && isSymmetricHelp(left.right, right.left);
+	}
+
+	public boolean isSameTree(Node p, Node q) {
+		if (p == null && q == null)
+			return true;
+		if (p == null || q == null)
+			return false;
+		if (p.data == q.data)
+			return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+		return false;
+	}
 }

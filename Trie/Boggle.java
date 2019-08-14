@@ -7,6 +7,7 @@ public class Boggle {
 	public List<String> findWords(char[][] board, String[] words) {
 		List<String> res = new ArrayList<>();
 		TrieNode root = buildTrie(words);
+
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[0].length; j++) {
 				dfs(board, i, j, root, res);
@@ -53,8 +54,8 @@ public class Boggle {
 	}
 
 	class TrieNode {
-		TrieNode[] next = new TrieNode[26];
 		String word;
+		TrieNode[] next = new TrieNode[26];
 	}
 
 	public static void main(String[] args) {
