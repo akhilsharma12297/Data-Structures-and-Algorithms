@@ -20,26 +20,18 @@ public class MinCostPath_Memo {
 
 		dp[0][0] = cost[0][0];
 
-		for (int i = 1; i <= r; i++) {
-			dp[i][0] = dp[i - 1][0] + cost[i][0];
-		}
+		for (int i = 0; i <= r; i++) {
+			for (int j = 0; j <= c; j++) {
 
-		System.out.println();
-
-		printMatrix(dp);
-
-		for (int j = 1; j <= c; j++) {
-			dp[0][j] = dp[0][j - 1] + cost[0][j];
-		}
-
-		System.out.println();
-
-		printMatrix(dp);
-
-		for (int i = 1; i <= r; i++) {
-			for (int j = 1; j <= c; j++) {
-				dp[i][j] = Math.min(Math.min(dp[i][j - 1], dp[i - 1][j]), dp[i - 1][j - 1]) + cost[i][j];
+				if (i == 0 && j >= 1) {
+					dp[0][j] = dp[0][j - 1] + cost[0][j];
+				} else if (j == 0 && i >= 1) {
+					dp[i][0] = dp[i - 1][0] + cost[i][0];
+				} else if (i >= 1 && j >= 1) {
+					dp[i][j] = Math.min(dp[i][j - 1], dp[i - 1][j]) + cost[i][j];
+				}
 			}
+
 		}
 
 		System.out.println();

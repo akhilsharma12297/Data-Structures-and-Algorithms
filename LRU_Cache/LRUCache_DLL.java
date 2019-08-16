@@ -71,7 +71,7 @@ public class LRUCache_DLL {
 			total++;
 
 			if (total > maxCap) {
-				removeLRUEntryFromStructure();
+				restructure();
 			}
 		} else {
 
@@ -86,7 +86,7 @@ public class LRUCache_DLL {
 		addNode(node);
 	}
 
-	private void removeLRUEntryFromStructure() {
+	private void restructure() {
 		Node tail = popTail();
 
 		map.remove(tail.key);
