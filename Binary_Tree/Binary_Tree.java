@@ -2234,4 +2234,43 @@ public class Binary_Tree {
 			return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
 		return false;
 	}
+
+	public void PrintAllPathTillK(int k) {
+		PrintAllPathTillK(root, k);
+	}
+
+	static ArrayList<Integer> path = new ArrayList<Integer>();
+
+	private void PrintAllPathTillK(Node node, int k) {
+		if (node == null)
+			return;
+
+		path.add(node.data);
+
+		PrintAllPathTillK(node.left, k);
+
+		PrintAllPathTillK(node.right, k);
+
+		int sum = 0;
+		for (int i = path.size() - 1; i > 0; i--) {
+
+			sum += path.get(i);
+
+			if (k == sum) {
+				printPath(path, i);
+			}
+
+		}
+
+		path.remove(path.size() - 1);
+
+	}
+
+	private void printPath(ArrayList<Integer> path, int start) {
+
+		for (int i = start; i < path.size(); i++) {
+			System.out.print(path.get(i) + " ");
+		}
+		System.out.println();
+	}
 }

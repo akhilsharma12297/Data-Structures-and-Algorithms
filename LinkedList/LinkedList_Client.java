@@ -193,7 +193,7 @@ public class LinkedList_Client {
 
 		System.out.println();
 
-		ll.target(50);
+		ll.targetBetter(50);
 
 		System.out.println();
 	}

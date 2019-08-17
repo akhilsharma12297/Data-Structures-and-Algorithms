@@ -883,43 +883,6 @@ public class LinkedList {
 		return head;
 	}
 
-	public Node reverseBetweenEasy(Node head, int m, int n) {
-
-		int[] arr = new int[(n - m) + 1];
-
-		Node temp = head;
-		int ctr = 1;
-		int i = 0;
-
-		while (temp != null) {
-			if (ctr >= m && n >= ctr) {
-				arr[i] = temp.data;
-				i++;
-			}
-			ctr++;
-			temp = temp.next;
-		}
-
-		temp = head;
-		i = arr.length - 1;
-
-		ctr = 1;
-		while (temp != null) {
-
-			if (ctr >= m && n >= ctr) {
-				temp.data = arr[i];
-				i--;
-			}
-
-			ctr++;
-			temp = temp.next;
-
-		}
-
-		return head;
-
-	}
-
 	private Node removeFirstNode() {
 		if (size == 0) {
 			System.out.println("List is empty");
@@ -1074,36 +1037,6 @@ public class LinkedList {
 		b.data = t;
 	}
 
-	public void target(int tar) {
-		Node left = head;
-
-		target(head, left, tar);
-	}
-
-	static boolean right_flag = false;
-
-	private void target(Node right, Node left, int tar) {
-
-		if (right == null || left == null) {
-			return;
-		}
-
-		if ((right.data + left.data) == tar) {
-
-			System.out.println(right.data + " + " + left.data);
-
-		}
-
-		if (right_flag == false) {
-
-			target(right.next, left, tar);
-
-		}
-
-		right_flag = true;
-		target(right, left.next, tar);
-	}
-
 	public boolean targetBetter(int target) {
 		return targetBetter(head, target);
 	}
@@ -1251,6 +1184,7 @@ public class LinkedList {
 
 		Node current = head;
 		Node prev = null;
+
 		while (current != null) {
 			int curval = current.data;
 
@@ -1391,6 +1325,7 @@ public class LinkedList {
 		if (head.next == head) {
 			head.next = null;
 		}
+
 		Node slow = head;
 		Node fast = head;
 
