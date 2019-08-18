@@ -667,7 +667,7 @@ public class LinkedList {
 
 		Node fast = head;
 
-		while (fast.next != null && fast.next.next != null) {
+		while (fast != null && fast.next != null) {
 
 			slow = slow.next;
 
