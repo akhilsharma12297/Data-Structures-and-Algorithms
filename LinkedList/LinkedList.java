@@ -1,7 +1,6 @@
 package LinkedList;
 
-import java.util.HashSet;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class LinkedList {
 	static class Node {
@@ -1525,5 +1524,35 @@ public class LinkedList {
 
 		return temp;
 
+	}
+
+	public void nextLargerNodes() {
+		int[] ans = nextLargerNodes(head);
+
+		for (int val : ans) {
+			System.out.print(val + " ");
+		}
+	}
+
+	private int[] nextLargerNodes(Node head) {
+
+		ArrayList<Integer> A = new ArrayList<>();
+
+		for (Node node = head; node != null; node = node.next)
+			A.add(node.data);
+
+		int[] res = new int[A.size()];
+
+		Stack<Integer> stack = new Stack<>();
+
+		for (int i = 0; i < A.size(); ++i) {
+
+			while (!stack.isEmpty() && A.get(stack.peek()) < A.get(i))
+				res[stack.pop()] = A.get(i);
+			stack.push(i);
+
+		}
+
+		return res;
 	}
 }
