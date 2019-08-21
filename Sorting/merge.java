@@ -1,4 +1,4 @@
- package Sorting;
+package Sorting;
 
 public class merge {
 	public static void main(String[] args) {
@@ -17,7 +17,7 @@ public class merge {
 
 	}
 
-	public static int[] merge(int[] a, int[] b) {
+	public static int[] merger(int[] a, int[] b) {
 
 		int i = 0;
 		int j = 0;
@@ -44,12 +44,9 @@ public class merge {
 		}
 
 		while (a.length > i) {
-
 			merge[r] = a[i];
-
 			i++;
 			r++;
-
 		}
 
 		while (b.length > j) {
@@ -81,7 +78,7 @@ public class merge {
 		int[] left = mergesort(arr, lo, mid);
 		int[] right = mergesort(arr, mid + 1, hi);
 
-		return merge(left, right);
+		return merger(left, right);
 	}
 
 }

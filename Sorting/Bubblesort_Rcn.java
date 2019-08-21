@@ -6,7 +6,6 @@ public class Bubblesort_Rcn {
 
 		if (li == 0) {
 			return;
-
 		}
 
 		if (si == li) {
@@ -15,7 +14,6 @@ public class Bubblesort_Rcn {
 		}
 
 		if (arr[si] > arr[si + 1]) {
-
 			swap(arr, si);
 		}
 

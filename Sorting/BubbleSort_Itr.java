@@ -23,13 +23,9 @@ public class BubbleSort_Itr {
 			for (int i = 0; i < a.length - jc; i++) {
 
 				if (a[i] > a[i + 1]) {
-
 					swap(a, i);
-
 				}
-
 			}
-
 			jc++;
 		}
 
