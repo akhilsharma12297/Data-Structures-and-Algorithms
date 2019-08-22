@@ -10,9 +10,9 @@ public class Sqrt_Decomposition {
 
 	public Sqrt_Decomposition(int[] input) {
 
-		this.sqrt = (int) Math.ceil(Math.sqrt(input.length));
-		this.block = new int[sqrt];
-		this.arr = new int[sqrt * sqrt];
+		sqrt = (int) Math.ceil(Math.sqrt(input.length));
+		block = new int[sqrt];
+		arr = new int[sqrt * sqrt];
 
 		System.arraycopy(input, 0, arr, 0, input.length);
 
