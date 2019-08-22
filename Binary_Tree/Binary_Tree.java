@@ -1257,7 +1257,7 @@ public class Binary_Tree {
 
 		if (isLeaf(node)) {
 			if (sum > node.data)
-				node = null;
+				return null;
 		}
 
 		return node;
