@@ -280,18 +280,18 @@ public class Binary_Tree {
 
 	}
 
-	public Node lca_better(Node a, Node b) {
+	public Node lca_better_bst(Node a, Node b) {
 
-		return lca_better(root, a, b);
+		return lca_better_bst(root, a, b);
 	}
 
-	private Node lca_better(Node node, Node a, Node b) {
+	private Node lca_better_bst(Node node, Node a, Node b) {
 		if (node.data > a.data && node.data > b.data) {
-			lca_better(node.left, a, b);
+			lca_better_bst(node.left, a, b);
 		}
 
 		if (node.data < a.data && node.data < b.data) {
-			lca_better(node.right, a, b);
+			lca_better_bst(node.right, a, b);
 		}
 
 		return node;
