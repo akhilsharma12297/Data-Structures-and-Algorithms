@@ -632,7 +632,7 @@ public class BST {
 		NextGreaterTree(root);
 	}
 
-	static int Sum = 0;
+	static int pastsum = 0;
 
 	private void NextGreaterTree(Node node) {
 
@@ -643,6 +643,12 @@ public class BST {
 		NextGreaterTree(node.right);
 
 		NextGreaterTree(node.left);
+
+		int temp = node.data;
+
+		node.data = pastsum;
+
+		pastsum += temp;
 
 	}
 

@@ -1137,7 +1137,6 @@ public class LinkedList {
 			while (temp.next != null && curr.data == temp.data) {
 
 				temp = temp.next;
-
 			}
 
 			curr.next = temp;
@@ -1500,12 +1499,12 @@ public class LinkedList {
 		curr = head;
 
 		while (curr != null) {
-			if (curr.next != null)
+			if (curr.next != null) {
 //				curr.next.arb = (curr.arb != null) ? curr.arb.next : curr.arb;
-
-				// move to the next newly added node by
-				// skipping an original node
-				curr = (curr.next != null) ? curr.next.next : curr.next;
+			}
+			// move to the next newly added node by
+			// skipping an original node
+			curr = (curr.next != null) ? curr.next.next : curr.next;
 		}
 
 		curr = head;
