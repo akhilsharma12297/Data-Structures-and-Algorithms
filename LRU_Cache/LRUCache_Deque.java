@@ -30,7 +30,7 @@ public class LRUCache_Deque {
 	}
 
 	public static void set(int x, int y) {
-		
+
 		if (!hm.containsKey(x)) {
 			if (dq.size() >= size) {
 				int peek = dq.peekLast();

@@ -21,7 +21,7 @@ public class S_D_path_Matrix {
 		visited[i][j] = 1;
 
 		int ans = 0;
-		
+
 		ans += countWays(maze, i, j + 1, visited);
 		ans += countWays(maze, i + 1, j, visited);
 

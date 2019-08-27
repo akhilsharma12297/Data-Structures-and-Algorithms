@@ -28,7 +28,6 @@ public class Median_PQ {
 		if (min.size() - max.size() == 2) {
 			max.add(min.remove());
 		} else if (max.size() - min.size() == 2) {
-
 			min.add(max.remove());
 		}
 

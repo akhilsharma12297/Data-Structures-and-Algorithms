@@ -15,11 +15,10 @@ public class Median_Of_Input_Stream {
 
 	public void addNum(int num) {
 
-		max.add(num);
-		min.add(max.poll());
-
+		max.offer(num);
+		min.offer(max.poll());
 		if (max.size() < min.size()) {
-			max.add(min.poll());
+			max.offer(min.poll());
 		}
 
 	}

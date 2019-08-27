@@ -6,7 +6,7 @@ public class MazePath {
 
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
-		
+
 		System.out.println(mazepath(0, 0, 9, 9));
 
 		long stop = System.currentTimeMillis();

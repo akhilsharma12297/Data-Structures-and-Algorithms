@@ -21,9 +21,7 @@ public class CoinChange_Combination_Tab {
 		ArrayList<String>[] path = new ArrayList[amt + 1];
 
 		for (int i = 0; i < path.length; i++) {
-
 			path[i] = new ArrayList<String>();
-
 		}
 
 		dp[0] = 1;

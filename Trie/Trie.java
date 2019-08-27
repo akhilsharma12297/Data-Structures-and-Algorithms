@@ -125,6 +125,7 @@ public class Trie {
 
 		if (node.eow == true) {
 			System.out.println(word + " ");
+			return;
 		}
 
 		ArrayList<Character> list = new ArrayList<>(node.children.keySet());

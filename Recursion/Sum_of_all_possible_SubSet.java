@@ -1,6 +1,5 @@
 package Recursion;
 
-
 public class Sum_of_all_possible_SubSet {
 
 	public static void main(String[] args) {
@@ -14,7 +13,7 @@ public class Sum_of_all_possible_SubSet {
 	public static void subset(int[] arr, int lo, int hi, int sum) {
 
 		if (lo > hi) {
-			System.out.print(sum + " ");
+			System.out.println(sum + " ");
 			return;
 		}
 

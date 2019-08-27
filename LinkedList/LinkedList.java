@@ -733,6 +733,7 @@ public class LinkedList {
 		Node head = new Node();
 
 		while (l1 != null && l2 != null) {
+
 			if (l1.data < l2.data) {
 				head.next = l1;
 				l1 = l1.next;

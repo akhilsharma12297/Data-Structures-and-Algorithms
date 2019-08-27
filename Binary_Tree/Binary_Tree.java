@@ -280,6 +280,32 @@ public class Binary_Tree {
 
 	}
 
+	public int lca_better(int i, int j) {
+
+		return lca_better(root, findNode(i), findNode(j)).data;
+
+	}
+
+	private Node lca_better(Node node, Node p, Node q) {
+		if (node == null) {
+			return null;
+		}
+
+		if (node == p || node == q) {
+			return node;
+		}
+
+		Node left = lca_better(node.left, p, q);
+		Node right = lca_better(node.right, p, q);
+
+		if (left != null && right != null) {
+			return node;
+		}
+
+		return left != null ? left : right;
+
+	}
+
 	public Node lca_better_bst(Node a, Node b) {
 
 		return lca_better_bst(root, a, b);
@@ -426,28 +452,21 @@ public class Binary_Tree {
 			return false;
 
 		} else if (node.data == data) {
-
 			kDownBlocker(node, k, null);
-
 			return true;
 
 		} else if (printKfarBetter(node.left, data, k)) {
-
 			kDownBlocker(node, k - dist, node.left);
-
 			dist++;
 			return true;
 
 		} else if (printKfarBetter(node.right, data, k)) {
-
 			kDownBlocker(node, k - dist, node.right);
 			dist++;
 			return true;
 
 		}
-
 		return false;
-
 	}
 
 	private void kDownBlocker(Node node, int k, Node blocker) {
@@ -714,6 +733,7 @@ public class Binary_Tree {
 	}
 
 	public void zigzag() {
+
 		boolean ltr = true;
 
 		Stack<Node> curr = new Stack<>();
@@ -920,6 +940,7 @@ public class Binary_Tree {
 			BalPair bp = new BalPair();
 			bp.height = -1;
 			bp.isbalanced = true;
+			return bp;
 		}
 
 		BalPair lb = isBalanced(node.left);
@@ -1003,7 +1024,7 @@ public class Binary_Tree {
 
 		mypair.isBST = lp.isBST && rp.isBST && node.data >= lp.max && node.data < rp.min;
 		mypair.max = Math.max(node.data, Math.max(lp.max, rp.max));
-		mypair.max = Math.max(node.data, Math.max(lp.min, rp.min));
+		mypair.min = Math.min(node.data, Math.min(lp.min, rp.min));
 
 		if (mypair.isBST) {
 			mypair.Lbst_root = node;
@@ -1981,7 +2002,7 @@ public class Binary_Tree {
 
 	}
 
-	public void printPostOrderIN_PRE(int in[], int pre[], int n) {
+	public void printPostO1rderIN_PRE(int in[], int pre[], int n) {
 		printPostOrderIN_PRE(pre, 0, n - 1, in, 0, n - 1);
 
 	}

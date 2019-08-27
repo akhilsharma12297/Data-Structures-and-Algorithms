@@ -5,7 +5,7 @@ public class Stairs_with_only_number {
 	public static void main(String[] args) {
 
 		System.out.println(func(4));
-		System.out.println(funcOG(4));
+		System.out.println(better(4));
 	}
 
 	public static int func(int n) {
@@ -21,11 +21,25 @@ public class Stairs_with_only_number {
 		return ans[n];
 	}
 
-	public static int funcOG(int n) {
-		if (n == 0) {
+	public static int better(int n) {
+		if (n <= 0)
+			return 0;
+
+		if (n == 1)
 			return 1;
+		if (n == 2)
+			return 2;
+
+		int n1 = 1;
+		int n2 = 2;
+		int ans = 0;
+
+		for (int i = 2; i < n; i++) {
+			ans = n2 + n1;
+			n1 = n2;
+			n2 = ans;
 		}
-		return (1 << (n - 1));
+		return ans;
 	}
 
 }
