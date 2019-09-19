@@ -8,7 +8,6 @@ public class Merge_K_Sorted {
 	// https://www.youtube.com/watch?v=6bvnZzwiKzs
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int arr[][] = { { 1, 3 }, { 2, 4, 6 }, { 0, 9, 10, 11 } };
 
 		int[] result = Kmerger(arr);

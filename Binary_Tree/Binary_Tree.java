@@ -287,6 +287,7 @@ public class Binary_Tree {
 	}
 
 	private Node lca_better(Node node, Node p, Node q) {
+
 		if (node == null) {
 			return null;
 		}
@@ -312,6 +313,7 @@ public class Binary_Tree {
 	}
 
 	private Node lca_better_bst(Node node, Node a, Node b) {
+
 		if (node.data > a.data && node.data > b.data) {
 			lca_better_bst(node.left, a, b);
 		}
@@ -982,7 +984,7 @@ public class Binary_Tree {
 
 		BSTPairs mypair = new BSTPairs();
 
-		mypair.isBST = lp.isBST && rp.isBST && node.data >= lp.max && node.data < rp.min;
+		mypair.isBST = lp.isBST && rp.isBST && node.data <= lp.max && node.data > rp.min;
 		mypair.max = Math.max(node.data, Math.max(lp.max, rp.max));
 		mypair.min = Math.min(node.data, Math.min(lp.min, rp.min));
 

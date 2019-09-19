@@ -6,7 +6,7 @@ public class SubarrayLessThanK {
 
 		int arr[] = { 1, 9, 2, 8, 6, 4, 3 };
 
-		func(arr, 100);
+		System.out.println(func(arr, 100));
 
 	}
 

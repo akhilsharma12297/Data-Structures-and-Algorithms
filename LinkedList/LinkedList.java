@@ -1340,7 +1340,9 @@ public class LinkedList {
 			}
 
 		}
+
 		slow = head;
+
 		while (slow.next != fast.next) {
 			slow = slow.next;
 			fast = fast.next;
