@@ -3,7 +3,7 @@ package Recursion;
 public class Catalan_Number {
 
 	public static void main(String[] args) {
-		System.out.println(Catalan_Number(3));
+		System.out.println(Catalan_Number(7));
 	}
 
 	public static int Catalan_Number(int n) {
