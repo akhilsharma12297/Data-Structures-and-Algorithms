@@ -22,7 +22,7 @@ public class ZigZag_Array {
 			if (ctr % 2 == 0) {
 				if (arr[ctr] > arr[ctr + 1]) {
 					swap(arr, ctr);
-				}
+				} 
 			} else {
 				if (arr[ctr + 1] > arr[ctr]) {
 					swap(arr, ctr);
