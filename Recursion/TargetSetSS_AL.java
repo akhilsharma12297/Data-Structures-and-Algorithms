@@ -20,13 +20,11 @@ public class TargetSetSS_AL {
 		TargetSetSS_AL(arr, tar, idx + 1, ssf);
 
 		sum += arr[idx];
-
 		ssf.add(arr[idx]);
 
 		TargetSetSS_AL(arr, tar, idx + 1, ssf);
 
 		sum -= arr[idx];
-
 		ssf.remove(ssf.size() - 1);
 
 	}

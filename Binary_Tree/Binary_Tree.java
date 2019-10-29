@@ -2,8 +2,6 @@ package Binary_Tree;
 
 import java.util.*;
 
-import Binary_Tree.No330_Binary_Tree_To_Circular_LL.Node;
-
 public class Binary_Tree {
 
 	private class Node {

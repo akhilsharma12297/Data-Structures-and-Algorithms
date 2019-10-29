@@ -9,27 +9,11 @@ public class k_Smallest {
 
 		int[] arr = { 10, 1, 23, 55, 45, 98, 62, 12, 35, 9 };
 
-		printKSmallest2(arr, 3);
+		printKSmallest(arr, 3);
 
 	}
 
 	public static void printKSmallest(int[] arr, int k) {
-
-		PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
-
-		for (int val : arr) {
-			pq.add(val);
-		}
-
-		for (int i = 0; i < k; i++) {
-
-			System.out.println(pq.remove());
-
-		}
-
-	}
-
-	public static void printKSmallest2(int[] arr, int k) {
 
 		PriorityQueue<Integer> pq = new PriorityQueue<Integer>(Collections.reverseOrder());
 
