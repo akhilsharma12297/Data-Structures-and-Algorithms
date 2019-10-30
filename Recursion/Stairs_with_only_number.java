@@ -4,8 +4,8 @@ public class Stairs_with_only_number {
 
 	public static void main(String[] args) {
 
-		System.out.println(func(9));
-		System.out.println(better(9));
+		System.out.println(func(4));
+		System.out.println(better(4));
 	}
 
 	public static int func(int n) {
