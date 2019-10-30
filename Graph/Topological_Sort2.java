@@ -64,7 +64,7 @@ public class Topological_Sort2 {
 	// Driver method
 	public static void main(String args[]) {
 		// Create a graph given in the above diagram
-		Graph g = new Graph(6);
+		Topological_Sort2 g = new Topological_Sort2(6);
 		g.addEdge(5, 2);
 		g.addEdge(5, 0);
 		g.addEdge(4, 0);
