@@ -4,7 +4,7 @@ public class i_j_k {
 
 	public static void main(String[] args) {
 
-		int[] arr = {};
+		int[] arr = { 2, 5, 3, 1, 4, 9 };
 
 		func(arr);
 	}
@@ -20,7 +20,7 @@ public class i_j_k {
 					max1 = Math.max(max1, arr[j]);
 			}
 
-			for (int j = i + 1; j < arr.length; i++) {
+			for (int j = i + 1; j < arr.length; j++) {
 
 				if (arr[j] > arr[i]) {
 					max2 = Math.max(max2, arr[j]);
