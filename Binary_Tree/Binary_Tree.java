@@ -2294,4 +2294,50 @@ public class Binary_Tree {
 		}
 		System.out.println();
 	}
+
+	public Node constructMaximumBinaryTree(int[] arr) {
+
+		return create(0, arr.length - 1, arr);
+
+	}
+
+	public Node create(int lo, int hi, int[] arr) {
+		Node node = null;
+		int maxIdx = helper(lo, hi, arr);
+
+		if (maxIdx != -1) {
+			node = new Node();
+			node.data = arr[maxIdx];
+		}
+
+		if (node != null) {
+			node.left = create(lo, maxIdx - 1, arr);
+			node.right = create(maxIdx + 1, hi, arr);
+
+		}
+
+		return node;
+	}
+
+	public int helper(int lo, int hi, int[] arr) {
+
+		if (lo > hi) {
+			return -1;
+		}
+
+		int max = Integer.MIN_VALUE;
+
+		int maxIdx = -1;
+
+		for (int i = lo; i <= hi; i++) {
+			if (max < arr[i]) {
+				max = arr[i];
+				maxIdx = i;
+			}
+
+		}
+
+		return maxIdx;
+
+	}
 }
